@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Art of Slow Travel | Luna Piena Journal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #336633;
+            --golden: #F49321;
+            --cream: #FAF9F6;
+            --dark: #1a1a1a;
+            --gray: #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 249, 246, 0.95);
+            backdrop-filter: blur(20px);
+        }
+
+        .logo { height: 45px; }
+
+        .nav-center {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-center a {
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .nav-center a:hover { color: var(--forest); }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .lang-toggle {
+            display: flex;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .lang-toggle a {
+            text-decoration: none;
+            padding: 4px 8px;
+            color: var(--gray);
+        }
+
+        .lang-toggle a.active {
+            background: var(--golden);
+            color: var(--dark);
+        }
+
+        /* Article Hero */
+        .article-hero {
+            height: 70vh;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%),
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .article-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 80px 8vw;
+            max-width: 900px;
+        }
+
+        .article-category {
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--golden);
+            margin-bottom: 20px;
+        }
+
+        .article-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            color: var(--cream);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 24px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 28px;
+        }
+
+        .article-content p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            float: left;
+            line-height: 1;
+            padding-right: 16px;
+            color: var(--forest);
+        }
+
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 60px 0 24px;
+            color: var(--dark);
+        }
+
+        .article-content blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--forest);
+            border-left: 3px solid var(--golden);
+            padding-left: 30px;
+            margin: 50px 0;
+            line-height: 1.6;
+        }
+
+        .article-image {
+            margin: 50px -100px;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* Author Box */
+        .author-box {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            padding: 40px;
+            background: white;
+            margin-top: 60px;
+            border-left: 3px solid var(--golden);
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        /* Related Posts */
+        .related-section {
+            padding: 100px 8vw;
+            background: white;
+        }
+
+        .related-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .related-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .related-card {
+            background: var(--cream);
+            transition: transform 0.4s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .related-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .related-card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .related-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .related-card:hover .related-card-image img {
+            transform: scale(1.1);
+        }
+
+        .related-card-content {
+            padding: 24px;
+        }
+
+        .related-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .related-card:hover h4 {
+            color: var(--forest);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--forest);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 40px;
+            transition: gap 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 16px;
+        }
+
+        .back-link svg {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 8vw;
+            background: var(--forest);
+            color: var(--cream);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer a {
+            color: var(--cream);
+            text-decoration: none;
+            opacity: 0.6;
+        }
+
+        footer a:hover { opacity: 1; }
+
+        .footer-links { display: flex; gap: 40px; }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .social-links a:hover {
+            background: var(--golden);
+            border-color: var(--golden);
+        }
+
+        .social-links svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .article-image { margin: 50px 0; }
+            .related-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 16px 5vw; }
+            .nav-center { display: none; }
+            .article-hero-content { padding: 60px 5vw; }
+            .article-content { padding: 60px 5vw; }
+            .related-section { padding: 60px 5vw; }
+            .author-box { flex-direction: column; text-align: center; }
+            footer { flex-direction: column; gap: 30px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html"><img src="logo.png" alt="Luna Piena" class="logo"></a>
+        <ul class="nav-center">
+            <li><a href="rooms.html">Rooms</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="blog.html">Journal</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="lang-toggle">
+                <a href="#" class="active">EN</a>
+                <a href="#">ES</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="article-hero">
+        <div class="article-hero-bg"></div>
+        <div class="article-hero-content">
+            <span class="article-category">Travel & Wellness</span>
+            <h1>The Art of Slow Travel: Finding Peace in Boutique Hospitality</h1>
+            <div class="article-meta">
+                <span>January 15, 2026</span>
+                <span>8 min read</span>
+            </div>
+        </div>
+    </section>
+
+    <article class="article-content">
+        <a href="blog.html" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+            Back to Journal
+        </a>
+
+        <p>In a world that moves faster each day, the concept of slow travel has become not just a preference but a necessity. At Luna Piena, we've built our entire philosophy around this idea—that the best journeys are the ones where you truly stop and breathe.</p>
+
+        <p>When we first envisioned this space, we asked ourselves a simple question: what would it feel like to arrive somewhere and immediately feel at home? Not the frantic check-in of a crowded hotel lobby, not the sterile efficiency of a chain property, but the genuine warmth of being welcomed by family.</p>
+
+        <h2>The Philosophy of Presence</h2>
+
+        <p>Slow travel isn't about moving less—it's about being more present in every moment. It's choosing depth over breadth, connection over consumption. When you stay with us, we want you to feel the texture of the linen sheets, to taste every note of your morning coffee, to notice how the light changes through your window as the day unfolds.</p>
+
+        <blockquote>"The best journeys are not measured in miles traveled, but in moments truly lived."</blockquote>
+
+        <p>This philosophy extends to every detail of your stay. Our rooms aren't just places to sleep; they're sanctuaries designed for rest and reflection. The absence of television in common areas isn't an oversight—it's an invitation to conversation, to reading, to simply being.</p>
+
+        <div class="article-image">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80" alt="Luna Piena Interior">
+            <p class="image-caption">Every corner of Luna Piena is designed for peaceful moments</p>
+        </div>
+
+        <h2>Creating Space for What Matters</h2>
+
+        <p>Modern life fills every moment with noise and notification. We've created a space where you can rediscover silence—not the empty silence of isolation, but the rich silence that allows thought to deepen and creativity to flourish.</p>
+
+        <p>Our guests often tell us that their time here felt longer than the calendar would suggest. That's not an accident. When you're fully present, time expands. An afternoon reading in the garden becomes an eternity of contentment. A meal shared with loved ones becomes a memory that lasts decades.</p>
+
+        <h2>The Invitation</h2>
+
+        <p>We invite you to join us in this slower rhythm. Leave your hurry at the door. Let us take care of the details while you rediscover the simple pleasure of being exactly where you are, doing exactly what you want to do—or nothing at all.</p>
+
+        <p>Because at Luna Piena, we believe the greatest luxury isn't having more. It's needing less.</p>
+
+        <div class="author-box">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Author" class="author-avatar">
+            <div class="author-info">
+                <h4>The Luna Piena Team</h4>
+                <p>Sharing stories of slow living, warm hospitality, and the moments that make life beautiful.</p>
+            </div>
+        </div>
+    </article>
+
+    <section class="related-section">
+        <div class="related-header">
+            <h3>Continue Reading</h3>
+        </div>
+        <div class="related-grid">
+            <article class="related-card">
+                <a href="article.html">
+                    <div class="related-card-image">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Related Post">
+                    </div>
+                    <div class="related-card-content">
+                        <h4>The Story Behind Our Venezuelan-Inspired Menu</h4>
+                    </div>
+                </a>
+            </article>
+            <article class="related-card">
+                <a href="article.html">
+                    <div class="related-card-image">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Related Post">
+                    </div>
+                    <div class="related-card-content">
+                        <h4>Creating Spaces That Feel Like Home</h4>
+                    </div>
+                </a>
+            </article>
+            <article class="related-card">
+                <a href="article.html">
+                    <div class="related-card-image">
+                        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80" alt="Related Post">
+                    </div>
+                    <div class="related-card-content">
+                        <h4>Meet Lucy: Our Four-Legged Concierge</h4>
+                    </div>
+                </a>
+            </article>
+        </div>
+    </section>
+
+    <footer>
+        <img src="logo.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="dining.html">Dining</a>
+            <a href="events.html">Events</a>
+            <a href="about.html">Who We Are</a>
+        </div>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="2"/>
+                    <path d="M8 11v5M8 8v.01M12 16v-5c0-1 1-2 2-2s2 1 2 2v5"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="Google">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

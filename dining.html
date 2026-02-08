@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dining | Luna Piena</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --forest: #336633;
@@ -17,53 +17,94 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Nunito', sans-serif;
             background: var(--cream);
             color: var(--dark);
+            overflow-x: hidden;
         }
 
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 20px 40px;
+            padding: 20px 5vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--cream);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background: rgba(250, 249, 246, 0.95);
+            backdrop-filter: blur(20px);
         }
 
-        .logo { height: 50px; }
+        .logo { height: 45px; }
 
-        .nav-links {
+        .nav-center {
             display: flex;
             gap: 40px;
             list-style: none;
         }
 
-        .nav-links a {
+        .nav-center a {
             color: var(--dark);
             text-decoration: none;
             font-size: 0.85rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 600;
         }
 
-        .nav-links a:hover, .nav-links a.active { color: var(--forest); }
+        .nav-center a:hover, .nav-center a.active { color: var(--forest); }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .lang-toggle {
+            display: flex;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .lang-toggle a {
+            text-decoration: none;
+            padding: 4px 8px;
+            color: var(--gray);
+        }
+
+        .lang-toggle a.active {
+            background: var(--golden);
+            color: var(--dark);
+        }
+
+        /* Hero */
         .page-hero {
             height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80');
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: -10%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)),
+                        url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1800&q=80');
             background-size: cover;
-            background-position: center;
+            background-position: center 40%;
+            will-change: transform;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .page-hero h1 {
@@ -78,8 +119,9 @@
         .page-hero p {
             color: rgba(255,255,255,0.8);
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width: 550px;
             margin: 24px auto 0;
+            line-height: 1.8;
         }
 
         /* Philosophy */
@@ -93,11 +135,13 @@
 
         .philosophy-image {
             position: relative;
+            height: 550px;
+            overflow: hidden;
         }
 
         .philosophy-image img {
             width: 100%;
-            height: 500px;
+            height: 100%;
             object-fit: cover;
         }
 
@@ -106,8 +150,8 @@
             position: absolute;
             bottom: -20px;
             right: -20px;
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border: 2px solid var(--golden);
             z-index: -1;
         }
@@ -135,19 +179,42 @@
             margin-bottom: 20px;
         }
 
+        .callout-box {
+            background: rgba(51,102,51,0.08);
+            border-left: 3px solid var(--forest);
+            padding: 20px 24px;
+            margin-top: 32px;
+        }
+
+        .callout-box p {
+            margin: 0;
+            font-style: italic;
+            color: var(--forest);
+        }
+
         /* Menu Section */
         .menu-section {
             padding: 120px 8vw;
             background: var(--dark);
             color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 80%, rgba(51,102,51,0.2) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(244,147,33,0.1) 0%, transparent 50%);
         }
 
         .menu-header {
             text-align: center;
             margin-bottom: 80px;
+            position: relative;
         }
 
-        .menu-header .section-label {
+        .section-label {
             font-size: 0.7rem;
             letter-spacing: 0.4em;
             text-transform: uppercase;
@@ -165,6 +232,11 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 60px;
+            position: relative;
+        }
+
+        .menu-category {
+            text-align: center;
         }
 
         .menu-category h3 {
@@ -174,129 +246,56 @@
             margin-bottom: 32px;
             padding-bottom: 16px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: var(--golden);
         }
 
         .menu-item {
-            margin-bottom: 28px;
+            padding: 16px 0;
+            font-size: 1.05rem;
+            opacity: 0.85;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .menu-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 6px;
+        .menu-item:last-child {
+            border-bottom: none;
         }
 
-        .menu-item h4 {
+        /* Note Section */
+        .note-section {
+            padding: 80px 8vw;
+            background: rgba(244,147,33,0.1);
+            text-align: center;
+        }
+
+        .note-section .icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .note-section h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--forest);
         }
 
-        .menu-item .price {
-            color: var(--golden);
+        .note-section p {
             font-size: 1rem;
-        }
-
-        .menu-item p {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-            line-height: 1.6;
-        }
-
-        /* Experience Section */
-        .experience-section {
-            padding: 120px 8vw;
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .experience-card {
-            text-align: center;
-            padding: 40px;
-            background: white;
-            transition: all 0.4s ease;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        }
-
-        .experience-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            margin-bottom: 24px;
-        }
-
-        .experience-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 12px;
-        }
-
-        .experience-card p {
-            font-size: 0.9rem;
             color: var(--gray);
-            line-height: 1.7;
-            margin-bottom: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
         }
 
-        .experience-card .time {
-            font-size: 0.8rem;
+        .note-section p strong {
             color: var(--golden);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
         }
 
-        /* Reservations */
-        .reservations {
-            padding: 100px 8vw;
-            background: var(--forest);
-            text-align: center;
-        }
-
-        .reservations h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 400;
-            color: var(--cream);
-            margin-bottom: 16px;
-        }
-
-        .reservations p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 32px;
-        }
-
-        .reservations a {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 18px 40px;
-            background: var(--golden);
-            color: var(--dark);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .reservations a:hover {
-            background: var(--cream);
-        }
-
+        /* Footer */
         footer {
             padding: 60px 8vw;
-            background: var(--dark);
+            background: var(--forest);
             color: var(--cream);
             display: flex;
             justify-content: space-between;
@@ -313,159 +312,125 @@
 
         .footer-links { display: flex; gap: 40px; }
 
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .social-links a:hover {
+            background: var(--golden);
+            border-color: var(--golden);
+        }
+
+        .social-links svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Responsive */
         @media (max-width: 1024px) {
             .philosophy { grid-template-columns: 1fr; gap: 40px; }
+            .philosophy-image { height: 400px; }
             .menu-grid { grid-template-columns: 1fr; gap: 40px; }
-            .experience-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            nav { padding: 16px 24px; }
-            .nav-links { display: none; }
-            .philosophy, .menu-section, .experience-section { padding: 80px 24px; }
-            .reservations { padding: 60px 24px; }
-            footer { flex-direction: column; gap: 20px; text-align: center; }
+            nav { padding: 16px 5vw; }
+            .nav-center { display: none; }
+            .philosophy, .menu-section { padding: 80px 5vw; }
+            footer { flex-direction: column; gap: 30px; text-align: center; }
         }
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html"><img src="logo.png" alt="Luna Piena" class="logo"></a>
-        <ul class="nav-links">
+        <ul class="nav-center">
             <li><a href="rooms.html">Rooms</a></li>
             <li><a href="dining.html" class="active">Dining</a></li>
+            <li><a href="events.html">Events</a></li>
             <li><a href="about.html">Who We Are</a></li>
             <li><a href="blog.html">Journal</a></li>
         </ul>
+        <div class="nav-right">
+            <div class="lang-toggle">
+                <a href="#" class="active">EN</a>
+                <a href="#">ES</a>
+            </div>
+        </div>
     </nav>
 
     <section class="page-hero">
-        <div>
+        <div class="hero-bg" data-parallax="0.2"></div>
+        <div class="page-hero-content">
             <h1>Dine <em>With Us</em></h1>
-            <p>Experience authentic Italian cuisine prepared with locally sourced ingredients and served with warmth.</p>
+            <p>Homemade meals prepared with love, blending Venezuelan traditions with comforting flavors from around the world.</p>
         </div>
     </section>
 
     <section class="philosophy">
         <div class="philosophy-image">
-            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&q=80" alt="Our Cuisine">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="Our Food">
         </div>
         <div class="philosophy-content">
             <p class="section-label">Our Philosophy</p>
-            <h2>From Garden to Table</h2>
-            <p>At Luna Piena, we believe that great food tells a story. Our kitchen celebrates the rich traditions of Italian cuisine while embracing contemporary techniques and local, seasonal ingredients.</p>
-            <p>Every dish is crafted with intention—honoring the farmers, artisans, and producers who make our region so special. From morning espresso to evening aperitivo, each moment at our table is designed to nourish both body and soul.</p>
+            <h2>Made With Love</h2>
+            <p>At Luna Piena, food is an expression of care. Our menu features homemade dishes inspired by Venezuelan cuisine and comfort food classics, prepared fresh upon request.</p>
+            <p>From fluffy arepas in the morning to comforting pasta in the evening, every meal is crafted to make you feel at home—nourished and happy.</p>
+            <div class="callout-box">
+                <p>Our special menu is available upon request. Please let us know your preferences and we'll prepare something delicious for you.</p>
+            </div>
         </div>
     </section>
 
     <section class="menu-section">
+        <div class="menu-bg"></div>
         <div class="menu-header">
-            <p class="section-label">Our Offerings</p>
+            <p class="section-label">What We Serve</p>
             <h2>The Menu</h2>
         </div>
         <div class="menu-grid">
             <div class="menu-category">
-                <h3>Antipasti</h3>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h4>Burrata Pugliese</h4>
-                        <span class="price">€18</span>
-                    </div>
-                    <p>Fresh burrata, heirloom tomatoes, basil oil, aged balsamic</p>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h4>Carpaccio di Manzo</h4>
-                        <span class="price">€22</span>
-                    </div>
-                    <p>Thinly sliced beef, arugula, shaved parmigiano, truffle oil</p>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h4>Calamari Fritti</h4>
-                        <span class="price">€16</span>
-                    </div>
-                    <p>Crispy squid, lemon aioli, fresh herbs</p>
-                </div>
+                <h3>Breakfast</h3>
+                <div class="menu-item">Arepas</div>
+                <div class="menu-item">Waffles or Pancakes</div>
+                <div class="menu-item">Eggs</div>
+                <div class="menu-item">Parfait</div>
             </div>
             <div class="menu-category">
-                <h3>Primi</h3>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h4>Tagliatelle al Tartufo</h4>
-                        <span class="price">€32</span>
-                    </div>
-                    <p>Fresh pasta, black truffle, butter, parmigiano reggiano</p>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h4>Risotto ai Funghi</h4>
-                        <span class="price">€28</span>
-                    </div>
-                    <p>Carnaroli rice, wild mushrooms, mascarpone, thyme</p>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h4>Spaghetti alle Vongole</h4>
-                        <span class="price">€26</span>
-                    </div>
-                    <p>Fresh clams, white wine, garlic, chili, parsley</p>
-                </div>
+                <h3>Dinner</h3>
+                <div class="menu-item">Pasta</div>
+                <div class="menu-item">Bollitos</div>
+                <div class="menu-item">Salchipapa</div>
+                <div class="menu-item">Arepitas</div>
             </div>
             <div class="menu-category">
-                <h3>Secondi</h3>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h4>Branzino al Forno</h4>
-                        <span class="price">€38</span>
-                    </div>
-                    <p>Whole roasted sea bass, lemon, capers, olives</p>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h4>Filetto di Manzo</h4>
-                        <span class="price">€45</span>
-                    </div>
-                    <p>Grass-fed beef tenderloin, roasted vegetables, red wine reduction</p>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h4>Pollo alla Milanese</h4>
-                        <span class="price">€32</span>
-                    </div>
-                    <p>Crispy chicken cutlet, arugula, cherry tomatoes</p>
-                </div>
+                <h3>Drinks</h3>
+                <div class="menu-item">Agua</div>
+                <div class="menu-item">Papelón</div>
+                <div class="menu-item">Green Tea</div>
+                <div class="menu-item">Agua de Panela Caliente</div>
+                <div class="menu-item">Coffee</div>
+                <div class="menu-item">Chocolatico</div>
             </div>
         </div>
     </section>
 
-    <section class="experience-section">
-        <div class="experience-grid">
-            <div class="experience-card">
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="Breakfast">
-                <h3>Colazione</h3>
-                <p>Start your day with fresh pastries, local cheeses, seasonal fruits, and perfectly brewed Italian coffee.</p>
-                <span class="time">7:00 AM - 10:30 AM</span>
-            </div>
-            <div class="experience-card">
-                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&q=80" alt="Aperitivo">
-                <h3>Aperitivo</h3>
-                <p>Join us on the terrace for classic Italian cocktails and curated small bites as the sun sets.</p>
-                <span class="time">5:00 PM - 7:30 PM</span>
-            </div>
-            <div class="experience-card">
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Cena">
-                <h3>Cena</h3>
-                <p>An intimate evening dining experience featuring seasonal tasting menus and à la carte selections.</p>
-                <span class="time">7:00 PM - 10:30 PM</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="reservations">
-        <h2>Reserve Your Table</h2>
-        <p>For dinner reservations, special occasions, or private events, please contact our team.</p>
-        <a href="index.html">Make a Reservation</a>
+    <section class="note-section">
+        <div class="icon">🐶</div>
+        <h3>A Note About Lucy</h3>
+        <p>Our beloved companion Lucy may join you during meals. We kindly ask that you <strong>please do not feed her any human food</strong>—she has special dietary needs. (Unless it's parmesan cheese, she says that's okay.)</p>
     </section>
 
     <footer>
@@ -473,10 +438,39 @@
         <div class="footer-links">
             <a href="index.html">Home</a>
             <a href="rooms.html">Rooms</a>
+            <a href="events.html">Events</a>
             <a href="about.html">Who We Are</a>
             <a href="blog.html">Journal</a>
         </div>
-        <p style="opacity: 0.5; font-size: 0.8rem;">© 2026 Luna Piena</p>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="2"/>
+                    <path d="M8 11v5M8 8v.01M12 16v-5c0-1 1-2 2-2s2 1 2 2v5"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="Google">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+            </a>
+        </div>
     </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const heroBg = document.querySelector('.hero-bg');
+            if (heroBg) {
+                heroBg.style.transform = `translateY(${window.pageYOffset * 0.3}px)`;
+            }
+        });
+    </script>
 </body>
 </html>
