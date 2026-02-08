@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Piena | Boutique Hotel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #336633;
+            --golden: #F49321;
+            --cream: #FAF9F6;
+            --dark: #1a1a1a;
+            --gray: #888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Syne', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--forest);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease, background 0.15s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor.hover {
+            transform: scale(2);
+            background: var(--golden);
+            border-color: var(--golden);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            height: 50px;
+            filter: brightness(0) invert(1);
+            transition: filter 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--golden);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .menu-btn span {
+            width: 30px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+
+        .hero-left {
+            background: var(--forest);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 8vw;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-left::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(244,147,33,0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .hero-tagline {
+            font-size: 0.75rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--golden);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hero-tagline::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--golden);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 400;
+            color: var(--cream);
+            line-height: 1.1;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 em {
+            color: var(--golden);
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: rgba(250,249,246,0.7);
+            max-width: 400px;
+            line-height: 1.8;
+            margin-bottom: 48px;
+        }
+
+        .hero-right {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1);
+            animation: slowZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1.1); }
+            to { transform: scale(1); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--forest) 0%, transparent 30%);
+        }
+
+        /* Reserve Button */
+        .reserve-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 40px;
+            background: var(--golden);
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reserve-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--dark);
+            transform: translateX(-101%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reserve-btn:hover::before {
+            transform: translateX(0);
+        }
+
+        .reserve-btn span,
+        .reserve-btn svg {
+            position: relative;
+            z-index: 1;
+            transition: color 0.4s ease;
+        }
+
+        .reserve-btn:hover span,
+        .reserve-btn:hover svg {
+            color: var(--cream);
+        }
+
+        .reserve-btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .reserve-btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--cream);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        .scroll-indicator .line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--cream), transparent);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0%, 100% { transform: scaleY(1); opacity: 1; }
+            50% { transform: scaleY(0.5); opacity: 0.5; }
+        }
+
+        /* Values Section */
+        .values {
+            padding: 140px 8vw;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .values-header {
+            position: sticky;
+            top: 140px;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--golden);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .value-card {
+            padding: 40px;
+            background: white;
+            border-radius: 0;
+            position: relative;
+            transition: all 0.4s ease;
+            border: 1px solid transparent;
+        }
+
+        .value-card:hover {
+            border-color: var(--forest);
+            transform: translateY(-8px);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .value-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--forest), var(--golden));
+            transition: width 0.4s ease;
+        }
+
+        .value-card:hover::after {
+            width: 100%;
+        }
+
+        /* Rooms Preview */
+        .rooms-preview {
+            padding: 140px 0;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rooms-header {
+            padding: 0 8vw;
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .rooms-header .section-title {
+            color: var(--cream);
+        }
+
+        .view-all {
+            color: var(--golden);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .view-all:hover {
+            gap: 16px;
+        }
+
+        .rooms-scroll {
+            display: flex;
+            gap: 30px;
+            padding: 0 8vw;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            cursor: grab;
+        }
+
+        .rooms-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .room-card {
+            flex: 0 0 400px;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .room-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .room-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--cream);
+        }
+
+        .room-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .room-info p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .room-price {
+            margin-top: 16px;
+            font-size: 1.1rem;
+        }
+
+        .room-price span {
+            font-size: 0.75rem;
+            opacity: 0.6;
+        }
+
+        /* Dining Preview */
+        .dining-preview {
+            padding: 140px 8vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .dining-image {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+        }
+
+        .dining-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dining-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--golden);
+            z-index: -1;
+        }
+
+        .dining-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .dining-content p {
+            font-size: 1rem;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .text-link {
+            color: var(--forest);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid var(--forest);
+            padding-bottom: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .text-link:hover {
+            gap: 16px;
+            border-color: var(--golden);
+            color: var(--golden);
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 8vw;
+            background: var(--forest);
+            color: var(--cream);
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand p {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            max-width: 300px;
+            line-height: 1.7;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--golden);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--cream);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--cream);
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+
+        /* Booking Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal {
+            background: var(--cream);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(40px);
+            transition: transform 0.4s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 40px;
+            background: var(--forest);
+            color: var(--cream);
+        }
+
+        .modal-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        .modal-header p {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--cream);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--golden);
+            border-color: var(--golden);
+            color: var(--dark);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 16px;
+            border: 1px solid #ddd;
+            background: white;
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--forest);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: var(--forest);
+            color: var(--cream);
+            border: none;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark);
+        }
+
+        /* Page Transitions */
+        .page-transition {
+            position: fixed;
+            inset: 0;
+            background: var(--forest);
+            z-index: 9999;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .page-transition.active {
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                padding: 140px 40px 80px;
+                min-height: 70vh;
+            }
+
+            .hero-right {
+                height: 50vh;
+            }
+
+            .values {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .values-header {
+                position: static;
+            }
+
+            .dining-preview {
+                grid-template-columns: 1fr;
+            }
+
+            .dining-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 24px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-btn {
+                display: flex;
+            }
+
+            .values,
+            .dining-preview {
+                padding: 80px 24px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rooms-header {
+                padding: 0 24px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .rooms-scroll {
+                padding: 0 24px;
+            }
+
+            .room-card {
+                flex: 0 0 300px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: span 1;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .footer-nav {
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Page Transition -->
+    <div class="page-transition"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">
+            <img src="logo.png" alt="Luna Piena" class="logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="rooms.html">Rooms</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="blog.html">Journal</a></li>
+        </ul>
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-left">
+            <p class="hero-tagline">By Lupo Hospitality</p>
+            <h1>Every Night<br>Like a <em>Full Moon</em></h1>
+            <p class="hero-description">A boutique sanctuary blending Italian charm with modern thoughtfulness. Peaceful. Welcoming. Unforgettable.</p>
+            <button class="reserve-btn" onclick="openModal()">
+                <span>Reserve Your Stay</span>
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 10h12M12 4l6 6-6 6"/>
+                </svg>
+            </button>
+        </div>
+        <div class="hero-right">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80" alt="Luna Piena Hotel" class="hero-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="line"></div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+        <div class="values-header">
+            <p class="section-label">Our Promise</p>
+            <h2 class="section-title">Where Every Detail Matters</h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <svg class="value-icon" viewBox="0 0 60 60" fill="none" stroke="#336633" stroke-width="1.5">
+                    <circle cx="30" cy="30" r="25"/>
+                    <path d="M20 35l7 7 13-14"/>
+                    <path d="M30 10v5M30 45v5M10 30h5M45 30h5"/>
+                </svg>
+                <h3>Hospitality</h3>
+                <p>A warm and welcoming environment where every guest feels at home from arrival.</p>
+            </div>
+            <div class="value-card">
+                <svg class="value-icon" viewBox="0 0 60 60" fill="none" stroke="#336633" stroke-width="1.5">
+                    <rect x="10" y="25" width="40" height="20" rx="2"/>
+                    <path d="M15 25v-5a15 15 0 0130 0v5"/>
+                    <line x1="10" y1="35" x2="50" y2="35"/>
+                </svg>
+                <h3>Comfort</h3>
+                <p>Thoughtful details and calming spaces ensure harmony and balance throughout your stay.</p>
+            </div>
+            <div class="value-card">
+                <svg class="value-icon" viewBox="0 0 60 60" fill="none" stroke="#336633" stroke-width="1.5">
+                    <circle cx="30" cy="30" r="25"/>
+                    <path d="M30 10c0 0 15 12 15 25s-15 15-15 15-15-2-15-15 15-25 15-25z"/>
+                </svg>
+                <h3>Memorability</h3>
+                <p>Creating experiences guests will cherish long after their visit—moments that become treasures.</p>
+            </div>
+            <div class="value-card">
+                <svg class="value-icon" viewBox="0 0 60 60" fill="none" stroke="#336633" stroke-width="1.5">
+                    <path d="M30 50c-11 0-20-9-20-20s9-20 20-20"/>
+                    <path d="M45 15c-8-5-20-3-25 8s0 25 12 28"/>
+                    <circle cx="30" cy="30" r="8"/>
+                </svg>
+                <h3>Connection</h3>
+                <p>Meaningful bonds created through personalized service and genuine care for every guest.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Preview -->
+    <section class="rooms-preview">
+        <div class="rooms-header">
+            <div>
+                <p class="section-label" style="color: var(--golden);">Accommodations</p>
+                <h2 class="section-title">Our Rooms</h2>
+            </div>
+            <a href="rooms.html" class="view-all">
+                View All Rooms
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </a>
+        </div>
+        <div class="rooms-scroll">
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80" alt="Serena Suite">
+                <div class="room-info">
+                    <h3>Serena Suite</h3>
+                    <p>45 sqm • King Bed • Garden View</p>
+                    <p class="room-price">€280 <span>/ night</span></p>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80" alt="Luna Room">
+                <div class="room-info">
+                    <h3>Luna Room</h3>
+                    <p>35 sqm • Queen Bed • Courtyard View</p>
+                    <p class="room-price">€220 <span>/ night</span></p>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80" alt="Piena Grand">
+                <div class="room-info">
+                    <h3>Piena Grand</h3>
+                    <p>65 sqm • King Bed • Terrace</p>
+                    <p class="room-price">€380 <span>/ night</span></p>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80" alt="Cielo Suite">
+                <div class="room-info">
+                    <h3>Cielo Suite</h3>
+                    <p>55 sqm • King Bed • Rooftop Access</p>
+                    <p class="room-price">€340 <span>/ night</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining Preview -->
+    <section class="dining-preview">
+        <div class="dining-image">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Luna Piena Dining">
+        </div>
+        <div class="dining-content">
+            <p class="section-label">Culinary Experience</p>
+            <h2>Dine Under<br>the Stars</h2>
+            <p>Experience authentic Italian cuisine prepared with locally sourced ingredients. Our kitchen celebrates tradition while embracing contemporary culinary artistry, creating memorable moments with every dish.</p>
+            <a href="dining.html" class="text-link">
+                Explore Our Menu
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="logo.png" alt="Luna Piena" style="height: 50px; filter: brightness(0) invert(1);">
+                <p>A boutique hotel experience by Lupo, where Italian charm meets modern thoughtfulness.</p>
+            </div>
+            <div class="footer-nav">
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="rooms.html">Rooms</a></li>
+                        <li><a href="dining.html">Dining</a></li>
+                        <li><a href="#">Wellness</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="about.html">Who We Are</a></li>
+                        <li><a href="blog.html">Journal</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Pinterest</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Luna Piena by Lupo. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Reserve Your Stay</h2>
+                <p>Begin your unforgettable experience</p>
+                <button class="modal-close" onclick="closeModal()">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4l12 12M16 4L4 16"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Check-in Date</label>
+                            <input type="date" name="checkin" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Check-out Date</label>
+                            <input type="date" name="checkout" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Arrival Time (Optional)</label>
+                            <input type="time" name="arrival">
+                        </div>
+                        <div class="form-group">
+                            <label>Number of Guests</label>
+                            <select name="guests" required>
+                                <option value="">Select</option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5+">5+ Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label>Occasion (Optional)</label>
+                            <select name="occasion">
+                                <option value="">Select an occasion</option>
+                                <option value="romantic">Romantic Getaway</option>
+                                <option value="anniversary">Anniversary</option>
+                                <option value="honeymoon">Honeymoon</option>
+                                <option value="birthday">Birthday Celebration</option>
+                                <option value="business">Business Trip</option>
+                                <option value="family">Family Vacation</option>
+                                <option value="wellness">Wellness Retreat</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" required placeholder="your@email.com">
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Check Availability</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            cursor.style.left = cursorX - 10 + 'px';
+            cursor.style.top = cursorY - 10 + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Hover effect
+        document.querySelectorAll('a, button, .room-card').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Modal Functions
+        function openModal() {
+            document.getElementById('bookingModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('bookingModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close on overlay click
+        document.getElementById('bookingModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            console.log('Booking request:', data);
+            alert('Thank you! We will confirm your reservation shortly.');
+            closeModal();
+        });
+
+        // Horizontal scroll for rooms
+        const roomsScroll = document.querySelector('.rooms-scroll');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        roomsScroll.addEventListener('mousedown', (e) => {
+            isDown = true;
+            roomsScroll.style.cursor = 'grabbing';
+            startX = e.pageX - roomsScroll.offsetLeft;
+            scrollLeft = roomsScroll.scrollLeft;
+        });
+
+        roomsScroll.addEventListener('mouseleave', () => {
+            isDown = false;
+            roomsScroll.style.cursor = 'grab';
+        });
+
+        roomsScroll.addEventListener('mouseup', () => {
+            isDown = false;
+            roomsScroll.style.cursor = 'grab';
+        });
+
+        roomsScroll.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - roomsScroll.offsetLeft;
+            const walk = (x - startX) * 2;
+            roomsScroll.scrollLeft = scrollLeft - walk;
+        });
+
+        // Page transitions
+        document.querySelectorAll('a[href$=".html"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = e.currentTarget.href;
+                document.querySelector('.page-transition').classList.add('active');
+                setTimeout(() => {
+                    window.location = target;
+                }, 600);
+            });
+        });
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelector('input[name="checkin"]').min = today;
+        document.querySelector('input[name="checkout"]').min = today;
+
+        // Update checkout min based on checkin
+        document.querySelector('input[name="checkin"]').addEventListener('change', (e) => {
+            document.querySelector('input[name="checkout"]').min = e.target.value;
+        });
+    </script>
+</body>
+</html>
