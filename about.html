@@ -349,16 +349,17 @@
             footer { flex-direction: column; gap: 30px; text-align: center; }
         }
     </style>
+    <script src="translations.js"></script>
 </head>
 <body>
     <nav>
-        <a href="index.html"><img src="images/Luna_Piena_Logo.png" alt="Luna Piena" class="logo"></a>
+        <a href="index.html"><img src="logo.png" alt="Luna Piena" class="logo"></a>
         <ul class="nav-center">
-            <li><a href="rooms.html">Rooms</a></li>
-            <li><a href="dining.html">Dining</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="about.html" class="active">Who We Are</a></li>
-            <li><a href="blog.html">Journal</a></li>
+            <li><a href="rooms.html" data-i18n="nav_rooms">Rooms</a></li>
+            <li><a href="dining.html" data-i18n="nav_dining">Dining</a></li>
+            <li><a href="events.html" data-i18n="nav_events">Events</a></li>
+            <li><a href="about.html" class="active" data-i18n="nav_about">Who We Are</a></li>
+            <li><a href="blog.html" data-i18n="nav_journal">Journal</a></li>
         </ul>
         <div class="nav-right">
             <div class="lang-toggle">
@@ -371,7 +372,7 @@
     <section class="page-hero">
         <div class="hero-bg" data-parallax="0.2"></div>
         <div class="page-hero-content">
-            <h1>Who <em>We Are</em></h1>
+            <h1 data-i18n="about_page_title">Who <em>We Are</em></h1>
         </div>
     </section>
 
@@ -380,10 +381,10 @@
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Luna Piena">
         </div>
         <div class="story-content">
-            <p class="section-label">Our Story</p>
-            <h2>Born From a Dream of Warm Hospitality</h2>
-            <p>Luna Piena by Lupo is a boutique hotel experience that blends Italian charm with a modern, thoughtful touch. Each stay is carefully designed to feel like a full-moon night: peaceful, welcoming, and unforgettable.</p>
-            <p>We focus on creating an atmosphere of connection and comfort, where every detail is crafted to leave a lasting impression. From the moment you arrive, you become part of our family.</p>
+            <p class="section-label" data-i18n="story_label">Our Story</p>
+            <h2 data-i18n="story_title">Born From a Dream of Warm Hospitality</h2>
+            <p data-i18n="story_p1">Luna Piena by Lupo is a boutique hotel experience that blends Italian charm with a modern, thoughtful touch. Each stay is carefully designed to feel like a full-moon night: peaceful, welcoming, and unforgettable.</p>
+            <p data-i18n="story_p2">We focus on creating an atmosphere of connection and comfort, where every detail is crafted to leave a lasting impression. From the moment you arrive, you become part of our family.</p>
         </div>
     </section>
 
@@ -392,46 +393,46 @@
             <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Our Space">
         </div>
         <div class="story-content">
-            <p class="section-label">Our Philosophy</p>
-            <h2>Clean, Peaceful, Thoughtful</h2>
-            <p>Our spaces are designed to inspire calm and connection, offering a timeless retreat from the everyday. We believe in the power of simplicity—that the most memorable experiences come from genuine warmth, not excess.</p>
-            <p>Every element of Luna Piena reflects this vision, from our carefully curated interiors to the personalized service that anticipates your every need.</p>
+            <p class="section-label" data-i18n="philosophy_label_about">Our Philosophy</p>
+            <h2 data-i18n="philosophy_title_about">Clean, Peaceful, Thoughtful</h2>
+            <p data-i18n="philosophy_p1_about">Our spaces are designed to inspire calm and connection, offering a timeless retreat from the everyday. We believe in the power of simplicity—that the most memorable experiences come from genuine warmth, not excess.</p>
+            <p data-i18n="philosophy_p2_about">Every element of Luna Piena reflects this vision, from our carefully curated interiors to the personalized service that anticipates your every need.</p>
         </div>
     </section>
 
     <section class="values-section">
         <div class="values-bg"></div>
         <div class="values-header">
-            <p class="section-label" style="color: var(--golden);">Our Values</p>
-            <h2>What Guides Us</h2>
+            <p class="section-label" style="color: var(--golden);" data-i18n="values_label_about">Our Values</p>
+            <h2 data-i18n="values_title_about">What Guides Us</h2>
         </div>
         <div class="values-grid">
             <div class="value-item">
                 <div class="number">01</div>
-                <h3>Hospitality</h3>
-                <p>We believe in creating a warm and welcoming environment where every guest feels at home.</p>
+                <h3 data-i18n="value_hospitality">Hospitality</h3>
+                <p data-i18n="value_hospitality_desc">We believe in creating a warm and welcoming environment where every guest feels at home.</p>
             </div>
             <div class="value-item">
                 <div class="number">02</div>
-                <h3>Comfort</h3>
-                <p>Thoughtful details and calming spaces ensure that every moment of your stay creates harmony and balance.</p>
+                <h3 data-i18n="value_comfort">Comfort</h3>
+                <p data-i18n="value_comfort_desc">Thoughtful details and calming spaces ensure that every moment of your stay creates harmony and balance.</p>
             </div>
             <div class="value-item">
                 <div class="number">03</div>
-                <h3>Memorability</h3>
-                <p>Our goal is to create experiences that guests will cherish long after their visit.</p>
+                <h3 data-i18n="value_memorability">Memorability</h3>
+                <p data-i18n="value_memorability_desc">Our goal is to create experiences that guests will cherish long after their visit.</p>
             </div>
         </div>
     </section>
 
     <section class="quote-section">
         <span class="quote-mark">"</span>
-        <p class="quote">Each stay is carefully designed to feel like a full-moon night: peaceful, welcoming, and unforgettable.</p>
-        <p class="quote-attribution">— The Luna Piena Promise</p>
+        <p class="quote" data-i18n="quote">Each stay is carefully designed to feel like a full-moon night: peaceful, welcoming, and unforgettable.</p>
+        <p class="quote-attribution" data-i18n="quote_attribution">— The Luna Piena Promise</p>
     </section>
 
     <footer>
-        <img src="Images/Luna_Piena_LogoW.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
+        <img src="logo.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
         <div class="footer-links">
             <a href="index.html">Home</a>
             <a href="rooms.html">Rooms</a>

@@ -376,16 +376,17 @@
             footer { flex-direction: column; gap: 30px; text-align: center; }
         }
     </style>
+    <script src="translations.js"></script>
 </head>
 <body>
     <nav>
-        <a href="index.html"><img src="Images/Luna_Piena_Lucy.png" alt="Luna Piena" class="logo"></a>
+        <a href="index.html"><img src="logo.png" alt="Luna Piena" class="logo"></a>
         <ul class="nav-center">
-            <li><a href="rooms.html">Rooms</a></li>
-            <li><a href="dining.html">Dining</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="about.html">Who We Are</a></li>
-            <li><a href="blog.html">Journal</a></li>
+            <li><a href="rooms.html" data-i18n="nav_rooms">Rooms</a></li>
+            <li><a href="dining.html" data-i18n="nav_dining">Dining</a></li>
+            <li><a href="events.html" data-i18n="nav_events">Events</a></li>
+            <li><a href="about.html" data-i18n="nav_about">Who We Are</a></li>
+            <li><a href="blog.html" data-i18n="nav_journal">Journal</a></li>
         </ul>
         <div class="nav-right">
             <div class="lang-toggle">
@@ -492,7 +493,7 @@
     </section>
 
     <footer>
-        <img src="Images/Luna_Piena_LogoW.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
+        <img src="logo.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
         <div class="footer-links">
             <a href="index.html">Home</a>
             <a href="rooms.html">Rooms</a>

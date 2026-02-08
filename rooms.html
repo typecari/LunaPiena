@@ -544,16 +544,17 @@
             footer { flex-direction: column; gap: 30px; text-align: center; }
         }
     </style>
+    <script src="translations.js"></script>
 </head>
 <body>
     <nav>
         <a href="index.html"><img src="logo.png" alt="Luna Piena" class="logo"></a>
         <ul class="nav-center">
-            <li><a href="rooms.html" class="active">Rooms</a></li>
-            <li><a href="dining.html">Dining</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="about.html">Who We Are</a></li>
-            <li><a href="blog.html">Journal</a></li>
+            <li><a href="rooms.html" class="active" data-i18n="nav_rooms">Rooms</a></li>
+            <li><a href="dining.html" data-i18n="nav_dining">Dining</a></li>
+            <li><a href="events.html" data-i18n="nav_events">Events</a></li>
+            <li><a href="about.html" data-i18n="nav_about">Who We Are</a></li>
+            <li><a href="blog.html" data-i18n="nav_journal">Journal</a></li>
         </ul>
         <div class="nav-right">
             <div class="lang-toggle">
@@ -566,8 +567,8 @@
     <section class="page-hero">
         <div class="hero-bg" data-parallax="0.2"></div>
         <div class="page-hero-content">
-            <h1>Our <em>Rooms</em></h1>
-            <p>Each space designed to be your sanctuary—peaceful, elegant, unforgettable.</p>
+            <h1 data-i18n="rooms_page_title">Our <em>Rooms</em></h1>
+            <p data-i18n="rooms_page_subtitle">Each space designed to be your sanctuary—peaceful, elegant, unforgettable.</p>
         </div>
     </section>
 
@@ -576,13 +577,13 @@
             <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=1200&q=80" alt="Serena Suite">
         </div>
         <div class="room-content">
-            <span class="room-label">Signature Suite</span>
-            <h2>Serena Suite</h2>
-            <p>Our signature suite offers an expansive retreat with garden views, featuring warm terracotta tones, handcrafted furnishings, and modern comforts that blend Tuscan elegance with contemporary design.</p>
+            <span class="room-label" data-i18n="signature_suite">Signature Suite</span>
+            <h2 data-i18n="serena_suite">Serena Suite</h2>
+            <p data-i18n="serena_description">Our signature suite offers an expansive retreat with garden views, featuring warm terracotta tones, handcrafted furnishings, and modern comforts that blend Tuscan elegance with contemporary design.</p>
             <div class="room-features">
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10" rx="1"/><path d="M6 8V6a6 6 0 0112 0v2"/></svg>
-                    <span>King Bed</span>
+                    <span data-i18n="king_bed">King Bed</span>
                 </div>
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16"/></svg>
@@ -590,15 +591,15 @@
                 </div>
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/></svg>
-                    <span>Garden View</span>
+                    <span data-i18n="garden_view">Garden View</span>
                 </div>
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-                    <span>Private Terrace</span>
+                    <span data-i18n="private_terrace">Private Terrace</span>
                 </div>
             </div>
-            <div class="room-price">€280 <span>/ night</span></div>
-            <button class="book-room-btn" onclick="openModal('serena')">Reserve This Room</button>
+            <div class="room-price">€280 <span data-i18n="per_night">/ night</span></div>
+            <button class="book-room-btn" onclick="openModal('serena')" data-i18n="reserve_this_room">Reserve This Room</button>
         </div>
     </section>
 
@@ -607,13 +608,13 @@
             <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&q=80" alt="Luna Room">
         </div>
         <div class="room-content">
-            <span class="room-label">Classic Room</span>
-            <h2>Luna Room</h2>
-            <p>Intimate and serene, the Luna Room captures the essence of Italian elegance. Soft linens in earthy tones, warm ambient lighting, and courtyard views create the perfect space for peaceful restoration.</p>
+            <span class="room-label" data-i18n="classic_room">Classic Room</span>
+            <h2 data-i18n="luna_room">Luna Room</h2>
+            <p data-i18n="luna_description">Intimate and serene, the Luna Room captures the essence of Italian elegance. Soft linens in earthy tones, warm ambient lighting, and courtyard views create the perfect space for peaceful restoration.</p>
             <div class="room-features">
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10" rx="1"/><path d="M6 8V6a6 6 0 0112 0v2"/></svg>
-                    <span>Queen Bed</span>
+                    <span data-i18n="queen_bed">Queen Bed</span>
                 </div>
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16"/></svg>
@@ -621,15 +622,15 @@
                 </div>
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
-                    <span>Courtyard View</span>
+                    <span data-i18n="courtyard_view">Courtyard View</span>
                 </div>
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 007.92 12.446a9 9 0 11-8.313-12.454z"/></svg>
-                    <span>Quiet & Serene</span>
+                    <span data-i18n="quiet_serene">Quiet & Serene</span>
                 </div>
             </div>
-            <div class="room-price">€220 <span>/ night</span></div>
-            <button class="book-room-btn" onclick="openModal('luna')">Reserve This Room</button>
+            <div class="room-price">€220 <span data-i18n="per_night">/ night</span></div>
+            <button class="book-room-btn" onclick="openModal('luna')" data-i18n="reserve_this_room">Reserve This Room</button>
         </div>
     </section>
 
@@ -638,13 +639,13 @@
             <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200&q=80" alt="Piena Grand">
         </div>
         <div class="room-content">
-            <span class="room-label">Grand Suite</span>
-            <h2>Piena Grand</h2>
-            <p>Our most luxurious accommodation features a spacious living area, master bedroom with panoramic views, and thoughtful amenities. Rich textures, warm woods, and golden accents create an atmosphere of refined comfort.</p>
+            <span class="room-label" data-i18n="grand_suite">Grand Suite</span>
+            <h2 data-i18n="piena_grand">Piena Grand</h2>
+            <p data-i18n="piena_description">Our most luxurious accommodation features a spacious living area, master bedroom with panoramic views, and thoughtful amenities. Rich textures, warm woods, and golden accents create an atmosphere of refined comfort.</p>
             <div class="room-features">
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10" rx="1"/><path d="M6 8V6a6 6 0 0112 0v2"/></svg>
-                    <span>King Bed</span>
+                    <span data-i18n="king_bed">King Bed</span>
                 </div>
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16"/></svg>
@@ -652,64 +653,64 @@
                 </div>
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/></svg>
-                    <span>Panoramic Terrace</span>
+                    <span data-i18n="panoramic_terrace">Panoramic Terrace</span>
                 </div>
                 <div class="room-feature">
                     <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-                    <span>Premium Amenities</span>
+                    <span data-i18n="premium_amenities">Premium Amenities</span>
                 </div>
             </div>
-            <div class="room-price">€380 <span>/ night</span></div>
-            <button class="book-room-btn" onclick="openModal('piena')">Reserve This Room</button>
+            <div class="room-price">€380 <span data-i18n="per_night">/ night</span></div>
+            <button class="book-room-btn" onclick="openModal('piena')" data-i18n="reserve_this_room">Reserve This Room</button>
         </div>
     </section>
 
     <section class="amenities-section">
         <div class="amenities-bg"></div>
         <div class="amenities-header">
-            <p class="section-label">In Every Room</p>
-            <h2>Amenities</h2>
+            <p class="section-label" data-i18n="in_every_room">In Every Room</p>
+            <h2 data-i18n="amenities">Amenities</h2>
         </div>
         <div class="amenities-grid">
             <div class="amenity">
                 <div class="amenity-icon">🛏</div>
-                <h4>Premium Linens</h4>
-                <p>400 thread count sheets</p>
+                <h4 data-i18n="premium_linens">Premium Linens</h4>
+                <p data-i18n="thread_count">400 thread count sheets</p>
             </div>
             <div class="amenity">
                 <div class="amenity-icon">📺</div>
-                <h4>Smart TV</h4>
+                <h4 data-i18n="smart_tv">Smart TV</h4>
                 <p>Netflix, Disney+, Prime</p>
             </div>
             <div class="amenity">
                 <div class="amenity-icon">📶</div>
-                <h4>High-Speed WiFi</h4>
-                <p>Complimentary</p>
+                <h4 data-i18n="wifi">High-Speed WiFi</h4>
+                <p data-i18n="complimentary">Complimentary</p>
             </div>
             <div class="amenity">
                 <div class="amenity-icon">🗣</div>
                 <h4>Google Home</h4>
-                <p>Smart assistant</p>
+                <p data-i18n="smart_assistant">Smart assistant</p>
             </div>
             <div class="amenity">
                 <div class="amenity-icon">❄️</div>
-                <h4>Climate Control</h4>
-                <p>Adjustable AC</p>
+                <h4 data-i18n="climate_control">Climate Control</h4>
+                <p data-i18n="adjustable_ac">Adjustable AC</p>
             </div>
             <div class="amenity">
                 <div class="amenity-icon">🧴</div>
-                <h4>Toiletries</h4>
-                <p>Quality essentials</p>
+                <h4 data-i18n="toiletries">Toiletries</h4>
+                <p data-i18n="quality_essentials">Quality essentials</p>
             </div>
             <div class="amenity">
                 <div class="amenity-icon">☕</div>
-                <h4>Coffee & Tea</h4>
-                <p>In-room selection</p>
+                <h4 data-i18n="coffee_tea">Coffee & Tea</h4>
+                <p data-i18n="in_room_selection">In-room selection</p>
             </div>
             <div class="amenity">
                 <div class="amenity-icon">🔌</div>
-                <h4>Bedside Outlets</h4>
-                <p>Both sides of bed</p>
+                <h4 data-i18n="bedside_outlets">Bedside Outlets</h4>
+                <p data-i18n="both_sides">Both sides of bed</p>
             </div>
         </div>
     </section>

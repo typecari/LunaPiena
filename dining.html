@@ -352,16 +352,17 @@
             footer { flex-direction: column; gap: 30px; text-align: center; }
         }
     </style>
+    <script src="translations.js"></script>
 </head>
 <body>
     <nav>
-        <a href="index.html"><img src="Images/Luna_Piena_Logo.png" alt="Luna Piena" class="logo"></a>
+        <a href="index.html"><img src="logo.png" alt="Luna Piena" class="logo"></a>
         <ul class="nav-center">
-            <li><a href="rooms.html">Rooms</a></li>
-            <li><a href="dining.html" class="active">Dining</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="about.html">Who We Are</a></li>
-            <li><a href="blog.html">Journal</a></li>
+            <li><a href="rooms.html" data-i18n="nav_rooms">Rooms</a></li>
+            <li><a href="dining.html" class="active" data-i18n="nav_dining">Dining</a></li>
+            <li><a href="events.html" data-i18n="nav_events">Events</a></li>
+            <li><a href="about.html" data-i18n="nav_about">Who We Are</a></li>
+            <li><a href="blog.html" data-i18n="nav_journal">Journal</a></li>
         </ul>
         <div class="nav-right">
             <div class="lang-toggle">
@@ -374,8 +375,8 @@
     <section class="page-hero">
         <div class="hero-bg" data-parallax="0.2"></div>
         <div class="page-hero-content">
-            <h1>Dine <em>With Us</em></h1>
-            <p>Homemade meals prepared with love, blending Venezuelan traditions with comforting flavors from around the world.</p>
+            <h1 data-i18n="dining_page_title">Dine <em>With Us</em></h1>
+            <p data-i18n="dining_page_subtitle">Homemade meals prepared with love, blending Venezuelan traditions with comforting flavors from around the world.</p>
         </div>
     </section>
 
@@ -384,12 +385,12 @@
             <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="Our Food">
         </div>
         <div class="philosophy-content">
-            <p class="section-label">Our Philosophy</p>
-            <h2>Made With Love</h2>
-            <p>At Luna Piena, food is an expression of care. Our menu features homemade dishes inspired by Venezuelan cuisine and comfort food classics, prepared fresh upon request.</p>
-            <p>From fluffy arepas in the morning to comforting pasta in the evening, every meal is crafted to make you feel at home—nourished and happy.</p>
+            <p class="section-label" data-i18n="philosophy_label">Our Philosophy</p>
+            <h2 data-i18n="philosophy_title">Made With Love</h2>
+            <p data-i18n="philosophy_p1">At Luna Piena, food is an expression of care. Our menu features homemade dishes inspired by Venezuelan cuisine and comfort food classics, prepared fresh upon request.</p>
+            <p data-i18n="philosophy_p2">From fluffy arepas in the morning to comforting pasta in the evening, every meal is crafted to make you feel at home—nourished and happy.</p>
             <div class="callout-box">
-                <p>Our special menu is available upon request. Please let us know your preferences and we'll prepare something delicious for you.</p>
+                <p data-i18n="philosophy_callout">Our special menu is available upon request. Please let us know your preferences and we'll prepare something delicious for you.</p>
             </div>
         </div>
     </section>
@@ -397,26 +398,26 @@
     <section class="menu-section">
         <div class="menu-bg"></div>
         <div class="menu-header">
-            <p class="section-label">What We Serve</p>
-            <h2>The Menu</h2>
+            <p class="section-label" data-i18n="menu_label">What We Serve</p>
+            <h2 data-i18n="menu_title">The Menu</h2>
         </div>
         <div class="menu-grid">
             <div class="menu-category">
-                <h3>Breakfast</h3>
+                <h3 data-i18n="breakfast">Breakfast</h3>
                 <div class="menu-item">Arepas</div>
                 <div class="menu-item">Waffles or Pancakes</div>
                 <div class="menu-item">Eggs</div>
                 <div class="menu-item">Parfait</div>
             </div>
             <div class="menu-category">
-                <h3>Dinner</h3>
+                <h3 data-i18n="dinner">Dinner</h3>
                 <div class="menu-item">Pasta</div>
                 <div class="menu-item">Bollitos</div>
                 <div class="menu-item">Salchipapa</div>
                 <div class="menu-item">Arepitas</div>
             </div>
             <div class="menu-category">
-                <h3>Drinks</h3>
+                <h3 data-i18n="drinks">Drinks</h3>
                 <div class="menu-item">Agua</div>
                 <div class="menu-item">Papelón</div>
                 <div class="menu-item">Green Tea</div>
@@ -429,12 +430,12 @@
 
     <section class="note-section">
         <div class="icon">🐶</div>
-        <h3>A Note About Lucy</h3>
-        <p>Our beloved companion Lucy may join you during meals. We kindly ask that you <strong>please do not feed her any human food</strong>—she has special dietary needs. (Unless it's parmesan cheese, she says that's okay.)</p>
+        <h3 data-i18n="lucy_note_title">A Note About Lucy</h3>
+        <p data-i18n="lucy_note">Our beloved companion Lucy may join you during meals. We kindly ask that you <strong>please do not feed her any human food</strong>—she has special dietary needs. (Unless it's parmesan cheese, she says that's okay.)</p>
     </section>
 
     <footer>
-        <img src="Images/Luna_Piena_LogoW.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
+        <img src="logo.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
         <div class="footer-links">
             <a href="index.html">Home</a>
             <a href="rooms.html">Rooms</a>

@@ -366,16 +366,17 @@
             footer { flex-direction: column; gap: 30px; text-align: center; }
         }
     </style>
+    <script src="translations.js"></script>
 </head>
 <body>
     <nav>
-        <a href="index.html"><img src="Images/Luna_Piena_Logo.png" alt="Luna Piena" class="logo"></a>
+        <a href="index.html"><img src="logo.png" alt="Luna Piena" class="logo"></a>
         <ul class="nav-center">
-            <li><a href="rooms.html">Rooms</a></li>
-            <li><a href="dining.html">Dining</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="about.html">Who We Are</a></li>
-            <li><a href="blog.html" class="active">Journal</a></li>
+            <li><a href="rooms.html" data-i18n="nav_rooms">Rooms</a></li>
+            <li><a href="dining.html" data-i18n="nav_dining">Dining</a></li>
+            <li><a href="events.html" data-i18n="nav_events">Events</a></li>
+            <li><a href="about.html" data-i18n="nav_about">Who We Are</a></li>
+            <li><a href="blog.html" class="active" data-i18n="nav_journal">Journal</a></li>
         </ul>
         <div class="lang-toggle">
             <a href="#" class="active">EN</a>
@@ -385,7 +386,7 @@
 
     <section class="page-hero">
         <div class="hero-bg"></div>
-        <h1>The <em>Journal</em></h1>
+        <h1 data-i18n="journal_title">The <em>Journal</em></h1>
     </section>
 
     <section class="blog-section">
@@ -396,14 +397,14 @@
                 </div>
             </a>
             <div class="featured-content">
-                <span class="post-category">Travel & Wellness</span>
-                <a href="article.html"><h2>The Art of Slow Travel: Finding Peace in Boutique Hospitality</h2></a>
-                <p>In a world that moves faster each day, slow travel has become not just a preference but a necessity. At Luna Piena, we've built our philosophy around this idea.</p>
+                <span class="post-category" data-i18n="featured_category">Travel & Wellness</span>
+                <a href="article.html"><h2 data-i18n="featured_title">The Art of Slow Travel: Finding Peace in Boutique Hospitality</h2></a>
+                <p data-i18n="featured_excerpt">In a world that moves faster each day, slow travel has become not just a preference but a necessity. At Luna Piena, we've built our philosophy around this idea.</p>
                 <div class="post-meta">
                     <span>January 15, 2026</span>
                     <span>8 min read</span>
                 </div>
-                <a href="article.html" class="read-more">Read Article →</a>
+                <a href="article.html" class="read-more"><span data-i18n="read_article">Read Article</span> →</a>
             </div>
         </article>
 
@@ -451,16 +452,16 @@
     </section>
 
     <section class="newsletter">
-        <h2>Stay Connected</h2>
-        <p>Subscribe for stories, recipes, and exclusive offers.</p>
+        <h2 data-i18n="stay_connected">Stay Connected</h2>
+        <p data-i18n="newsletter_subtitle">Subscribe for stories, recipes, and exclusive offers.</p>
         <form class="newsletter-form">
             <input type="email" placeholder="Your email address" required>
-            <button type="submit">Subscribe</button>
+            <button type="submit" data-i18n="subscribe">Subscribe</button>
         </form>
     </section>
 
     <footer>
-        <img src="Images/Luna_Piena_LogoW.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
+        <img src="logo.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
         <div class="footer-links">
             <a href="index.html">Home</a>
             <a href="rooms.html">Rooms</a>

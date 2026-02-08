@@ -415,16 +415,17 @@
             footer { flex-direction: column; gap: 30px; text-align: center; }
         }
     </style>
+    <script src="translations.js"></script>
 </head>
 <body>
     <nav>
-        <a href="index.html"><img src="Images/Luna_Piena_Logo.png" alt="Luna Piena" class="logo"></a>
+        <a href="index.html"><img src="logo.png" alt="Luna Piena" class="logo"></a>
         <ul class="nav-center">
-            <li><a href="rooms.html">Rooms</a></li>
-            <li><a href="dining.html">Dining</a></li>
-            <li><a href="events.html" class="active">Events</a></li>
-            <li><a href="about.html">Who We Are</a></li>
-            <li><a href="blog.html">Journal</a></li>
+            <li><a href="rooms.html" data-i18n="nav_rooms">Rooms</a></li>
+            <li><a href="dining.html" data-i18n="nav_dining">Dining</a></li>
+            <li><a href="events.html" class="active" data-i18n="nav_events">Events</a></li>
+            <li><a href="about.html" data-i18n="nav_about">Who We Are</a></li>
+            <li><a href="blog.html" data-i18n="nav_journal">Journal</a></li>
         </ul>
         <div class="nav-right">
             <div class="lang-toggle">
@@ -437,8 +438,8 @@
     <section class="page-hero">
         <div class="hero-bg" data-parallax="0.2"></div>
         <div class="page-hero-content">
-            <h1>Host Your <em>Event</em></h1>
-            <p>Create unforgettable moments in our intimate, elegant spaces designed for gatherings that matter.</p>
+            <h1 data-i18n="events_page_title">Host Your <em>Event</em></h1>
+            <p data-i18n="events_page_subtitle">Create unforgettable moments in our intimate, elegant spaces designed for gatherings that matter.</p>
         </div>
     </section>
 
@@ -448,24 +449,24 @@
                 <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" alt="Weddings">
                 <div class="event-card-overlay"></div>
                 <div class="event-card-content">
-                    <h3>Weddings</h3>
-                    <p>Celebrate your love story in an intimate setting that feels like a dream. From ceremony to reception, every detail is crafted with care.</p>
+                    <h3 data-i18n="weddings">Weddings</h3>
+                    <p data-i18n="weddings_desc">Celebrate your love story in an intimate setting that feels like a dream. From ceremony to reception, every detail is crafted with care.</p>
                 </div>
             </div>
             <div class="event-card">
                 <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80" alt="Corporate Retreats">
                 <div class="event-card-overlay"></div>
                 <div class="event-card-content">
-                    <h3>Corporate Retreats</h3>
-                    <p>Inspire your team in a tranquil environment. Perfect for strategic planning, team building, and creative workshops.</p>
+                    <h3 data-i18n="corporate">Corporate Retreats</h3>
+                    <p data-i18n="corporate_desc">Inspire your team in a tranquil environment. Perfect for strategic planning, team building, and creative workshops.</p>
                 </div>
             </div>
             <div class="event-card">
                 <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Private Dining">
                 <div class="event-card-overlay"></div>
                 <div class="event-card-content">
-                    <h3>Private Dining</h3>
-                    <p>Host an exclusive dinner for your closest friends, family, or colleagues with personalized menus and impeccable service.</p>
+                    <h3 data-i18n="private_dining">Private Dining</h3>
+                    <p data-i18n="private_dining_desc">Host an exclusive dinner for your closest friends, family, or colleagues with personalized menus and impeccable service.</p>
                 </div>
             </div>
         </div>
@@ -474,87 +475,87 @@
     <section class="features-section">
         <div class="features-bg"></div>
         <div class="features-header">
-            <p class="section-label">What We Offer</p>
-            <h2>Everything You Need</h2>
+            <p class="section-label" data-i18n="features_label">What We Offer</p>
+            <h2 data-i18n="features_title">Everything You Need</h2>
         </div>
         <div class="features-grid">
             <div class="feature">
                 <div class="feature-icon">🏡</div>
-                <h4>Intimate Venue</h4>
-                <p>Exclusive access to our beautiful spaces</p>
+                <h4 data-i18n="intimate_venue">Intimate Venue</h4>
+                <p data-i18n="intimate_venue_desc">Exclusive access to our beautiful spaces</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🍽</div>
-                <h4>Custom Catering</h4>
-                <p>Personalized menus for your event</p>
+                <h4 data-i18n="custom_catering">Custom Catering</h4>
+                <p data-i18n="custom_catering_desc">Personalized menus for your event</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🛏</div>
-                <h4>Guest Rooms</h4>
-                <p>Accommodations for your guests</p>
+                <h4 data-i18n="guest_rooms">Guest Rooms</h4>
+                <p data-i18n="guest_rooms_desc">Accommodations for your guests</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">✨</div>
-                <h4>Event Planning</h4>
-                <p>Dedicated support from start to finish</p>
+                <h4 data-i18n="event_planning">Event Planning</h4>
+                <p data-i18n="event_planning_desc">Dedicated support from start to finish</p>
             </div>
         </div>
     </section>
 
     <section class="inquiry-section">
         <div class="inquiry-content">
-            <p class="section-label">Get in Touch</p>
-            <h2>Plan Your Event</h2>
-            <p>Tell us about your vision and we'll help bring it to life. Whether it's an intimate gathering or a grand celebration, we're here to make it unforgettable.</p>
+            <p class="section-label" data-i18n="inquiry_label">Get in Touch</p>
+            <h2 data-i18n="inquiry_title">Plan Your Event</h2>
+            <p data-i18n="inquiry_description">Tell us about your vision and we'll help bring it to life. Whether it's an intimate gathering or a grand celebration, we're here to make it unforgettable.</p>
         </div>
         <form class="inquiry-form" id="eventForm">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" name="name" required placeholder="Your name">
+                    <label data-i18n="full_name">Full Name</label>
+                    <input type="text" name="name" required placeholder="Your name" data-i18n="your_name">
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" required placeholder="your@email.com">
+                    <label data-i18n="email">Email</label>
+                    <input type="email" name="email" required placeholder="your@email.com" data-i18n="your_email">
                 </div>
             </div>
             <div class="form-group">
-                <label>Event Type</label>
+                <label data-i18n="event_type">Event Type</label>
                 <select name="eventType" required>
-                    <option value="">Select event type</option>
-                    <option value="wedding">Wedding</option>
-                    <option value="corporate">Corporate Retreat</option>
-                    <option value="private-dining">Private Dining</option>
-                    <option value="celebration">Birthday / Anniversary</option>
-                    <option value="other">Other</option>
+                    <option value="" data-i18n="select_event_type">Select event type</option>
+                    <option value="wedding" data-i18n="event_wedding">Wedding</option>
+                    <option value="corporate" data-i18n="event_corporate">Corporate Retreat</option>
+                    <option value="private-dining" data-i18n="event_private_dining">Private Dining</option>
+                    <option value="celebration" data-i18n="event_celebration">Birthday / Anniversary</option>
+                    <option value="other" data-i18n="event_other">Other</option>
                 </select>
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Preferred Date</label>
+                    <label data-i18n="preferred_date">Preferred Date</label>
                     <input type="date" name="date" required>
                 </div>
                 <div class="form-group">
-                    <label>Estimated Guests</label>
+                    <label data-i18n="estimated_guests">Estimated Guests</label>
                     <select name="guests" required>
-                        <option value="">Select</option>
-                        <option value="1-10">1-10 guests</option>
-                        <option value="11-25">11-25 guests</option>
-                        <option value="26-50">26-50 guests</option>
-                        <option value="50+">50+ guests</option>
+                        <option value="" data-i18n="select">Select</option>
+                        <option value="1-10">1-10</option>
+                        <option value="11-25">11-25</option>
+                        <option value="26-50">26-50</option>
+                        <option value="50+">50+</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label>Tell Us About Your Event</label>
-                <textarea name="message" placeholder="Share your vision, special requests, or any questions you have..."></textarea>
+                <label data-i18n="tell_us">Tell Us About Your Event</label>
+                <textarea name="message" placeholder="Share your vision, special requests, or any questions you have..." data-i18n="tell_us_placeholder"></textarea>
             </div>
-            <button type="submit" class="submit-btn">Send Inquiry</button>
+            <button type="submit" class="submit-btn" data-i18n="send_inquiry">Send Inquiry</button>
         </form>
     </section>
 
     <footer>
-        <img src="Images/Luna_Piena_LogoW.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
+        <img src="logo.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
         <div class="footer-links">
             <a href="index.html">Home</a>
             <a href="rooms.html">Rooms</a>

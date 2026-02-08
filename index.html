@@ -875,19 +875,20 @@
             .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
         }
     </style>
+    <script src="translations.js"></script>
 </head>
 <body>
     <!-- Navigation -->
     <nav id="navbar">
         <a href="index.html">
-            <img src="Images/Luna_Piena_Logo.png" alt="Luna Piena" class="logo">
+            <img src="logo.png" alt="Luna Piena" class="logo">
         </a>
         <ul class="nav-center">
-            <li><a href="rooms.html">Rooms</a></li>
-            <li><a href="dining.html">Dining</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="about.html">Who We Are</a></li>
-            <li><a href="blog.html">Journal</a></li>
+            <li><a href="rooms.html" data-i18n="nav_rooms">Rooms</a></li>
+            <li><a href="dining.html" data-i18n="nav_dining">Dining</a></li>
+            <li><a href="events.html" data-i18n="nav_events">Events</a></li>
+            <li><a href="about.html" data-i18n="nav_about">Who We Are</a></li>
+            <li><a href="blog.html" data-i18n="nav_journal">Journal</a></li>
         </ul>
         <div class="nav-right">
             <div class="lang-toggle">
@@ -906,11 +907,11 @@
         <div class="floating-shape shape-2" data-parallax="0.4"></div>
         
         <div class="hero-content">
-            <p class="hero-tagline">By Lupo Hospitality</p>
-            <h1>Every Night Like a <em>Full Moon</em></h1>
-            <p class="hero-description">A boutique sanctuary blending Italian charm with modern thoughtfulness. Peaceful. Welcoming. Unforgettable.</p>
+            <p class="hero-tagline" data-i18n="hero_tagline">By Lupo Hospitality</p>
+            <h1 data-i18n="hero_title">Every Night Like a <em>Full Moon</em></h1>
+            <p class="hero-description" data-i18n="hero_description">A boutique sanctuary blending Italian charm with modern thoughtfulness. Peaceful. Welcoming. Unforgettable.</p>
             <button class="reserve-btn" onclick="openModal()">
-                Reserve Your Stay
+                <span data-i18n="hero_cta">Reserve Your Stay</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 8h10M9 4l4 4-4 4"/>
                 </svg>
@@ -918,7 +919,7 @@
         </div>
 
         <div class="scroll-indicator">
-            <span>Scroll</span>
+            <span data-i18n="scroll_text">Scroll</span>
             <div class="scroll-line"></div>
         </div>
     </section>
@@ -928,26 +929,26 @@
         <div class="values-bg" data-parallax="0.15"></div>
         <div class="values-content">
             <div class="values-header">
-                <p class="section-label">Our Promise</p>
-                <h2>Where Every Detail Matters</h2>
-                <p>We focus on creating an atmosphere of connection and comfort, where every detail is crafted to leave a lasting impression.</p>
+                <p class="section-label" data-i18n="values_label">Our Promise</p>
+                <h2 data-i18n="values_title">Where Every Detail Matters</h2>
+                <p data-i18n="values_description">We focus on creating an atmosphere of connection and comfort, where every detail is crafted to leave a lasting impression.</p>
             </div>
             <div class="values-grid">
                 <div class="value-card">
-                    <h3>Hospitality</h3>
-                    <p>A warm and welcoming environment where every guest feels at home from the moment they arrive.</p>
+                    <h3 data-i18n="value_hospitality">Hospitality</h3>
+                    <p data-i18n="value_hospitality_desc">A warm and welcoming environment where every guest feels at home from the moment they arrive.</p>
                 </div>
                 <div class="value-card">
-                    <h3>Comfort</h3>
-                    <p>Thoughtful details and calming spaces ensure harmony and balance throughout your stay.</p>
+                    <h3 data-i18n="value_comfort">Comfort</h3>
+                    <p data-i18n="value_comfort_desc">Thoughtful details and calming spaces ensure harmony and balance throughout your stay.</p>
                 </div>
                 <div class="value-card">
-                    <h3>Memorability</h3>
-                    <p>Creating experiences guests will cherish long after their visit—moments that become treasures.</p>
+                    <h3 data-i18n="value_memorability">Memorability</h3>
+                    <p data-i18n="value_memorability_desc">Creating experiences guests will cherish long after their visit—moments that become treasures.</p>
                 </div>
                 <div class="value-card">
-                    <h3>Connection</h3>
-                    <p>Meaningful bonds through personalized service and genuine care for every guest.</p>
+                    <h3 data-i18n="value_connection">Connection</h3>
+                    <p data-i18n="value_connection_desc">Meaningful bonds through personalized service and genuine care for every guest.</p>
                 </div>
             </div>
         </div>
@@ -958,11 +959,11 @@
         <div class="rooms-parallax-bg" data-parallax="0.1"></div>
         <div class="rooms-header">
             <div>
-                <p class="section-label">Accommodations</p>
-                <h2>Our Rooms</h2>
+                <p class="section-label" data-i18n="rooms_label">Accommodations</p>
+                <h2 data-i18n="rooms_title">Our Rooms</h2>
             </div>
             <a href="rooms.html" class="view-all">
-                View All
+                <span data-i18n="view_all">View All</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 8h10M9 4l4 4-4 4"/>
                 </svg>
@@ -975,10 +976,10 @@
                     <div class="room-card-overlay"></div>
                 </div>
                 <div class="room-info">
-                    <h3>Serena Suite</h3>
-                    <p class="room-details">45 sqm • King Bed • Garden View</p>
-                    <p class="room-price">€280 <span>/ night</span></p>
-                    <button class="room-reserve-btn" onclick="openModal('serena')">Reserve</button>
+                    <h3 data-i18n="serena_suite">Serena Suite</h3>
+                    <p class="room-details" data-i18n="serena_details">45 sqm • King Bed • Garden View</p>
+                    <p class="room-price">€280 <span data-i18n="per_night">/ night</span></p>
+                    <button class="room-reserve-btn" onclick="openModal('serena')" data-i18n="reserve">Reserve</button>
                 </div>
             </div>
             <div class="room-card" data-room="luna">
@@ -987,10 +988,10 @@
                     <div class="room-card-overlay"></div>
                 </div>
                 <div class="room-info">
-                    <h3>Luna Room</h3>
-                    <p class="room-details">35 sqm • Queen Bed • Courtyard View</p>
-                    <p class="room-price">€220 <span>/ night</span></p>
-                    <button class="room-reserve-btn" onclick="openModal('luna')">Reserve</button>
+                    <h3 data-i18n="luna_room">Luna Room</h3>
+                    <p class="room-details" data-i18n="luna_details">35 sqm • Queen Bed • Courtyard View</p>
+                    <p class="room-price">€220 <span data-i18n="per_night">/ night</span></p>
+                    <button class="room-reserve-btn" onclick="openModal('luna')" data-i18n="reserve">Reserve</button>
                 </div>
             </div>
             <div class="room-card" data-room="piena">
@@ -999,10 +1000,10 @@
                     <div class="room-card-overlay"></div>
                 </div>
                 <div class="room-info">
-                    <h3>Piena Grand</h3>
-                    <p class="room-details">65 sqm • King Bed • Terrace</p>
-                    <p class="room-price">€380 <span>/ night</span></p>
-                    <button class="room-reserve-btn" onclick="openModal('piena')">Reserve</button>
+                    <h3 data-i18n="piena_grand">Piena Grand</h3>
+                    <p class="room-details" data-i18n="piena_details">65 sqm • King Bed • Terrace</p>
+                    <p class="room-price">€380 <span data-i18n="per_night">/ night</span></p>
+                    <button class="room-reserve-btn" onclick="openModal('piena')" data-i18n="reserve">Reserve</button>
                 </div>
             </div>
         </div>
@@ -1014,11 +1015,11 @@
             <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="Luna Piena Dining">
         </div>
         <div class="dining-content">
-            <p class="section-label">Culinary Experience</p>
-            <h2>Homemade With Love</h2>
-            <p>Experience authentic home-cooked meals prepared with care. From Venezuelan arepas to comforting pasta, our kitchen celebrates tradition and warmth with every dish.</p>
+            <p class="section-label" data-i18n="dining_label">Culinary Experience</p>
+            <h2 data-i18n="dining_title">Homemade With Love</h2>
+            <p data-i18n="dining_description">Experience authentic home-cooked meals prepared with care. From Venezuelan arepas to comforting pasta, our kitchen celebrates tradition and warmth with every dish.</p>
             <a href="dining.html" class="text-link">
-                View Our Menu
+                <span data-i18n="view_menu">View Our Menu</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 8h10M9 4l4 4-4 4"/>
                 </svg>
@@ -1030,7 +1031,7 @@
     <footer>
         <div class="footer-top">
             <div class="footer-brand">
-                <img src="Images/Luna_Piena_LogoW.png" alt="Luna Piena" style="height: 45px; filter: brightness(0) invert(1);">
+                <img src="logo.png" alt="Luna Piena" style="height: 45px; filter: brightness(0) invert(1);">
                 <p>A boutique hotel experience by Lupo, where Italian charm meets modern thoughtfulness.</p>
             </div>
             <div class="footer-nav">
@@ -1082,8 +1083,8 @@
     <div class="modal-overlay" id="bookingModal">
         <div class="modal">
             <div class="modal-header">
-                <h2>Reserve Your Stay</h2>
-                <p>Begin your unforgettable experience</p>
+                <h2 data-i18n="modal_title">Reserve Your Stay</h2>
+                <p data-i18n="modal_subtitle">Begin your unforgettable experience</p>
                 <button class="modal-close" onclick="closeModal()">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M4 4l12 12M16 4L4 16"/>
