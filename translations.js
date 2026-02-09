@@ -16,13 +16,15 @@ const LunaPienaTranslations = {
         nav_dining: "Dining", 
         nav_events: "Events",
         nav_about: "Who We Are",
-        nav_journal: "Journal",
+        nav_journal: "News",
         
         // Homepage Hero
         hero_tagline: "By Lupo Hospitality",
         hero_title: "Every Night Like a <em>Full Moon</em>",
-        hero_description: "A boutique sanctuary blending Italian charm with modern thoughtfulness. Peaceful. Welcoming. Unforgettable.",
+        hero_description: "A boutique sanctuary nestled in the heart of Tuscany. Peaceful. Welcoming. Unforgettable.",
         hero_cta: "Reserve Your Stay",
+        explore_rooms: "Explore Rooms",
+        discover: "Discover",
         scroll_text: "Scroll",
         
         // Values Section
@@ -174,6 +176,16 @@ const LunaPienaTranslations = {
         
         // Footer
         footer_tagline: "A boutique hotel experience by Lupo, where Italian charm meets modern thoughtfulness.",
+        footer_explore: "Explore",
+        footer_info: "Information",
+        guest_portal: "Guest Portal",
+        
+        // Calendar
+        availability_label: "Plan Your Visit",
+        availability_title: "Availability",
+        availability_desc: "Check our calendar to find the perfect dates for your stay.",
+        legend_available: "Available",
+        legend_booked: "Booked",
         
         // Misc
         guests: "guests",
@@ -221,13 +233,15 @@ const LunaPienaTranslations = {
         nav_dining: "Gastronomía",
         nav_events: "Eventos",
         nav_about: "Nosotros",
-        nav_journal: "Diario",
+        nav_journal: "Noticias",
         
         // Homepage Hero
         hero_tagline: "Por Lupo Hospitality",
         hero_title: "Cada Noche Como una <em>Luna Llena</em>",
-        hero_description: "Un santuario boutique que combina el encanto italiano con un toque moderno y cuidadoso. Tranquilo. Acogedor. Inolvidable.",
+        hero_description: "Un santuario boutique en el corazón de la Toscana. Tranquilo. Acogedor. Inolvidable.",
         hero_cta: "Reserva Tu Estadía",
+        explore_rooms: "Explorar Habitaciones",
+        discover: "Descubre",
         scroll_text: "Desliza",
         
         // Values Section
@@ -379,6 +393,16 @@ const LunaPienaTranslations = {
         
         // Footer
         footer_tagline: "Una experiencia de hotel boutique por Lupo, donde el encanto italiano se encuentra con la modernidad cuidadosa.",
+        footer_explore: "Explorar",
+        footer_info: "Información",
+        guest_portal: "Portal de Huéspedes",
+        
+        // Calendar
+        availability_label: "Planifica Tu Visita",
+        availability_title: "Disponibilidad",
+        availability_desc: "Consulta nuestro calendario para encontrar las fechas perfectas para tu estadía.",
+        legend_available: "Disponible",
+        legend_booked: "Reservado",
         
         // Misc
         guests: "huéspedes",
