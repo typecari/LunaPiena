@@ -1175,7 +1175,7 @@
         });
 
         // ==================== AVAILABILITY CALENDAR ====================
-        // Generate 6 months of calendar starting from current month
+        // Generate 12 months of calendar starting from current month
         function generateCalendar() {
             const calendarGrid = document.getElementById('calendarGrid');
             const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
@@ -1188,8 +1188,8 @@
             
             calendarGrid.innerHTML = '';
             
-            // Generate 6 month cards
-            for (let i = 0; i < 6; i++) {
+            // Generate 12 month cards
+            for (let i = 0; i < 12; i++) {
                 const month = (currentMonth + i) % 12;
                 const year = currentYear + Math.floor((currentMonth + i) / 12);
                 
