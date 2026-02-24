@@ -19,7 +19,7 @@ const LunaPienaTranslations = {
         nav_journal: "News",
         
         // Homepage Hero
-        hero_tagline: "By Lupo Hospitality",
+        hero_tagline: "LUNA PIENA By Lupo Group",
         hero_title: "Every Night Like a <em>Full Moon</em>",
         hero_description: "A boutique sanctuary nestled in the heart of Tuscany. Peaceful. Welcoming. Unforgettable.",
         hero_cta: "Reserve Your Stay",
@@ -236,7 +236,7 @@ const LunaPienaTranslations = {
         nav_journal: "Noticias",
         
         // Homepage Hero
-        hero_tagline: "Por Lupo Hospitality",
+        hero_tagline: "LUNA PIENA bajo Lupo Group",
         hero_title: "Cada Noche Como una <em>Luna Llena</em>",
         hero_description: "Un santuario boutique en el corazón de la Toscana. Tranquilo. Acogedor. Inolvidable.",
         hero_cta: "Reserva Tu Estadía",
