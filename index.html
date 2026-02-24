@@ -934,35 +934,37 @@
         </div>
 
         <style>
-            .scroll-hint {
-                margin-top: 100px;      /* This creates the space below the buttons */
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;              /* Space between the word 'Discover' and the lines */
-            }
+    /* This pushes the entire scroll section down */
+    .scroll-hint {
+        margin-top: 120px !important; /* The !important ensures it overrides other styles */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        z-index: 10;
+        gap: 20px; /* This creates the space between the word and the lines */
+    }
 
-            .scroll-line {
-                width: 1px;
-                height: 40px;           /* Length of the lines */
-                background-color: white; 
-                opacity: 0.5;
-            }
+    /* This makes the vertical lines visible and gives them height */
+    .scroll-line {
+        width: 1px;
+        height: 60px; 
+        background-color: rgba(255, 255, 255, 0.5);
+        display: block;
+    }
 
-            .scroll-hint span {
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                font-size: 12px;
-                color: white;
-                display: block;
-            }
-        </style>
-        <div class="scroll-hint">
-            <div class="scroll-line"></div>
-            <span data-i18n="discover">Discover</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
+    /* This styles the "Discover" text */
+    .scroll-hint span {
+        display: block;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-size: 12px;
+        font-family: sans-serif; /* Or your preferred font */
+    }
+</style>
 
 
     <!-- Rooms Section (Mockup A style) -->
