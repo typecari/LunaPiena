@@ -933,6 +933,30 @@
             </div>
         </div>
 
+        <style>
+            .scroll-hint {
+                margin-top: 100px;      /* This creates the space below the buttons */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;              /* Space between the word 'Discover' and the lines */
+            }
+
+            .scroll-line {
+                width: 1px;
+                height: 40px;           /* Length of the lines */
+                background-color: white; 
+                opacity: 0.5;
+            }
+
+            .scroll-hint span {
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-size: 12px;
+                color: white;
+                display: block;
+            }
+        </style>
         <div class="scroll-hint">
             <div class="scroll-line"></div>
             <span data-i18n="discover">Discover</span>
