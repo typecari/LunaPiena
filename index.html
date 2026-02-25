@@ -933,43 +933,41 @@
             </div>
         </div>
 
-        
-       <style>
-    /* This "pins" the section to the bottom of the hero area so it doesn't vanish */
-    .scroll-hint {
-        position: absolute;
-        bottom: 40px;           /* Distance from the bottom of the screen */
-        left: 50%;
-        transform: translateX(-50%); /* Perfectly centers it horizontally */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;              /* Space between the word and the lines */
-        z-index: 100;           /* Makes sure it sits on top of everything */
-    }
+        <style>
+            .scroll-hint {
+                position: absolute;
+                bottom: 40px;           /* Puts it at the bottom of the screen */
+                left: 50%;
+                transform: translateX(-50%); /* Centers it perfectly */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;              /* Space between the word and the lines */
+                z-index: 100;
+            }
 
-    /* This makes the vertical lines visible */
-    .scroll-line {
-        width: 1px;
-        height: 50px;           
-        background-color: rgba(255, 255, 255, 0.5);
-    }
+            .scroll-line {
+                width: 1px;
+                height: 50px;           /* Length of the lines */
+                background-color: white; 
+                opacity: 0.4;
+            }
 
-    /* This styles the 'Discover' text */
-    .scroll-hint span {
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-size: 11px;
-        font-family: sans-serif;
-    }
-</style>
+            .scroll-hint span {
+                color: white;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                font-size: 11px;
+                font-family: sans-serif;
+            }
+        </style>
 
-<div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span data-i18n="discover">Discover</span>
-    <div class="scroll-line"></div>
-</div>
+        <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            <span data-i18n="discover">Discover</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
 
 
     <!-- Rooms Section (Mockup A style) -->
