@@ -933,36 +933,34 @@
             </div>
         </div>
 
-        <style>
-    /* 1. This pins the section to the bottom of the screen */
+       <style>
+    /* This "Anchor" method pins the text to the bottom of the browser window */
     .scroll-hint {
         position: absolute;
-        bottom: 30px;           /* Distance from the very bottom edge */
+        bottom: 5vh;            /* Pins it 5% up from the bottom of the hero */
         left: 50%;
-        transform: translateX(-50%); /* This is the secret for perfect centering */
+        transform: translateX(-50%); 
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 15px;              /* Space between word and lines */
-        z-index: 100;           /* Keeps it on top of everything else */
-        pointer-events: none;   /* Makes sure it doesn't block button clicks */
+        gap: 10px;
+        z-index: 999;           /* Ensures it stays ABOVE the black section */
+        pointer-events: none;
     }
 
-    /* 2. Style for the vertical lines */
     .scroll-line {
         width: 1px;
-        height: 50px;           
+        height: 40px;           
         background-color: white; 
         opacity: 0.5;
     }
 
-    /* 3. Style for the "Discover" text */
     .scroll-hint span {
         color: white;
         text-transform: uppercase;
         letter-spacing: 3px;
         font-size: 11px;
-        font-family: 'Montserrat', sans-serif; /* Matches your premium vibe */
+        font-family: sans-serif;
     }
 </style>
 
