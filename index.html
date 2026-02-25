@@ -935,19 +935,20 @@
 
         <style>
             /* 1. Fix the Hero background and ensure it's tall enough */
-            .hero {
-                position: relative;
-                min-height: 100vh; /* This gives the 'Discover' text a floor to sit on */
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                background: linear-gradient(rgba(51,102,51,0.7), rgba(26,26,26,0.8)),
-                            url('https: //raw .githubusercontent .com/typecari/LunaPiena/main/Images/Luna_Piena_Outside1.png); /* Ensure the extension (.jpg/.png) is correct! */
-                background-size: cover;
-                background-position: center;
-                overflow: hidden;
-            }
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Fixed the URL syntax and spacing below */
+            background: linear-gradient(rgba(51,102,51,0.7), rgba(26,26,26,0.8)),
+                        url('https://raw.githubusercontent.com/typecari/LunaPiena/main/Images/Luna_Piena_Outside1.png');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
 
             /* 2. Pin Discover to the bottom so it NEVER overlaps buttons */
             .scroll-hint {
