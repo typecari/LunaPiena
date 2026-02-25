@@ -922,7 +922,7 @@
             <div class="star small" style="top: 40%; left: 78%; animation-delay: 0.8s;"></div>
         </div>
         
-        <div class="hero-content">
+       <div class="hero-content">
             <img src="logo.png" alt="Luna Piena" class="hero-logo" id="heroLogo">
             <p class="hero-tagline" data-i18n="hero_tagline"> LUNA PIENA By Lupo Group</p>
             <h1 data-i18n="hero_title">Every Night Like a <em>Full Moon</em></h1>
@@ -933,42 +933,56 @@
             </div>
         </div>
 
-       <style>
-    /* This "Anchor" method pins the text to the bottom of the browser window */
-    .scroll-hint {
-        position: absolute;
-        bottom: 5vh;            /* Pins it 5% up from the bottom of the hero */
-        left: 50%;
-        transform: translateX(-50%); 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        z-index: 999;           /* Ensures it stays ABOVE the black section */
-        pointer-events: none;
-    }
+        <style>
+            /* 1. Fix the Hero background and ensure it's tall enough */
+            .hero {
+                position: relative;
+                min-height: 100vh; /* This gives the 'Discover' text a floor to sit on */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(rgba(51,102,51,0.7), rgba(26,26,26,0.8)),
+                            url('images/LP.jpg'); /* Ensure the extension (.jpg/.png) is correct! */
+                background-size: cover;
+                background-position: center;
+                overflow: hidden;
+            }
 
-    .scroll-line {
-        width: 1px;
-        height: 40px;           
-        background-color: white; 
-        opacity: 0.5;
-    }
+            /* 2. Pin Discover to the bottom so it NEVER overlaps buttons */
+            .scroll-hint {
+                position: absolute;
+                bottom: 30px; 
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                z-index: 100;
+            }
 
-    .scroll-hint span {
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-size: 11px;
-        font-family: sans-serif;
-    }
-</style>
+            .scroll-line {
+                width: 1px;
+                height: 50px;
+                background-color: white; 
+                opacity: 0.5;
+            }
 
-<div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span data-i18n="discover">Discover</span>
-    <div class="scroll-line"></div>
-</div>
+            .scroll-hint span {
+                color: white;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                font-size: 11px;
+            }
+        </style>
+
+        <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            <span data-i18n="discover">Discover</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
 
 
     <!-- Rooms Section (Mockup A style) -->
