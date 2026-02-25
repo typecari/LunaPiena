@@ -933,38 +933,43 @@
             </div>
         </div>
 
-        <style>
-    /* This pushes the entire scroll section down */
+        
+       <style>
+    /* This "pins" the section to the bottom of the hero area so it doesn't vanish */
     .scroll-hint {
-        margin-top: 120px !important; /* The !important ensures it overrides other styles */
+        position: absolute;
+        bottom: 40px;           /* Distance from the bottom of the screen */
+        left: 50%;
+        transform: translateX(-50%); /* Perfectly centers it horizontally */
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        width: 100%;
-        position: relative;
-        z-index: 10;
-        gap: 20px; /* This creates the space between the word and the lines */
+        gap: 15px;              /* Space between the word and the lines */
+        z-index: 100;           /* Makes sure it sits on top of everything */
     }
 
-    /* This makes the vertical lines visible and gives them height */
+    /* This makes the vertical lines visible */
     .scroll-line {
         width: 1px;
-        height: 60px; 
+        height: 50px;           
         background-color: rgba(255, 255, 255, 0.5);
-        display: block;
     }
 
-    /* This styles the "Discover" text */
+    /* This styles the 'Discover' text */
     .scroll-hint span {
-        display: block;
         color: white;
         text-transform: uppercase;
-        letter-spacing: 4px;
-        font-size: 12px;
-        font-family: sans-serif; /* Or your preferred font */
+        letter-spacing: 3px;
+        font-size: 11px;
+        font-family: sans-serif;
     }
 </style>
+
+<div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span data-i18n="discover">Discover</span>
+    <div class="scroll-line"></div>
+</div>
 
 
     <!-- Rooms Section (Mockup A style) -->
