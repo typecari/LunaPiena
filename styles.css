@@ -267,12 +267,14 @@ h1, h2, h3, h4 {
 
 /* ── FOOTER ──────────────────────────────────────────────────── */
 footer {
-    padding: 60px 8vw;
+    padding: 50px 8vw;
     background: var(--forest);
     color: var(--cream);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 footer a {

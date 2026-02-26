@@ -185,6 +185,36 @@
             .newsletter { padding: 60px 5vw; }
             .newsletter-form { flex-direction: column; }
         }
+
+        /* ── Footer (self-contained) ── */
+        footer {
+            padding: 50px 8vw;
+            background: var(--forest, #336633);
+            color: #FAF9F6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        footer a { color: #FAF9F6; text-decoration: none; opacity: 0.65; transition: opacity 0.2s; }
+        footer a:hover { opacity: 1; }
+        .footer-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+        .social-links { display: flex; gap: 12px; }
+        .social-links a {
+            width: 36px; height: 36px;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 1; transition: all 0.3s;
+        }
+        .social-links a:hover { background: #F49321; border-color: #F49321; color: #1a1a1a; }
+        .social-links svg { width: 16px; height: 16px; }
+        @media (max-width: 768px) {
+            footer { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+            .social-links { justify-content: center; }
+        }
     </style>
     <script src="translations.js" defer></script>
 </head>
@@ -281,9 +311,10 @@
         <h2 data-i18n="stay_connected">Stay Connected</h2>
         <p data-i18n="newsletter_subtitle">Subscribe for stories, recipes, and exclusive offers.</p>
         <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
+            <input type="email" name="email" data-i18n-placeholder="your_email" placeholder="Your email address" required aria-label="Email address">
             <button type="submit" data-i18n="subscribe">Subscribe</button>
         </form>
+        <p class="newsletter-note">You'll receive a confirmation email. We send occasional stories, recipes, and exclusive offers — no spam, ever.</p>
     </section>
 
     <footer>
@@ -294,16 +325,14 @@
             <a href="dining.html">Dining</a>
             <a href="events.html">Events</a>
             <a href="about.html">Who We Are</a>
+            <a href="about.html#contact">Contact</a>
         </nav>
         <div class="social-links">
             <a href="#" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
             </a>
-            <a href="#" aria-label="Facebook">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M15 8h-2a1 1 0 0 0-1 1v2h3l-.5 3H12v7"/></svg>
-            </a>
-            <a href="#" aria-label="Google Reviews">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4c0-1.5 1-2 2-2s2 .5 2 2v4M12 10v7"/></svg>
             </a>
         </div>
     </footer>

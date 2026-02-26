@@ -244,7 +244,7 @@
         <!-- Left column: info -->
         <div class="booking-info">
             <span class="section-label">Reserve Your Room</span>
-            <h2>Begin Your Luna Piena Experience</h2>
+            <h2 data-i18n="booking_title">Begin Your Luna Piena Experience</h2>
             <p>Fill out the form and we'll confirm your reservation within 24 hours. All stays include breakfast, personalized service, and the warmth of a home away from home.</p>
 
             <ul>
@@ -279,23 +279,23 @@
 
                 <!-- Room selection -->
                 <div class="form-group">
-                    <label>Select Room *</label>
+                    <label data-i18n="booking_select_room">Select Room *</label>
                     <div class="room-selector" id="room-selector">
                         <div class="room-option" data-room="Serena Suite" onclick="selectRoom(this)">
-                            <div class="room-name">Serena Suite</div>
-                            <div class="room-price">€280 / night · King Bed · Garden View</div>
+                            <div class="room-name" data-i18n="serena_suite">Serena Suite</div>
+                            <div class="room-price" data-i18n="serena_price">€280 / night · King Bed · Garden View</div>
                         </div>
                         <div class="room-option" data-room="Luna Room" onclick="selectRoom(this)">
-                            <div class="room-name">Luna Room</div>
-                            <div class="room-price">€220 / night · Queen Bed · Courtyard View</div>
+                            <div class="room-name" data-i18n="luna_room">Luna Room</div>
+                            <div class="room-price" data-i18n="luna_price">€220 / night · Queen Bed · Courtyard View</div>
                         </div>
                         <div class="room-option" data-room="Piena Grand" onclick="selectRoom(this)">
-                            <div class="room-name">Piena Grand</div>
-                            <div class="room-price">€380 / night · King Bed · Terrace</div>
+                            <div class="room-name" data-i18n="piena_grand">Piena Grand</div>
+                            <div class="room-price" data-i18n="piena_price">€380 / night · King Bed · Terrace</div>
                         </div>
                         <div class="room-option" data-room="Not sure yet" onclick="selectRoom(this)">
-                            <div class="room-name">Not sure yet</div>
-                            <div class="room-price">We'll help you choose</div>
+                            <div class="room-name" data-i18n="not_sure">Not sure yet</div>
+                            <div class="room-price" data-i18n="well_help">We'll help you choose</div>
                         </div>
                     </div>
                     <!-- Hidden input carries selected room into the email -->
@@ -305,11 +305,11 @@
                 <!-- Dates -->
                 <div class="date-row">
                     <div class="form-group">
-                        <label for="checkin">Check-in Date *</label>
+                        <label for="checkin" data-i18n="checkin_label">Check-in Date *</label>
                         <input type="date" id="checkin" name="checkin" required>
                     </div>
                     <div class="form-group">
-                        <label for="checkout">Check-out Date *</label>
+                        <label for="checkout" data-i18n="checkout_label">Check-out Date *</label>
                         <input type="date" id="checkout" name="checkout" required>
                     </div>
                 </div>
@@ -320,49 +320,49 @@
                 <!-- Guest info -->
                 <div class="date-row">
                     <div class="form-group">
-                        <label for="first-name">First Name *</label>
+                        <label for="first-name" data-i18n="first_name_label">First Name *</label>
                         <input type="text" id="first-name" name="first_name" required autocomplete="given-name">
                     </div>
                     <div class="form-group">
-                        <label for="last-name">Last Name *</label>
+                        <label for="last-name" data-i18n="last_name_label">Last Name *</label>
                         <input type="text" id="last-name" name="last_name" required autocomplete="family-name">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email Address *</label>
+                    <label for="email" data-i18n="email_label">Email Address *</label>
                     <input type="email" id="email" name="email" required autocomplete="email">
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Phone / WhatsApp</label>
+                    <label for="phone" data-i18n="phone_label">Phone / WhatsApp</label>
                     <input type="tel" id="phone" name="phone" autocomplete="tel">
                 </div>
 
                 <div class="form-group">
-                    <label for="guests">Number of Guests</label>
+                    <label for="guests" data-i18n="guests_label">Number of Guests</label>
                     <input type="number" id="guests" name="guests" min="1" max="6" value="2">
                 </div>
 
                 <div class="form-group">
-                    <label for="notes">Special Requests or Notes</label>
+                    <label for="notes" data-i18n="notes_label">Special Requests or Notes</label>
                     <textarea id="notes" name="notes" rows="3" placeholder="Dietary preferences, celebrations, accessibility needs..."></textarea>
                 </div>
 
                 <!-- Special needs checkboxes -->
                 <div class="form-group" style="margin-top: 8px;">
-                    <label>Special Needs</label>
+                    <label data-i18n="special_needs_label">Special Needs</label>
                     <div class="checkbox-list">
-                        <label class="checkbox-item"><input type="checkbox" name="kids_bed" value="Yes"><span class="checkbox-box"></span><span>Bed or crib for kids</span></label>
-                        <label class="checkbox-item"><input type="checkbox" name="pet" value="Yes"><span class="checkbox-box"></span><span>Bringing a pet</span></label>
-                        <label class="checkbox-item"><input type="checkbox" name="accessibility" value="Yes"><span class="checkbox-box"></span><span>Accessibility needs</span></label>
-                        <label class="checkbox-item"><input type="checkbox" name="early_checkin" value="Yes"><span class="checkbox-box"></span><span>Early check-in</span></label>
-                        <label class="checkbox-item"><input type="checkbox" name="late_checkout" value="Yes"><span class="checkbox-box"></span><span>Late check-out</span></label>
-                        <label class="checkbox-item"><input type="checkbox" name="celebration" value="Yes"><span class="checkbox-box"></span><span>Special occasion</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="kids_bed" value="Yes"><span class="checkbox-box"></span><span data-i18n="needs_kids_bed">Bed or crib for kids</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="pet" value="Yes"><span class="checkbox-box"></span><span data-i18n="needs_pet">Bringing a pet</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="accessibility" value="Yes"><span class="checkbox-box"></span><span data-i18n="needs_accessibility">Accessibility needs</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="early_checkin" value="Yes"><span class="checkbox-box"></span><span data-i18n="needs_early_checkin">Early check-in</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="late_checkout" value="Yes"><span class="checkbox-box"></span><span data-i18n="needs_late_checkout">Late check-out</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="celebration" value="Yes"><span class="checkbox-box"></span><span data-i18n="needs_special_occasion">Special occasion</span></label>
                     </div>
                 </div>
 
-                <button type="submit" class="submit-btn" id="submit-btn">Send Booking Request</button>
+                <button type="submit" class="submit-btn" id="submit-btn" data-i18n="send_booking">Send Booking Request</button>
                 <p class="form-note">
                     Your information is only used to process your reservation.<br>
                     We'll reply within 24 hours to confirm availability.
@@ -372,8 +372,8 @@
             <!-- Success state (shown after redirect with ?success=1) -->
             <div class="success-message" id="success-message">
                 <div class="check">🌙</div>
-                <h3>We received your request!</h3>
-                <p>Thank you for choosing Luna Piena. We'll be in touch within 24 hours to confirm your stay.</p>
+                <h3 data-i18n="booking_success_title">We received your request!</h3>
+                <p data-i18n="booking_success_msg">Thank you for choosing Luna Piena. We'll be in touch within 24 hours to confirm your stay.</p>
             </div>
         </div>
     </section>
@@ -386,23 +386,28 @@
             <a href="dining.html">Dining</a>
             <a href="events.html">Events</a>
             <a href="about.html">Who We Are</a>
+            <a href="about.html#contact">Contact</a>
         </nav>
         <div class="social-links">
             <a href="#" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
             </a>
-            <a href="#" aria-label="Facebook">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M15 8h-2a1 1 0 0 0-1 1v2h3l-.5 3H12v7"/></svg>
-            </a>
-            <a href="#" aria-label="Google Reviews">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4c0-1.5 1-2 2-2s2 .5 2 2v4M12 10v7"/></svg>
             </a>
         </div>
     </footer>
 
     <script>
+    // selectRoom defined first — IIFE runs immediately on load and needs to call it
+    function selectRoom(el) {
+        document.querySelectorAll('.room-option').forEach(function (o) { o.classList.remove('selected'); });
+        el.classList.add('selected');
+        document.getElementById('selected-room').value = el.dataset.room;
+    }
+
     (function () {
-        // ── 1. Pre-select room from URL param (?room=Garden+Suite)
+        // ── 1. Pre-select room from URL param (?room=Serena+Suite)
         const params       = new URLSearchParams(window.location.search);
         const preselect    = params.get('room');
         const successParam = params.get('success');
@@ -473,15 +478,6 @@
 
         checkoutEl.addEventListener('change', checkAvailability);
     }());
-
-    // ── Room selector (global so onclick works)
-    function selectRoom(el) {
-        document.querySelectorAll('.room-option').forEach(function (o) {
-            o.classList.remove('selected');
-        });
-        el.classList.add('selected');
-        document.getElementById('selected-room').value = el.dataset.room;
-    }
     </script>
 </body>
 </html>
