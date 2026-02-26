@@ -167,49 +167,189 @@
         .text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--golden); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--golden); padding-bottom: 4px; transition: gap 0.3s ease; }
         .text-link:hover { gap: 16px; }
 
-        /* FIX #5: Values — compact 4-column single row */
-        .values { padding: 100px 8vw; position: relative; background: var(--darker); }
-        .values-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(51,102,51,0.08) 0%, transparent 50%); pointer-events: none; }
-        .values-content { display: grid; grid-template-columns: 1fr 1.8fr; gap: 60px; align-items: start; position: relative; }
-        .values-header .section-label { font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--golden); margin-bottom: 16px; }
-        .values-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; line-height: 1.2; margin-bottom: 24px; }
-        .values-header p { font-size: 1rem; opacity: 0.6; line-height: 1.8; }
-        .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-        .value-card { padding: 28px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease; text-align: center; }
-        .value-card:hover { border-color: var(--golden); background: rgba(244,147,33,0.05); transform: translateY(-4px); }
-        .value-icon { width: 52px; height: 52px; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; }
-        .value-icon img { width: 100%; height: 100%; object-fit: contain; }
-        .value-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; margin-bottom: 8px; color: var(--golden); }
-        .value-card p { font-size: 0.82rem; opacity: 0.6; line-height: 1.6; }
+        /* ── VALUES: Mockup B — Floating Parallax ── */
+        .values {
+            padding: 120px 8vw;
+            position: relative;
+            background: var(--darker);
+            overflow: hidden;
+        }
 
-        /* Calendar */
-        .availability-section { padding: 150px 8vw; background: var(--darker); }
-        .availability-header { text-align: center; margin-bottom: 60px; }
-        .availability-header .section-label { font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--golden); margin-bottom: 16px; }
+        /* Drifting ambient orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+        .orb-1 { width: 500px; height: 500px; background: rgba(51,102,51,0.13); top: -120px; left: -120px; animation: orbDrift1 14s ease-in-out infinite alternate; }
+        .orb-2 { width: 350px; height: 350px; background: rgba(244,147,33,0.07); bottom: -60px; right: -60px; animation: orbDrift2 11s ease-in-out infinite alternate; }
+        .orb-3 { width: 250px; height: 250px; background: rgba(51,102,51,0.09); top: 45%; left: 55%; animation: orbDrift1 9s ease-in-out infinite alternate; animation-delay: -5s; }
+
+        @keyframes orbDrift1 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(35px, 25px) scale(1.06); } }
+        @keyframes orbDrift2 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-25px, -18px) scale(1.04); } }
+
+        .values-intro {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .values-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.15;
+        }
+
+        .values-intro h2 em { color: var(--golden); font-style: italic; }
+
+        /* 2×2 offset grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Offset even cards downward for floaty asymmetry */
+        .values-grid .value-card:nth-child(2),
+        .values-grid .value-card:nth-child(4) { margin-top: 40px; }
+
+        .value-card {
+            position: relative;
+            padding: 44px 36px;
+            background: rgba(255,255,255,0.028);
+            border: 1px solid rgba(255,255,255,0.07);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            will-change: transform;
+        }
+
+        /* Animated float per card */
+        .value-card:nth-child(1) { animation: vcFloat1 7s   ease-in-out infinite; }
+        .value-card:nth-child(2) { animation: vcFloat2 8s   ease-in-out infinite; animation-delay: -2s; }
+        .value-card:nth-child(3) { animation: vcFloat3 6.5s ease-in-out infinite; animation-delay: -1s; }
+        .value-card:nth-child(4) { animation: vcFloat4 7.5s ease-in-out infinite; animation-delay: -3s; }
+
+        @keyframes vcFloat1 { 0%,100% { transform: translateY(0);    } 50% { transform: translateY(-10px); } }
+        @keyframes vcFloat2 { 0%,100% { transform: translateY(0);    } 50% { transform: translateY(-7px);  } }
+        @keyframes vcFloat3 { 0%,100% { transform: translateY(0);    } 50% { transform: translateY(-12px); } }
+        @keyframes vcFloat4 { 0%,100% { transform: translateY(0);    } 50% { transform: translateY(-8px);  } }
+
+        .value-card:hover {
+            animation-play-state: paused;
+            border-color: rgba(244,147,33,0.35);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(244,147,33,0.07);
+        }
+
+        /* Expanding corner accent */
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 50px; height: 50px;
+            border-top: 1px solid var(--golden);
+            border-right: 1px solid var(--golden);
+            opacity: 0.2;
+            transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+
+        .value-card:hover::before { opacity: 0.75; width: 72px; height: 72px; }
+
+        /* Icon circle */
+        .value-icon {
+            width: 60px; height: 60px;
+            border: 1px solid rgba(244,147,33,0.3);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 22px;
+            background: rgba(244,147,33,0.05);
+            transition: border-color 0.3s ease, transform 0.4s ease;
+            overflow: hidden;
+        }
+
+        .value-icon img {
+            width: 65%;
+            height: 65%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        .value-card:hover .value-icon { border-color: var(--golden); transform: rotate(8deg) scale(1.08); }
+        .value-card:hover .value-icon img { opacity: 1; }
+
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+            color: var(--cream);
+            transition: color 0.3s ease;
+        }
+
+        .value-card:hover h3 { color: var(--golden); }
+
+        .value-card p { font-size: 0.9rem; line-height: 1.8; opacity: 0.52; font-weight: 300; }
+
+        /* ── AVAILABILITY CALENDAR (full year + date picker) ── */
+        .availability-section { padding: 120px 8vw; background: var(--darker); position: relative; }
+        .availability-header { text-align: center; margin-bottom: 70px; }
+        .availability-header .section-label { font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--golden); margin-bottom: 16px; display: block; }
         .availability-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 400; margin-bottom: 16px; }
         .availability-header p { font-size: 1rem; opacity: 0.6; max-width: 500px; margin: 0 auto; }
+        .cal-year-nav { display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 40px; }
+        .cal-year-nav h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; min-width: 80px; text-align: center; }
+        .cal-nav-btn { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: var(--cream); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .cal-nav-btn:hover { border-color: var(--golden); color: var(--golden); }
         .calendar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
         .month-card { background: rgba(0,0,0,0.3); padding: 20px; border: 1px solid rgba(255,255,255,0.05); transition: border-color 0.3s ease; }
-        .month-card:hover { border-color: rgba(255,255,255,0.1); }
-        .month-card.has-blocked { border-color: rgba(255,100,100,0.2); }
-        .month-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-        .month-card-header h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; }
-        .month-card-header .status { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
+        .month-card:hover { border-color: rgba(255,255,255,0.12); }
+        .month-card.has-blocked { border-color: rgba(255,100,100,0.15); }
+        .month-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+        .month-card-header h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; }
+        .month-card-header .status { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
         .month-card-header .status.available { background: rgba(51,102,51,0.3); color: #7cb97c; }
         .month-card-header .status.partial   { background: rgba(244,147,33,0.2); color: var(--golden); }
         .month-card-header .status.booked    { background: rgba(255,100,100,0.2); color: #ff9999; }
         .mini-calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
         .mini-day-header { text-align: center; font-size: 0.5rem; opacity: 0.3; padding: 3px 0; }
-        .mini-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; border-radius: 2px; }
-        .mini-day.blocked { background: rgba(255,100,100,0.3); color: rgba(255,255,255,0.4); }
-        .mini-day.empty   { opacity: 0.1; }
-        .month-blocked-info { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; opacity: 0.6; }
+        .mini-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.58rem; border-radius: 2px; cursor: pointer; transition: background 0.15s ease; }
+        .mini-day:not(.empty):not(.blocked):not(.past):hover { background: rgba(244,147,33,0.2); }
+        .mini-day.blocked { background: rgba(255,100,100,0.28); color: rgba(255,255,255,0.35); cursor: not-allowed; }
+        .mini-day.past    { opacity: 0.2; cursor: default; }
+        .mini-day.empty   { opacity: 0; cursor: default; }
+        .mini-day.today   { border: 1px solid rgba(244,147,33,0.5); color: var(--golden); }
+        .mini-day.selected-start, .mini-day.selected-end { background: var(--golden); color: var(--dark); font-weight: 700; }
+        .mini-day.in-range { background: rgba(244,147,33,0.12); }
+        .month-blocked-info { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.68rem; opacity: 0.55; }
         .month-blocked-info span { color: rgba(255,150,150,0.8); }
-        .calendar-legend { display: flex; justify-content: center; gap: 30px; margin-top: 40px; }
-        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; opacity: 0.6; }
+        .date-picker-panel { max-width: 600px; margin: 50px auto 0; padding: 36px 40px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.08); }
+        .dp-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; margin-bottom: 24px; text-align: center; }
+        .dp-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+        .dp-field label { display: block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--golden); margin-bottom: 8px; opacity: 0.8; }
+        .dp-field input[type="date"] { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--cream); font-family: 'Nunito', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.3s ease; color-scheme: dark; }
+        .dp-field input[type="date"]:focus { border-color: var(--golden); }
+        .dp-status { text-align: center; font-size: 0.8rem; min-height: 22px; margin-bottom: 16px; transition: color 0.3s; }
+        .dp-status.ok  { color: #7cb97c; }
+        .dp-status.err { color: #ff9999; }
+        .dp-book-btn { display: block; width: 100%; padding: 16px; background: var(--golden); color: var(--dark); font-family: 'Nunito', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; text-align: center; border: none; cursor: pointer; transition: background 0.3s ease, opacity 0.3s ease; }
+        .dp-book-btn:hover:not(:disabled) { background: var(--cream); }
+        .dp-book-btn:disabled { opacity: 0.35; cursor: not-allowed; background: var(--golden); }
+        .calendar-legend { display: flex; justify-content: center; gap: 28px; margin-top: 30px; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; opacity: 0.55; }
         .legend-dot { width: 12px; height: 12px; border-radius: 2px; }
-        .legend-dot.available { background: rgba(51,102,51,0.5); }
+        .legend-dot.available { background: rgba(255,255,255,0.15); }
         .legend-dot.blocked   { background: rgba(255,100,100,0.4); }
+        .legend-dot.selected  { background: var(--golden); }
+        .legend-dot.today-dot { border: 1px solid rgba(244,147,33,0.6); }
 
         /* Footer */
         footer { padding: 80px 8vw; background: var(--dark); border-top: 1px solid rgba(255,255,255,0.05); }
@@ -234,13 +374,16 @@
         @media (max-width: 1024px) {
             nav { left: 16px; right: 16px; transform: none; justify-content: space-between; }
             .nav-links { display: none; }
-            .values-content { grid-template-columns: 1fr; }
-            .values-grid { grid-template-columns: repeat(2, 1fr); }
+            .values-grid .value-card:nth-child(2),
+            .values-grid .value-card:nth-child(4) { margin-top: 0; }
             .dining-section { grid-template-columns: 1fr; gap: 60px; }
             .footer-nav { gap: 40px; }
         }
         @media (max-width: 768px) {
             .values, .dining-section, .availability-section { padding: 80px 5vw; }
+            .values-grid { grid-template-columns: 1fr; max-width: 100%; }
+            .values-grid .value-card:nth-child(2),
+            .values-grid .value-card:nth-child(4) { margin-top: 0; }
             .room-card { flex: 0 0 300px; }
             .calendar-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-top { flex-direction: column; gap: 40px; }
@@ -366,48 +509,87 @@
     </section>
 
     <section class="values">
-        <div class="values-bg" role="presentation"></div>
-        <div class="values-content">
-            <div class="values-header">
-                <p class="section-label" data-i18n="values_label">Our Promise</p>
-                <h2 data-i18n="values_title">Where Every Detail Matters</h2>
-                <p data-i18n="values_description">We focus on creating an atmosphere of connection and comfort, where every detail is crafted to leave a lasting impression.</p>
+        <!-- Ambient floating orbs -->
+        <div class="orb orb-1" role="presentation"></div>
+        <div class="orb orb-2" role="presentation"></div>
+        <div class="orb orb-3" role="presentation"></div>
+
+        <div class="values-intro">
+            <span class="section-label" data-i18n="values_label">Our Promise</span>
+            <h2 data-i18n="values_title">Where Every Detail <em>Matters</em></h2>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card" id="vc1">
+                <div class="value-icon">
+                    <img src="Images/Luna_Piena_Hospitality.png" alt="">
+                </div>
+                <h3 data-i18n="value_hospitality">Hospitality</h3>
+                <p data-i18n="value_hospitality_desc">A warm and welcoming environment where every guest feels at home from the moment they arrive.</p>
             </div>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon"><img src="Images/Luna_Piena_Hospitality.png" alt=""></div>
-                    <h3 data-i18n="value_hospitality">Hospitality</h3>
-                    <p data-i18n="value_hospitality_desc">A warm and welcoming environment where every guest feels at home.</p>
+            <div class="value-card" id="vc2">
+                <div class="value-icon">
+                    <img src="Images/Luna_Piena_Comfort.png" alt="">
                 </div>
-                <div class="value-card">
-                    <div class="value-icon"><img src="Images/Luna_Piena_Comfort.png" alt=""></div>
-                    <h3 data-i18n="value_comfort">Comfort</h3>
-                    <p data-i18n="value_comfort_desc">Thoughtful details and calming spaces for harmony throughout your stay.</p>
+                <h3 data-i18n="value_comfort">Comfort</h3>
+                <p data-i18n="value_comfort_desc">Thoughtful details and calming spaces ensure harmony and balance throughout your stay.</p>
+            </div>
+            <div class="value-card" id="vc3">
+                <div class="value-icon">
+                    <img src="Images/Luna_Piena_Memorability.png" alt="">
                 </div>
-                <div class="value-card">
-                    <div class="value-icon"><img src="Images/Luna_Piena_Memorability.png" alt=""></div>
-                    <h3 data-i18n="value_memorability">Memorability</h3>
-                    <p data-i18n="value_memorability_desc">Experiences guests will cherish long after their visit.</p>
+                <h3 data-i18n="value_memorability">Memorability</h3>
+                <p data-i18n="value_memorability_desc">Experiences guests will cherish long after their visit — moments that become treasures.</p>
+            </div>
+            <div class="value-card" id="vc4">
+                <div class="value-icon">
+                    <img src="Images/Luna_Piena_Connection.png" alt="">
                 </div>
-                <div class="value-card">
-                    <div class="value-icon"><img src="Images/Luna_Piena_Connection.png" alt=""></div>
-                    <h3 data-i18n="value_connection">Connection</h3>
-                    <p data-i18n="value_connection_desc">Meaningful bonds through personalized service and genuine care.</p>
-                </div>
+                <h3 data-i18n="value_connection">Connection</h3>
+                <p data-i18n="value_connection_desc">Meaningful bonds through personalized service and genuine care for every guest.</p>
             </div>
         </div>
     </section>
 
     <section class="availability-section">
         <div class="availability-header">
-            <p class="section-label" data-i18n="availability_label">Plan Your Visit</p>
+            <span class="section-label" data-i18n="availability_label">Plan Your Visit</span>
             <h2 data-i18n="availability_title">Availability</h2>
-            <p data-i18n="availability_desc">Check our calendar to find the perfect dates for your stay.</p>
+            <p data-i18n="availability_desc">Check our calendar and pick your dates below.</p>
         </div>
+
+        <!-- Year navigation -->
+        <div class="cal-year-nav">
+            <button class="cal-nav-btn" id="calPrevYear" aria-label="Previous year">&#8592;</button>
+            <h3 id="calYearLabel">2026</h3>
+            <button class="cal-nav-btn" id="calNextYear" aria-label="Next year">&#8594;</button>
+        </div>
+
+        <!-- Full year grid -->
         <div class="calendar-grid" id="calendarGrid"></div>
+
+        <!-- Date picker panel -->
+        <div class="date-picker-panel">
+            <p class="dp-title">Select Your Dates</p>
+            <div class="dp-fields">
+                <div class="dp-field">
+                    <label for="dpCheckin">Check-in</label>
+                    <input type="date" id="dpCheckin">
+                </div>
+                <div class="dp-field">
+                    <label for="dpCheckout">Check-out</label>
+                    <input type="date" id="dpCheckout">
+                </div>
+            </div>
+            <p class="dp-status" id="dpStatus"></p>
+            <button class="dp-book-btn" id="dpBookBtn" disabled>Check Availability &amp; Book</button>
+        </div>
+
         <div class="calendar-legend">
-            <div class="legend-item"><div class="legend-dot available"></div><span data-i18n="legend_available">Available</span></div>
+            <div class="legend-item"><div class="legend-dot available"></div><span>Available</span></div>
             <div class="legend-item"><div class="legend-dot blocked"></div><span data-i18n="legend_booked">Booked</span></div>
+            <div class="legend-item"><div class="legend-dot selected"></div><span>Your dates</span></div>
+            <div class="legend-item"><div class="legend-dot today-dot"></div><span>Today</span></div>
         </div>
     </section>
 
@@ -475,34 +657,171 @@
             el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 2;
         });
 
-        // Calendar
-        const calendarGrid = document.getElementById('calendarGrid');
-        if (typeof BlockedDates !== 'undefined' && calendarGrid) {
-            const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            const dayHeaders = ['S','M','T','W','T','F','S'];
-            const today = new Date();
-            for (let i = 0; i < 12; i++) {
-                const month = (today.getMonth() + i) % 12;
-                const year  = today.getFullYear() + Math.floor((today.getMonth() + i) / 12);
-                const status      = BlockedDates.getMonthStatus(year, month);
-                const blockedDays = BlockedDates.getBlockedDaysInMonth(year, month);
-                const blockedText = BlockedDates.getBlockedRangesText(year, month);
-                const firstDay    = new Date(year, month, 1).getDay();
-                const daysInMonth = new Date(year, month + 1, 0).getDate();
-                const statusLabel = status === 'available' ? 'Available' : status === 'partial' ? 'Partial' : 'Booked';
-                let html = `<div class="month-card-header"><h4>${monthNames[month]} ${year}</h4><span class="status ${status}">${statusLabel}</span></div><div class="mini-calendar">`;
-                dayHeaders.forEach(d => { html += `<div class="mini-day-header">${d}</div>`; });
-                for (let j = 0; j < firstDay; j++) { html += `<div class="mini-day empty"></div>`; }
-                for (let d = 1; d <= daysInMonth; d++) { html += `<div class="mini-day${blockedDays.includes(d) ? ' blocked' : ''}">${d}</div>`; }
-                html += '</div>';
-                if (blockedText) html += `<div class="month-blocked-info"><span>Booked:</span> ${blockedText}</div>`;
-                const card = document.createElement('div');
-                card.className = 'month-card' + (status !== 'available' ? ' has-blocked' : '');
-                card.innerHTML = html;
-                calendarGrid.appendChild(card);
+        // ── Full-year calendar + date picker ────────────────────────
+        (function() {
+            if (typeof BlockedDates === 'undefined') return;
+
+            const grid        = document.getElementById('calendarGrid');
+            const yearLabel   = document.getElementById('calYearLabel');
+            const prevBtn     = document.getElementById('calPrevYear');
+            const nextBtn     = document.getElementById('calNextYear');
+            const checkinEl   = document.getElementById('dpCheckin');
+            const checkoutEl  = document.getElementById('dpCheckout');
+            const statusEl    = document.getElementById('dpStatus');
+            const bookBtn     = document.getElementById('dpBookBtn');
+
+            const MONTHS = ['January','February','March','April','May','June',
+                            'July','August','September','October','November','December'];
+            const DAYS   = ['S','M','T','W','T','F','S'];
+            const today  = new Date();
+            const todayStr = today.toISOString().slice(0,10);
+
+            let displayYear = today.getFullYear();
+            let selStart = null, selEnd = null;
+
+            // Set min date on inputs
+            checkinEl.min  = todayStr;
+            checkoutEl.min = todayStr;
+
+            function dateStr(y, m, d) {
+                return y + '-' + String(m+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
             }
-        }
+
+            function renderCalendar() {
+                yearLabel.textContent = displayYear;
+                grid.innerHTML = '';
+
+                for (let m = 0; m < 12; m++) {
+                    const status      = BlockedDates.getMonthStatus(displayYear, m);
+                    const blockedDays = BlockedDates.getBlockedDaysInMonth(displayYear, m);
+                    const blockedText = BlockedDates.getBlockedRangesText(displayYear, m);
+                    const firstDay    = new Date(displayYear, m, 1).getDay();
+                    const daysInMonth = new Date(displayYear, m+1, 0).getDate();
+                    const statusLabel = status === 'available' ? 'Available' : status === 'partial' ? 'Partial' : 'Booked';
+
+                    const card = document.createElement('div');
+                    card.className = 'month-card' + (status !== 'available' ? ' has-blocked' : '');
+
+                    let html = '<div class="month-card-header">'
+                        + '<h4>' + MONTHS[m] + ' ' + displayYear + '</h4>'
+                        + '<span class="status ' + status + '">' + statusLabel + '</span>'
+                        + '</div><div class="mini-calendar">';
+
+                    DAYS.forEach(d => { html += '<div class="mini-day-header">' + d + '</div>'; });
+                    for (let j = 0; j < firstDay; j++) { html += '<div class="mini-day empty"></div>'; }
+
+                    for (let d = 1; d <= daysInMonth; d++) {
+                        const ds      = dateStr(displayYear, m, d);
+                        const isBlocked = blockedDays.includes(d);
+                        const isPast    = ds < todayStr;
+                        const isToday   = ds === todayStr;
+                        const isSelStart = ds === selStart;
+                        const isSelEnd   = ds === selEnd;
+                        const isInRange  = selStart && selEnd && ds > selStart && ds < selEnd;
+
+                        let cls = 'mini-day';
+                        if (isBlocked)   cls += ' blocked';
+                        else if (isPast) cls += ' past';
+                        if (isToday)     cls += ' today';
+                        if (isSelStart)  cls += ' selected-start';
+                        if (isSelEnd)    cls += ' selected-end';
+                        if (isInRange)   cls += ' in-range';
+
+                        const attr = (!isBlocked && !isPast)
+                            ? ' data-date="' + ds + '" title="' + MONTHS[m] + ' ' + d + '"'
+                            : '';
+
+                        html += '<div class="' + cls + '"' + attr + '>' + d + '</div>';
+                    }
+
+                    html += '</div>';
+                    if (blockedText) {
+                        html += '<div class="month-blocked-info"><span>Booked:</span> ' + blockedText + '</div>';
+                    }
+
+                    card.innerHTML = html;
+                    grid.appendChild(card);
+                }
+
+                // Re-attach click listeners
+                grid.querySelectorAll('.mini-day[data-date]').forEach(el => {
+                    el.addEventListener('click', function() {
+                        const ds = this.getAttribute('data-date');
+                        if (!selStart || (selStart && selEnd)) {
+                            // Start new selection
+                            selStart = ds; selEnd = null;
+                            checkinEl.value  = ds;
+                            checkoutEl.value = '';
+                        } else {
+                            // Complete selection
+                            if (ds <= selStart) { selStart = ds; checkinEl.value = ds; return; }
+                            selEnd = ds;
+                            checkoutEl.value = ds;
+                            validateDates();
+                        }
+                        renderCalendar();
+                    });
+                });
+            }
+
+            function validateDates() {
+                const ci = checkinEl.value;
+                const co = checkoutEl.value;
+                if (!ci || !co) { statusEl.textContent = ''; statusEl.className = 'dp-status'; bookBtn.disabled = true; return; }
+                if (co <= ci)   { statusEl.textContent = 'Check-out must be after check-in.'; statusEl.className = 'dp-status err'; bookBtn.disabled = true; return; }
+
+                try {
+                    const result = BlockedDates.validateBooking(ci, co);
+                    if (result.valid) {
+                        statusEl.textContent = '✓ Dates available';
+                        statusEl.className   = 'dp-status ok';
+                        bookBtn.disabled     = false;
+                    } else {
+                        statusEl.textContent = result.message || 'Those dates are unavailable.';
+                        statusEl.className   = 'dp-status err';
+                        bookBtn.disabled     = true;
+                    }
+                } catch(e) {
+                    statusEl.textContent = '';
+                    bookBtn.disabled = false;
+                }
+                selStart = ci; selEnd = co;
+                renderCalendar();
+            }
+
+            // Input changes
+            checkinEl.addEventListener('change',  validateDates);
+            checkoutEl.addEventListener('change', validateDates);
+
+            // Book button
+            bookBtn.addEventListener('click', function() {
+                const ci = checkinEl.value;
+                const co = checkoutEl.value;
+                if (ci && co) {
+                    window.location.href = 'booking.html?checkin=' + ci + '&checkout=' + co;
+                }
+            });
+
+            // Year nav
+            prevBtn.addEventListener('click', function() { displayYear--; renderCalendar(); });
+            nextBtn.addEventListener('click', function() { displayYear++; renderCalendar(); });
+
+            // Initial render
+            renderCalendar();
+        }());
     }());
+        // Magnetic tilt on value cards
+        document.querySelectorAll('.value-card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = card.getBoundingClientRect();
+                const x =  (e.clientX - rect.left  - rect.width  / 2) / rect.width;
+                const y =  (e.clientY - rect.top   - rect.height / 2) / rect.height;
+                card.style.transform = `perspective(700px) rotateX(${y * -10}deg) rotateY(${x * 10}deg) translateZ(12px)`;
+            });
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = '';
+            });
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seasonal Menu | Luna Piena</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #336633;
+            --golden: #F49321;
+            --cream:  #FAF9F6;
+            --dark:   #1a1a1a;
+            --darker: #0a0a0a;
+            --gray:   #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--darker);
+            color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            padding: 18px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10,10,10,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo { height: 38px; filter: brightness(0) invert(1); opacity: 0.9; }
+
+        .nav-center { display: flex; gap: 32px; list-style: none; }
+
+        .nav-center a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        .nav-center a:hover,
+        .nav-center a.active { color: var(--golden); }
+
+        .nav-right { display: flex; align-items: center; gap: 16px; }
+
+        .lang-toggle { display: flex; gap: 4px; font-size: 0.72rem; font-weight: 600; }
+
+        .lang-toggle a {
+            text-decoration: none;
+            padding: 4px 8px;
+            color: rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+
+        .lang-toggle a.active { background: var(--golden); color: var(--dark); }
+
+        /* ── HERO ── */
+        .page-hero {
+            height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.7) 60%, rgba(10,10,10,1) 100%),
+                url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1400&q=80') center / cover no-repeat;
+        }
+
+        .page-hero-content { position: relative; z-index: 2; }
+
+        .page-hero-content .hero-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--golden);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 400;
+            color: var(--cream);
+            line-height: 1.1;
+        }
+
+        .page-hero h1 em { color: var(--golden); font-style: italic; }
+
+        .page-hero p {
+            color: rgba(255,255,255,0.65);
+            font-size: 1rem;
+            max-width: 480px;
+            margin: 20px auto 0;
+            line-height: 1.8;
+        }
+
+        /* ── MENU TABS ── */
+        .menu-nav {
+            position: sticky;
+            top: 76px;
+            z-index: 100;
+            background: rgba(10,10,10,0.96);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            padding: 0 8vw;
+        }
+
+        .menu-tab {
+            padding: 18px 32px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: rgba(255,255,255,0.4);
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .menu-tab:hover { color: rgba(255,255,255,0.8); }
+        .menu-tab.active { color: var(--golden); border-bottom-color: var(--golden); }
+
+        /* ── MENU SECTIONS ── */
+        .menu-content { padding: 80px 8vw 120px; }
+
+        .menu-section { display: none; }
+        .menu-section.active { display: block; }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-intro .section-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.45em;
+            text-transform: uppercase;
+            color: var(--golden);
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .section-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+        }
+
+        /* ── DISH GRID ── */
+        .dishes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-bottom: 60px;
+        }
+
+        .dish-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: rgba(255,255,255,0.03);
+            cursor: default;
+        }
+
+        /* Cards without images show as elegant text cards */
+        .dish-card.text-only {
+            aspect-ratio: auto;
+            padding: 40px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .dish-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .dish-card:hover img { transform: scale(1.04); }
+
+        /* Overlay on photo cards */
+        .dish-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 45%, transparent 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .dish-card:hover .dish-overlay { opacity: 1; }
+
+        .dish-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .dish-description {
+            font-size: 0.82rem;
+            opacity: 0.65;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .dish-price {
+            font-size: 1rem;
+            color: var(--golden);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Text-only card styles */
+        .dish-card.text-only .dish-name { margin-bottom: 8px; }
+        .dish-card.text-only .dish-description { opacity: 0.5; }
+        .dish-card.text-only .dish-price { margin-top: 14px; }
+
+        .dish-tag {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border: 1px solid rgba(244,147,33,0.4);
+            color: var(--golden);
+            margin-bottom: 10px;
+            align-self: flex-start;
+        }
+
+        /* ── REQUEST NOTE ── */
+        .request-note {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 36px 40px;
+            border: 1px solid rgba(244,147,33,0.2);
+            text-align: center;
+            background: rgba(244,147,33,0.04);
+        }
+
+        .request-note p {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            line-height: 1.9;
+        }
+
+        .request-note a {
+            color: var(--golden);
+            text-decoration: none;
+            border-bottom: 1px solid var(--golden);
+            padding-bottom: 2px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 60px 8vw;
+            background: var(--dark);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-brand img { height: 40px; filter: brightness(0) invert(1); }
+
+        .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+        .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--cream); }
+
+        .social-links { display: flex; gap: 12px; }
+        .social-links a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--cream); transition: all 0.3s; }
+        .social-links a:hover { background: var(--golden); border-color: var(--golden); color: var(--dark); }
+        .social-links svg { width: 16px; height: 16px; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .dishes-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-center { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-nav { gap: 0; overflow-x: auto; justify-content: flex-start; }
+            .menu-tab { padding: 16px 20px; font-size: 0.7rem; }
+            .menu-content { padding: 60px 5vw 80px; }
+            .dishes-grid { grid-template-columns: 1fr; }
+            footer { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+    </style>
+    <script src="translations.js" defer></script>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html"><img src="logo.png" alt="Luna Piena" class="logo"></a>
+        <ul class="nav-center">
+            <li><a href="rooms.html" data-i18n="nav_rooms">Rooms</a></li>
+            <li><a href="dining.html" data-i18n="nav_dining">Dining</a></li>
+            <li><a href="events.html" data-i18n="nav_events">Events</a></li>
+            <li><a href="about.html" data-i18n="nav_about">Who We Are</a></li>
+            <li><a href="blog.html" data-i18n="nav_journal">Journal</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="lang-toggle">
+                <a href="#" class="active" aria-label="English">EN</a>
+                <a href="#" aria-label="Español">ES</a>
+                <a href="#" aria-label="Italiano">IT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="hero-label">Luna Piena Kitchen</span>
+            <h1 data-i18n="menu_page_title">Seasonal <em>Menu</em></h1>
+            <p data-i18n="menu_page_subtitle">Fresh, homemade dishes that change with the seasons.</p>
+        </div>
+    </section>
+
+    <!-- Tab navigation -->
+    <nav class="menu-nav" aria-label="Menu sections">
+        <button class="menu-tab active" data-target="starters" data-i18n="menu_section_starters">Starters</button>
+        <button class="menu-tab" data-target="mains" data-i18n="menu_section_mains">Mains</button>
+        <button class="menu-tab" data-target="desserts" data-i18n="menu_section_desserts">Desserts</button>
+        <button class="menu-tab" data-target="drinks" data-i18n="menu_section_drinks">Drinks</button>
+    </nav>
+
+    <main class="menu-content">
+
+        <!-- ── STARTERS ── -->
+        <div class="menu-section active" id="starters">
+            <div class="section-intro">
+                <span class="section-label">To Begin</span>
+                <h2>Starters</h2>
+            </div>
+            <div class="dishes-grid">
+
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1572441713132-c542fc4fe282?w=800&q=80" alt="Arepa con Queso">
+                    <div class="dish-overlay">
+                        <span class="dish-tag">Venezuelan</span>
+                        <h3 class="dish-name">Arepa con Queso Mozzarella</h3>
+                        <p class="dish-description">Hand-pressed corn arepa with fresh mozzarella, served warm with our house chimichurri.</p>
+                        <span class="dish-price">€9</span>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1619895092538-128341789043?w=800&q=80" alt="Bruschetta">
+                    <div class="dish-overlay">
+                        <span class="dish-tag">Italian</span>
+                        <h3 class="dish-name">Bruschetta al Pomodoro</h3>
+                        <p class="dish-description">Toasted sourdough with heirloom tomatoes, fresh basil, and aged balsamic from Modena.</p>
+                        <span class="dish-price">€8</span>
+                    </div>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">Colombian</span>
+                    <h3 class="dish-name">Patacones con Hogao</h3>
+                    <p class="dish-description">Twice-fried green plantains served with a slow-cooked tomato and scallion sauce. Crispy, savory, and satisfying.</p>
+                    <span class="dish-price">€7</span>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">House</span>
+                    <h3 class="dish-name">Charcuterie &amp; Cheese Board</h3>
+                    <p class="dish-description">A seasonal selection of cured meats, Italian cheeses, honeycomb, and house-made jam. Serves 2.</p>
+                    <span class="dish-price">€18</span>
+                </div>
+
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80" alt="Soup">
+                    <div class="dish-overlay">
+                        <span class="dish-tag">Seasonal</span>
+                        <h3 class="dish-name">Crema de Calabaza</h3>
+                        <p class="dish-description">Velvety butternut squash soup with crème fraîche, toasted pepitas, and a drizzle of truffle oil.</p>
+                        <span class="dish-price">€10</span>
+                    </div>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">Peruvian</span>
+                    <h3 class="dish-name">Causa Limeña</h3>
+                    <p class="dish-description">Yellow potato terrine layered with avocado and seasoned with ají amarillo. Light, bright, and beautifully presented.</p>
+                    <span class="dish-price">€12</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ── MAINS ── -->
+        <div class="menu-section" id="mains">
+            <div class="section-intro">
+                <span class="section-label">The Heart of the Meal</span>
+                <h2>Mains</h2>
+            </div>
+            <div class="dishes-grid">
+
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&q=80" alt="Pasta">
+                    <div class="dish-overlay">
+                        <span class="dish-tag">Italian</span>
+                        <h3 class="dish-name">Fettuccine Alfredo</h3>
+                        <p class="dish-description">Handmade fettuccine with butter, aged Parmigiano-Reggiano, and a touch of freshly cracked pepper. Classic and comforting.</p>
+                        <span class="dish-price">€18</span>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=800&q=80" alt="Chicken">
+                    <div class="dish-overlay">
+                        <span class="dish-tag">Colombian</span>
+                        <h3 class="dish-name">Arroz con Pollo</h3>
+                        <p class="dish-description">Slow-braised chicken over saffron rice with sofrito, sweet corn, and fresh cilantro. A family recipe.</p>
+                        <span class="dish-price">€19</span>
+                    </div>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">Venezuelan</span>
+                    <h3 class="dish-name">Reina Pepiada Arepa</h3>
+                    <p class="dish-description">Luna Piena's signature arepa filled with shredded chicken, avocado, and our house mayo. Rich, creamy, unforgettable.</p>
+                    <span class="dish-price">€16</span>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">Italian</span>
+                    <h3 class="dish-name">Risotto al Parmigiano</h3>
+                    <p class="dish-description">Carnaroli rice cooked the traditional way, finished with aged Parmigiano and a whisper of white wine. Ask about seasonal additions.</p>
+                    <span class="dish-price">€20</span>
+                </div>
+
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=800&q=80" alt="Steak">
+                    <div class="dish-overlay">
+                        <span class="dish-tag">House</span>
+                        <h3 class="dish-name">Bistec a lo Pobre</h3>
+                        <p class="dish-description">Grilled sirloin over golden fries, topped with two fried eggs and caramelized plantains. A generous and satisfying plate.</p>
+                        <span class="dish-price">€26</span>
+                    </div>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">Seasonal</span>
+                    <h3 class="dish-name">Pasta del Giorno</h3>
+                    <p class="dish-description">Our daily fresh pasta changes with what's available at the market. Ask your host what's on today — it's always something special.</p>
+                    <span class="dish-price">Market price</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ── DESSERTS ── -->
+        <div class="menu-section" id="desserts">
+            <div class="section-intro">
+                <span class="section-label">A Sweet Ending</span>
+                <h2>Desserts</h2>
+            </div>
+            <div class="dishes-grid">
+
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1488477181228-c84afe1849f6?w=800&q=80" alt="Cake">
+                    <div class="dish-overlay">
+                        <span class="dish-tag">House</span>
+                        <h3 class="dish-name">Torta de Tres Leches</h3>
+                        <p class="dish-description">A pillowy sponge cake soaked in three milks, topped with whipped cream and fresh berries. Made fresh each day.</p>
+                        <span class="dish-price">€9</span>
+                    </div>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">Italian</span>
+                    <h3 class="dish-name">Panna Cotta al Limone</h3>
+                    <p class="dish-description">Silky lemon panna cotta with a seasonal berry compote and crushed amaretti. Delicate and refreshing.</p>
+                    <span class="dish-price">€8</span>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">Colombian</span>
+                    <h3 class="dish-name">Bocadillo con Queso</h3>
+                    <p class="dish-description">Traditional guava paste paired with fresh white cheese. Simple, traditional, and deeply satisfying.</p>
+                    <span class="dish-price">€6</span>
+                </div>
+
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80" alt="Ice cream">
+                    <div class="dish-overlay">
+                        <span class="dish-tag">Seasonal</span>
+                        <h3 class="dish-name">Gelato del Giorno</h3>
+                        <p class="dish-description">Two scoops of our artisan gelato made in-house. Flavors rotate daily based on the season.</p>
+                        <span class="dish-price">€7</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ── DRINKS ── -->
+        <div class="menu-section" id="drinks">
+            <div class="section-intro">
+                <span class="section-label">Sip &amp; Relax</span>
+                <h2>Drinks</h2>
+            </div>
+            <div class="dishes-grid">
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">Morning</span>
+                    <h3 class="dish-name">Espresso &amp; Cappuccino</h3>
+                    <p class="dish-description">Italian roast, single origin. Served with a small piece of dark chocolate. The perfect start to a Tuscan morning.</p>
+                    <span class="dish-price">€3 / €4</span>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">House</span>
+                    <h3 class="dish-name">Agua de Panela</h3>
+                    <p class="dish-description">Traditional Colombian warm cane sugar drink with a slice of lime. Comforting, naturally sweet, and caffeine-free.</p>
+                    <span class="dish-price">€4</span>
+                </div>
+
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1510972527921-ce03766a1cf1?w=800&q=80" alt="Wine">
+                    <div class="dish-overlay">
+                        <span class="dish-tag">Wine</span>
+                        <h3 class="dish-name">Wine Selection</h3>
+                        <p class="dish-description">Curated Italian and South American wines. Ask your host for a pairing recommendation with your meal.</p>
+                        <span class="dish-price">From €8 / glass</span>
+                    </div>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">Soft</span>
+                    <h3 class="dish-name">Limonada de Coco</h3>
+                    <p class="dish-description">Blended fresh lemon juice with coconut cream and a touch of sweetness. Refreshing and tropical.</p>
+                    <span class="dish-price">€6</span>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">House</span>
+                    <h3 class="dish-name">Herbal Infusions</h3>
+                    <p class="dish-description">A rotating selection of house-dried herbs and flowers from our garden. Ask about today's selection.</p>
+                    <span class="dish-price">€4</span>
+                </div>
+
+                <div class="dish-card text-only">
+                    <span class="dish-tag">Zero</span>
+                    <h3 class="dish-name">Coke Zero &amp; Canada Dry Zero</h3>
+                    <p class="dish-description">Our Friday tradition extends all week. Paired perfectly with pizza night or enjoyed any time.</p>
+                    <span class="dish-price">€3</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Request note -->
+        <div class="request-note">
+            <p data-i18n="menu_request_note">All dishes are prepared fresh upon request. Please let us know your preferences and any dietary restrictions when booking. <a href="booking.html">Reserve your stay →</a></p>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-brand">
+            <img src="logo.png" alt="Luna Piena">
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="rooms.html" data-i18n="nav_rooms">Rooms</a>
+            <a href="dining.html" data-i18n="nav_dining">Dining</a>
+            <a href="events.html" data-i18n="nav_events">Events</a>
+            <a href="blog.html" data-i18n="nav_journal">Journal</a>
+        </div>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M15 8h-2a1 1 0 0 0-1 1v2h3l-.5 3H12v7"/></svg>
+            </a>
+            <a href="#" aria-label="Google Reviews">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+    // Tab switching
+    (function() {
+        const tabs     = document.querySelectorAll('.menu-tab');
+        const sections = document.querySelectorAll('.menu-section');
+
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                const target = tab.getAttribute('data-target');
+
+                tabs.forEach(function(t) { t.classList.remove('active'); });
+                sections.forEach(function(s) { s.classList.remove('active'); });
+
+                tab.classList.add('active');
+                const section = document.getElementById(target);
+                if (section) section.classList.add('active');
+            });
+        });
+    }());
+    </script>
+</body>
+</html>

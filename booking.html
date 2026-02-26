@@ -203,6 +203,7 @@
             <div class="lang-toggle">
                 <a href="#" class="active" aria-label="English">EN</a>
                 <a href="#" aria-label="Español">ES</a>
+            <a href="#" aria-label="Italiano">IT</a>
             </div>
         </div>
     </nav>
@@ -367,6 +368,13 @@
         const params       = new URLSearchParams(window.location.search);
         const preselect    = params.get('room');
         const successParam = params.get('success');
+
+        // Pre-fill dates if coming from the availability calendar
+        const preCheckin  = params.get('checkin');
+        const preCheckout = params.get('checkout');
+        if (preCheckin)  { document.getElementById('checkin').value  = preCheckin;  }
+        if (preCheckout) { document.getElementById('checkout').value = preCheckout; }
+        if (preCheckin && preCheckout) { setTimeout(checkAvailability, 100); }
 
         if (preselect) {
             const options = document.querySelectorAll('.room-option');
