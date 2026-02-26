@@ -247,6 +247,21 @@ const TRANSLATIONS = {
     subscribe:              "Subscribe",
     your_email:             "Your email address",
 
+
+    // Booking page - left panel + form header
+    booking_reserve_label:  "Reserve Your Room",
+    booking_intro_text:     "Fill out the form and we'll confirm your reservation within 24 hours. All stays include breakfast, personalized service, and the warmth of a home away from home.",
+    perk_boutique:          "Boutique rooms with curated details",
+    perk_breakfast:         "Homemade breakfast included",
+    perk_lucy:              "Meet Lucy, our resident companion",
+    perk_smarthome:         "Smart home & streaming included",
+    perk_confirm:           "We'll confirm by email within 24 hrs",
+    booking_form_title:     "Request a Reservation",
+    booking_required_note:  "All fields marked * are required",
+
+    // Nav contact
+    nav_contact:            "Contact",
+
     // Footer
     footer_explore:         "Explore",
     footer_info:            "Information",
@@ -463,6 +478,20 @@ const TRANSLATIONS = {
     subscribe:              "Suscribirse",
     your_email:             "Tu correo electrónico",
 
+    // Booking page - left panel + form header
+    booking_reserve_label:  "Reserva Tu Habitación",
+    booking_intro_text:     "Completa el formulario y confirmaremos tu reserva en 24 horas. Todas las estancias incluyen desayuno, servicio personalizado y la calidez de un hogar lejos del hogar.",
+    perk_boutique:          "Habitaciones boutique con detalles cuidados",
+    perk_breakfast:         "Desayuno casero incluido",
+    perk_lucy:              "Conoce a Lucy, nuestra compañera residente",
+    perk_smarthome:         "Smart home y streaming incluidos",
+    perk_confirm:           "Confirmamos por correo en 24 hrs",
+    booking_form_title:     "Solicitar una Reserva",
+    booking_required_note:  "Todos los campos marcados con * son obligatorios",
+
+    // Nav contact
+    nav_contact:            "Contacto",
+
     footer_explore:         "Explorar",
     footer_info:            "Información",
     footer_tagline:         "Una experiencia de hotel boutique de Lupo, donde el encanto italiano se une a la modernidad.",
@@ -566,7 +595,7 @@ ${JSON.stringify(enStrings, null, 2)}`;
           'anthropic-dangerous-direct-browser-access': 'true'
         },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
+          model: 'claude-sonnet-4-6',
           max_tokens: 4000,
           messages: [{ role: 'user', content: prompt }]
         })
