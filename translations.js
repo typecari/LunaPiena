@@ -262,6 +262,40 @@ const TRANSLATIONS = {
     // Nav contact
     nav_contact:            "Contact",
 
+
+    // Location / directions (about.html)
+    location_find_us:       "Find Us",
+    location_title:         "How to Get Here",
+    location_getting_here:  "Getting Here",
+    dir_air_label:          "By Air:",
+    dir_air_text:           "Fly into Florence (FLR) or Pisa (PSA). Both airports are approximately 1–1.5 hours away by car or train.",
+    dir_train_label:        "By Train:",
+    dir_train_text:         "Take the regional train to the nearest station. We recommend booking a taxi or rental car in advance for the final stretch.",
+    dir_car_label:          "By Car:",
+    dir_car_text:           "Follow the SS2 and take the exit toward our village. Look for the stone arch entrance on the left — the sign reads \"Luna Piena.\"",
+    dir_transfer_label:     "Transfer Service:",
+    dir_transfer_text:      "We can arrange a private transfer from Florence or Pisa airport. Just mention it in your booking or contact us below.",
+    open_maps:              "Open in Google Maps →",
+
+    // Contact form (about.html)
+    contact_label:          "Get in Touch",
+    contact_title:          "We'd Love to Hear From You",
+    contact_intro:          "Whether you have a question about your stay, need help planning your visit, or just want to say hello — we're here and happy to help.",
+    contact_hours:          "Check-in: 3:00 PM · Check-out: 11:00 AM",
+    cf_name_label:          "Full Name",
+    cf_name_placeholder:    "Your name",
+    cf_email_label:         "Email",
+    cf_subject_label:       "Subject",
+    cf_select_topic:        "Select a topic",
+    cf_booking:             "Booking inquiry",
+    cf_transfer:            "Airport transfer",
+    cf_dining_res:          "Dining reservation",
+    cf_event_hire:          "Event / private hire",
+    cf_other:               "Other",
+    cf_message_label:       "Message",
+    cf_message_placeholder: "How can we help you?",
+    cf_send:                "Send Message",
+
     // Footer
     footer_explore:         "Explore",
     footer_info:            "Information",
@@ -691,7 +725,70 @@ const TRANSLATIONS = {
     perk_confirm:  'Confermiamo via email entro 24 ore',
     booking_form_title: 'Richiedi una Prenotazione',
     booking_required_note: 'Tutti i campi contrassegnati con * sono obbligatori',
-    footer_explore:  'Esplora',
+
+    // Location / directions
+    location_find_us:       "Cómo Llegar",
+    location_title:         "Cómo Llegar",
+    location_getting_here:  "Llegando Aquí",
+    dir_air_label:          "En Avión:",
+    dir_air_text:           "Vuela a Florencia (FLR) o Pisa (PSA). Ambos aeropuertos están a aproximadamente 1–1.5 horas en coche o tren.",
+    dir_train_label:        "En Tren:",
+    dir_train_text:         "Toma el tren regional a la estación más cercana. Recomendamos reservar un taxi o alquiler de coche con anticipación.",
+    dir_car_label:          "En Coche:",
+    dir_car_text:           "Sigue la SS2 y toma la salida hacia nuestro pueblo. Busca el arco de piedra a la izquierda — el letrero dice \"Luna Piena.\"",
+    dir_transfer_label:     "Servicio de Traslado:",
+    dir_transfer_text:      "Podemos organizar un traslado privado desde el aeropuerto de Florencia o Pisa. Menciónalo en tu reserva o contáctanos.",
+    open_maps:              "Abrir en Google Maps →",
+
+    // Contact form
+    contact_label:          "Contáctanos",
+    contact_title:          "Nos Encantaría Saber de Ti",
+    contact_intro:          "Ya sea que tengas una pregunta sobre tu estadía, necesites ayuda para planificar tu visita o simplemente quieras saludar — estamos aquí.",
+    contact_hours:          "Check-in: 3:00 PM · Check-out: 11:00 AM",
+    cf_name_label:          "Nombre Completo",
+    cf_name_placeholder:    "Tu nombre",
+    cf_email_label:         "Correo Electrónico",
+    cf_subject_label:       "Asunto",
+    cf_select_topic:        "Selecciona un tema",
+    cf_booking:             "Consulta de reserva",
+    cf_transfer:            "Traslado al aeropuerto",
+    cf_dining_res:          "Reserva en restaurante",
+    cf_event_hire:          "Evento / alquiler privado",
+    cf_other:               "Otro",
+    cf_message_label:       "Mensaje",
+    cf_message_placeholder: "¿Cómo podemos ayudarte?",
+    cf_send:                "Enviar Mensaje",
+
+    location_find_us:  'Trovaci',
+    location_title:  'Come Raggiungerci',
+    location_getting_here:  'Come Arrivare',
+    dir_air_label:  'In Aereo:',
+    dir_air_text:  'Vola a Firenze (FLR) o Pisa (PSA). Entrambi gli aeroporti distano circa 1–1.5 ore in auto o treno.',
+    dir_train_label:  'In Treno:',
+    dir_train_text:  'Prendi il treno regionale fino alla stazione più vicina. Consigliamo di prenotare un taxi o un\'auto a noleggio in anticipo.',
+    dir_car_label:  'In Auto:',
+    dir_car_text:  'Segui la SS2 e prendi l\'uscita verso il nostro borgo. Cerca l\'arco in pietra sulla sinistra — l\'insegna recita \"Luna Piena.\"',
+    dir_transfer_label:  'Servizio Transfer:',
+    dir_transfer_text:  'Possiamo organizzare un transfer privato dall\'aeroporto di Firenze o Pisa. Menzionalo nella prenotazione o contattaci.',
+    open_maps:  'Apri in Google Maps →',
+    contact_label:  'Contattaci',
+    contact_title:  'Saremo Felici di Sentirti',
+    contact_intro:  'Che tu abbia una domanda sul soggiorno, abbia bisogno di aiuto per pianificare la visita o voglia semplicemente salutare — siamo qui.',
+    contact_hours:  'Check-in: ore 15:00 · Check-out: ore 11:00',
+    cf_name_label:  'Nome Completo',
+    cf_name_placeholder:  'Il tuo nome',
+    cf_email_label:  'Email',
+    cf_subject_label:  'Oggetto',
+    cf_select_topic:  'Seleziona un argomento',
+    cf_booking:  'Richiesta di prenotazione',
+    cf_transfer:  'Transfer aeroportuale',
+    cf_dining_res:  'Prenotazione ristorante',
+    cf_event_hire:  'Evento / affitto privato',
+    cf_other:  'Altro',
+    cf_message_label:  'Messaggio',
+    cf_message_placeholder:  'Come possiamo aiutarti?',
+    cf_send:  'Invia Messaggio',
+        footer_explore:  'Esplora',
     footer_info:  'Informazioni',
     footer_tagline:  'Un\'esperienza di hotel boutique by Lupo, dove il fascino italiano incontra la modernità.',
   }
@@ -727,9 +824,14 @@ const TRANSLATIONS = {
       if (dict[key] !== undefined && dict[key] !== '') {
         el.textContent = dict[key];
       } else if (lang !== 'en' && TRANSLATIONS.en[key]) {
-        // Fallback to EN if translation missing
         el.textContent = TRANSLATIONS.en[key];
       }
+    });
+    // Handle placeholder translations
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      const val = dict[key] || (TRANSLATIONS.en[key] || '');
+      if (val) el.placeholder = val;
     });
 
     // Update active state on language toggle buttons

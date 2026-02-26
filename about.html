@@ -444,8 +444,8 @@
                 </iframe>
             </div>
             <div class="location-info">
-                <span class="section-label">Find Us</span>
-                <h2>How to Get Here</h2>
+                <span class="section-label" data-i18n="location_find_us">Find Us</span>
+                <h2 data-i18n="location_title">How to Get Here</h2>
                 <p class="location-address">
                     Luna Piena by Lupo<br>
                     Via della Luna Piena, 1<br>
@@ -454,28 +454,28 @@
                 </p>
 
                 <div class="directions-steps">
-                    <h4>Getting Here</h4>
+                    <h4 data-i18n="location_getting_here">Getting Here</h4>
 
                     <div class="direction-step">
                         <span class="step-num">1</span>
-                        <p><strong>By Air:</strong> Fly into Florence (FLR) or Pisa (PSA). Both airports are approximately 1–1.5 hours away by car or train.</p>
+                        <p><strong data-i18n="dir_air_label">By Air:</strong> <span data-i18n="dir_air_text">Fly into Florence (FLR) or Pisa (PSA). Both airports are approximately 1–1.5 hours away by car or train.</span></p>
                     </div>
                     <div class="direction-step">
                         <span class="step-num">2</span>
-                        <p><strong>By Train:</strong> Take the regional train to the nearest station. We recommend booking a taxi or rental car in advance for the final stretch.</p>
+                        <p><strong data-i18n="dir_train_label">By Train:</strong> <span data-i18n="dir_train_text">Take the regional train to the nearest station. We recommend booking a taxi or rental car in advance for the final stretch.</span></p>
                     </div>
                     <div class="direction-step">
                         <span class="step-num">3</span>
-                        <p><strong>By Car:</strong> Follow the SS2 and take the exit toward our village. Look for the stone arch entrance on the left — the sign reads "Luna Piena."</p>
+                        <p><strong data-i18n="dir_car_label">By Car:</strong> <span data-i18n="dir_car_text">Follow the SS2 and take the exit toward our village. Look for the stone arch entrance on the left — the sign reads "Luna Piena."</span></p>
                     </div>
                     <div class="direction-step">
                         <span class="step-num">4</span>
-                        <p><strong>Transfer Service:</strong> We can arrange a private transfer from Florence or Pisa airport. Just mention it in your booking or contact us below.</p>
+                        <p><strong data-i18n="dir_transfer_label">Transfer Service:</strong> <span data-i18n="dir_transfer_text">We can arrange a private transfer from Florence or Pisa airport. Just mention it in your booking or contact us below.</span></p>
                     </div>
                 </div>
 
                 <a href="https://www.google.com/maps" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:var(--forest);color:var(--cream);text-decoration:none;font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;transition:background 0.3s ease;" onmouseover="this.style.background='var(--dark)'" onmouseout="this.style.background='var(--forest)'">
-                    Open in Google Maps →
+                    <span data-i18n="open_maps">Open in Google Maps →</span>
                 </a>
             </div>
         </div>
@@ -485,9 +485,9 @@
     <section class="contact-form-section" id="contact">
         <div class="contact-inner">
             <div class="contact-intro">
-                <span class="section-label">Get in Touch</span>
-                <h2>We'd Love to Hear From You</h2>
-                <p>Whether you have a question about your stay, need help planning your visit, or just want to say hello — we're here and happy to help.</p>
+                <span class="section-label" data-i18n="contact_label">Get in Touch</span>
+                <h2 data-i18n="contact_title">We'd Love to Hear From You</h2>
+                <p data-i18n="contact_intro">Whether you have a question about your stay, need help planning your visit, or just want to say hello — we're here and happy to help.</p>
 
                 <div class="contact-detail">
                     <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -499,38 +499,38 @@
                 </div>
                 <div class="contact-detail">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <span>Check-in: 3:00 PM · Check-out: 11:00 AM</span>
+                    <span data-i18n="contact_hours">Check-in: 3:00 PM · Check-out: 11:00 AM</span>
                 </div>
             </div>
 
             <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                 <div class="cf-row">
                     <div class="cf-group">
-                        <label for="cf-name">Full Name</label>
-                        <input type="text" id="cf-name" name="name" required placeholder="Your name">
+                        <label for="cf-name" data-i18n="cf_name_label">Full Name</label>
+                        <input type="text" id="cf-name" name="name" required placeholder="Your name" data-i18n-placeholder="cf_name_placeholder">
                     </div>
                     <div class="cf-group">
-                        <label for="cf-email">Email</label>
+                        <label for="cf-email" data-i18n="cf_email_label">Email</label>
                         <input type="email" id="cf-email" name="email" required placeholder="your@email.com">
                     </div>
                 </div>
                 <div class="cf-group">
-                    <label for="cf-subject">Subject</label>
+                    <label for="cf-subject" data-i18n="cf_subject_label">Subject</label>
                     <select id="cf-subject" name="subject">
-                        <option value="">Select a topic</option>
-                        <option value="booking">Booking inquiry</option>
-                        <option value="transfer">Airport transfer</option>
-                        <option value="dining">Dining reservation</option>
-                        <option value="event">Event / private hire</option>
-                        <option value="other">Other</option>
+                        <option value="" data-i18n="cf_select_topic">Select a topic</option>
+                        <option value="booking" data-i18n="cf_booking">Booking inquiry</option>
+                        <option value="transfer" data-i18n="cf_transfer">Airport transfer</option>
+                        <option value="dining" data-i18n="cf_dining_res">Dining reservation</option>
+                        <option value="event" data-i18n="cf_event_hire">Event / private hire</option>
+                        <option value="other" data-i18n="cf_other">Other</option>
                     </select>
                 </div>
                 <div class="cf-group">
-                    <label for="cf-message">Message</label>
-                    <textarea id="cf-message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
+                    <label for="cf-message" data-i18n="cf_message_label">Message</label>
+                    <textarea id="cf-message" name="message" rows="5" required placeholder="How can we help you?" data-i18n-placeholder="cf_message_placeholder"></textarea>
                 </div>
                 <input type="hidden" name="_subject" value="Contact Form — Luna Piena">
-                <button type="submit" class="cf-submit">Send Message</button>
+                <button type="submit" class="cf-submit" data-i18n="cf_send">Send Message</button>
             </form>
         </div>
     </section>
