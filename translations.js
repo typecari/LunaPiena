@@ -498,7 +498,203 @@ const TRANSLATIONS = {
   },
 
   // IT is populated at runtime from the cache or the Claude API
-  it: {}
+  it: {
+    nav_rooms:  'Camere',
+    nav_dining:  'Gastronomia',
+    nav_events:  'Eventi',
+    nav_about:  'Chi Siamo',
+    nav_journal:  'Diario',
+    nav_contact:  'Contatto',
+    guest_portal:  'Portale Ospiti',
+    hero_tagline:  'LUNA PIENA by Lupo Group',
+    hero_title:  'Ogni Notte Come una Luna Piena',
+    hero_description: 'Un santuario boutique nel cuore della Toscana. Tranquillo. Accogliente. Indimenticabile.',
+    hero_cta:  'Prenota il Tuo Soggiorno',
+    explore_rooms:  'Esplora le Camere',
+    discover:  'Scopri',
+    rooms_label:  'Alloggi',
+    rooms_title:  'Le Nostre Camere',
+    view_all:  'Vedi Tutto',
+    serena_suite:  'Suite Serena',
+    serena_details:  '45 m² · Letto King · Vista sul Giardino',
+    luna_room:  'Camera Luna',
+    luna_details:  '35 m² · Letto Queen · Vista sul Cortile',
+    piena_grand:  'Piena Grand',
+    piena_details:  '65 m² · Letto King · Terrazza',
+    per_night:  '/ notte',
+    reserve:  'Prenota',
+    values_label:  'La Nostra Promessa',
+    values_title:  'Dove Ogni Dettaglio Conta',
+    values_description: 'Ci dedichiamo a creare un\'atmosfera di connessione e comfort, dove ogni dettaglio è pensato per lasciare un\'impressione duratura.',
+    value_hospitality: 'Ospitalità',
+    value_hospitality_desc: 'Un ambiente caldo e accogliente dove ogni ospite si sente a casa fin dal primo momento.',
+    value_comfort:  'Comfort',
+    value_comfort_desc: 'Dettagli premurosi e spazi rilassanti garantiscono armonia ed equilibrio durante tutto il soggiorno.',
+    value_memorability: 'Memorabilità',
+    value_connection: 'Connessione',
+    value_connection_desc: 'Legami significativi attraverso un servizio personalizzato e una cura genuina per ogni ospite.',
+    availability_label: 'Pianifica la Tua Visita',
+    availability_title: 'Disponibilità',
+    availability_desc: 'Consulta il nostro calendario per trovare le date perfette per il tuo soggiorno.',
+    legend_available: 'Disponibile',
+    legend_booked:  'Prenotato',
+    dining_label:  'Esperienza Culinaria',
+    dining_title:  'Fatto con Amore',
+    dining_description: 'Assapora pasti casalinghi autentici preparati con cura. Dalle arepas venezuelane alla pasta confortante, la nostra cucina celebra la tradizione e il calore in ogni piatto.',
+    view_menu:  'Vedi il Menù',
+    dining_page_title: 'Cena con Noi',
+    dining_page_subtitle: 'Pasti fatti in casa con amore, unendo le tradizioni colombiane, italiane e venezuelane con sapori confortanti da tutto il mondo.',
+    philosophy_label: 'La Nostra Filosofia',
+    philosophy_title: 'Fatto con Amore',
+    philosophy_p1:  'A Luna Piena, il cibo è un\'espressione di cura. Il nostro menù include piatti casalinghi ispirati alla cucina colombiana, italiana e venezuelana, preparati freschi su richiesta.',
+    philosophy_p2:  'Dalle morbide arepas al mattino alla pasta confortante la sera, ogni pasto è pensato per farti sentire a casa — nutrito e felice.',
+    philosophy_callout: 'Il nostro menù speciale è disponibile su richiesta. Comunicaci le tue preferenze e prepareremo qualcosa di delizioso per te.',
+    menu_label:  'Cosa Serviamo',
+    menu_title:  'Il Menù',
+    breakfast:  'Colazione',
+    dinner:  'Cena',
+    drinks:  'Bevande',
+    lucy_note_title:  'Una Nota su Lucy',
+    lucy_note:  'La nostra amata compagna Lucy potrebbe unirsi a te durante i pasti. Ti chiediamo gentilmente di non darle cibo umano — ha esigenze dietetiche speciali. (A meno che non sia parmigiano, lei dice che va bene.)',
+    about_page_title: 'Chi Siamo',
+    story_label:  'La Nostra Storia',
+    story_title:  'Nato da un Sogno di Calda Ospitalità',
+    story_p1:  'Luna Piena by Lupo è un\'esperienza di hotel boutique che fonde il fascino italiano con un tocco moderno e premuroso. Ogni soggiorno è pensato per sembrare una notte di luna piena: tranquillo, accogliente e indimenticabile.',
+    story_p2:  'Ci concentriamo sulla creazione di un\'atmosfera di connessione e comfort. Dal momento del tuo arrivo, diventi parte della nostra famiglia.',
+    philosophy_label_about: 'La Nostra Filosofia',
+    philosophy_title_about: 'Pulito, Tranquillo, Premuroso',
+    philosophy_p1_about: 'I nostri spazi sono progettati per ispirare calma e connessione, offrendo un rifugio senza tempo dalla quotidianità. Crediamo nel potere della semplicità.',
+    philosophy_p2_about: 'Ogni elemento di Luna Piena riflette questa visione, dagli interni curati al servizio personalizzato che anticipa ogni tua esigenza.',
+    values_label_about: 'I Nostri Valori',
+    values_title_about: 'Ciò Che Ci Guida',
+    quote:  'Ogni soggiorno è pensato per sembrare una notte di luna piena: tranquillo, accogliente e indimenticabile.',
+    quote_attribution: '— La Promessa di Luna Piena',
+    events_page_title: 'Organizza il Tuo Evento',
+    events_page_subtitle: 'Crea momenti indimenticabili nei nostri spazi intimi ed eleganti progettati per incontri speciali.',
+    features_label:  'Cosa Offriamo',
+    features_title:  'Tutto Ciò di Cui Hai Bisogno',
+    weddings:  'Matrimoni',
+    weddings_desc:  'Celebra la tua storia d\'amore in un ambiente intimo che sembra un sogno. Da cerimonia a ricevimento, ogni dettaglio è curato con amore.',
+    corporate:  'Ritiri Aziendali',
+    corporate_desc:  'Ispira il tuo team in un ambiente tranquillo. Ideale per pianificazione strategica, team building e workshop creativi.',
+    private_dining:  'Cena Privata',
+    private_dining_desc: 'Organizza una cena esclusiva con menù personalizzati e servizio impeccabile.',
+    intimate_venue:  'Venue Intimo',
+    intimate_venue_desc: 'Accesso esclusivo ai nostri bellissimi spazi',
+    guest_rooms:  'Camere per Ospiti',
+    guest_rooms_desc: 'Alloggio per i tuoi invitati',
+    custom_catering:  'Catering Personalizzato',
+    custom_catering_desc: 'Menù personalizzati per il tuo evento',
+    event_planning:  'Organizzazione Eventi',
+    event_planning_desc: 'Supporto dedicato dall\'inizio alla fine',
+    inquiry_label:  'Contattaci',
+    inquiry_title:  'Pianifica il Tuo Evento',
+    inquiry_description: 'Raccontaci la tua visione e ti aiuteremo a realizzarla. Che sia un incontro intimo o una grande celebrazione, siamo qui per renderlo indimenticabile.',
+    full_name:  'Nome Completo',
+    email:  'Email',
+    event_type:  'Tipo di Evento',
+    select_event_type: 'Seleziona il tipo di evento',
+    event_wedding:  'Matrimonio',
+    event_celebration: 'Compleanno / Anniversario',
+    event_corporate:  'Ritiro Aziendale',
+    event_private_dining: 'Cena Privata',
+    event_other:  'Altro',
+    preferred_date:  'Data Preferita',
+    estimated_guests: 'Numero Stimato di Ospiti',
+    tell_us:  'Raccontaci del Tuo Evento',
+    tell_us_placeholder: 'Condividi la tua visione, richieste speciali o domande...',
+    send_inquiry:  'Invia Richiesta',
+    select:  'Seleziona',
+    journal_title:  'Il Diario',
+    featured_category: 'Viaggi e Benessere',
+    featured_title:  'L\'Arte del Viaggio Lento: Trovare Pace nell\'Ospitalità Boutique',
+    featured_excerpt: 'In un mondo che va sempre più veloce, il viaggio lento è diventato non solo una preferenza ma una necessità. A Luna Piena, abbiamo costruito la nostra filosofia attorno a questa idea.',
+    read_article:  'Leggi l\'Articolo',
+    stay_connected:  'Resta in Contatto',
+    newsletter_subtitle: 'Iscriviti per storie, ricette e offerte esclusive.',
+    subscribe:  'Iscriviti',
+    your_name:  'Il tuo nome',
+    your_email:  'Il tuo indirizzo email',
+    rooms_page_title: 'Le Nostre Camere',
+    rooms_page_subtitle: 'Ogni spazio progettato per essere il tuo santuario — tranquillo, elegante, indimenticabile.',
+    signature_suite:  'Suite di Firma',
+    classic_room:  'Camera Classic',
+    grand_suite:  'Suite Grand',
+    serena_description: 'La nostra suite di firma offre un ampio rifugio con vista sul giardino, con caldi toni terracotta, arredi artigianali e comfort moderni che fondono l\'eleganza toscana con il design contemporaneo.',
+    luna_description: 'Intima e serena, la Camera Luna cattura l\'essenza dell\'eleganza italiana. Biancheria morbida in toni terrosi, illuminazione ambientale calda e vista sul cortile creano lo spazio perfetto per il riposo.',
+    piena_description: 'Il nostro alloggio più lussuoso dispone di un ampio soggiorno, camera da letto principale con vista panoramica e comfort premurosi. Texture ricche, legni caldi e accenti dorati creano un\'atmosfera di raffinato comfort.',
+    king_bed:  'Letto King',
+    queen_bed:  'Letto Queen',
+    garden_view:  'Vista sul Giardino',
+    courtyard_view:  'Vista sul Cortile',
+    private_terrace:  'Terrazza Privata',
+    panoramic_terrace: 'Terrazza Panoramica',
+    premium_amenities: 'Servizi Premium',
+    quiet_serene:  'Tranquillo e Sereno',
+    reserve_this_room: 'Prenota Questa Camera',
+    in_every_room:  'In Ogni Camera',
+    amenities:  'Servizi',
+    premium_linens:  'Biancheria Premium',
+    thread_count:  '400 fili',
+    smart_tv:  'Smart TV',
+    wifi:  'WiFi ad Alta Velocità',
+    complimentary:  'Gratuito',
+    climate_control:  'Controllo Clima',
+    adjustable_ac:  'Aria Condizionata Regolabile',
+    toiletries:  'Articoli da Toilette',
+    quality_essentials: 'Essenziali di qualità',
+    coffee_tea:  'Caffè e Tè',
+    in_room_selection: 'Selezione in camera',
+    bedside_outlets:  'Prese Comodino',
+    both_sides:  'Entrambi i lati',
+    smart_assistant:  'Assistente Intelligente',
+    menu_page_title:  'Menù Stagionale',
+    menu_page_subtitle: 'Piatti casalinghi freschi che cambiano con le stagioni.',
+    menu_section_starters: 'Antipasti',
+    menu_section_mains: 'Secondi',
+    menu_section_desserts: 'Dessert',
+    menu_section_drinks: 'Bevande',
+    menu_request_note: 'Tutti i piatti sono preparati freschi su richiesta. Comunicaci le tue preferenze e restrizioni alimentari al momento della prenotazione.',
+    menu_price_label: 'a persona',
+    menu_available_note: 'La disponibilità stagionale può variare.',
+    booking_title:  'Inizia la Tua Esperienza Luna Piena',
+    booking_select_room: 'Seleziona Camera *',
+    serena_price:  '€280 / notte · Letto King · Vista sul Giardino',
+    luna_price:  '€220 / notte · Letto Queen · Vista sul Cortile',
+    piena_price:  '€380 / notte · Letto King · Terrazza',
+    not_sure:  'Non sono ancora sicuro',
+    well_help:  'Ti aiutiamo a scegliere',
+    checkin_label:  'Data di Arrivo *',
+    checkout_label:  'Data di Partenza *',
+    first_name_label: 'Nome *',
+    last_name_label:  'Cognome *',
+    email_label:  'Indirizzo Email *',
+    phone_label:  'Telefono / WhatsApp',
+    guests_label:  'Numero di Ospiti',
+    notes_label:  'Richieste Speciali o Note',
+    special_needs_label: 'Esigenze Speciali',
+    needs_kids_bed:  'Letto o culla per bambini',
+    needs_pet:  'Viaggio con animale domestico',
+    needs_accessibility: 'Esigenze di accessibilità',
+    needs_early_checkin: 'Check-in anticipato',
+    needs_late_checkout: 'Check-out posticipato',
+    needs_special_occasion: 'Occasione speciale',
+    send_booking:  'Invia Richiesta di Prenotazione',
+    booking_success_title: 'Abbiamo ricevuto la tua richiesta!',
+    booking_success_msg: 'Grazie per aver scelto Luna Piena. Ti contatteremo entro 24 ore per confermare il soggiorno.',
+    booking_reserve_label: 'Prenota la Tua Camera',
+    booking_intro_text: 'Compila il modulo e confermeremo la tua prenotazione entro 24 ore. Tutti i soggiorni includono colazione, servizio personalizzato e il calore di una casa lontano da casa.',
+    perk_boutique:  'Camere boutique con dettagli curati',
+    perk_breakfast:  'Colazione casalinga inclusa',
+    perk_lucy:  'Incontra Lucy, la nostra compagna residente',
+    perk_smarthome:  'Smart home e streaming inclusi',
+    perk_confirm:  'Confermiamo via email entro 24 ore',
+    booking_form_title: 'Richiedi una Prenotazione',
+    booking_required_note: 'Tutti i campi contrassegnati con * sono obbligatori',
+    footer_explore:  'Esplora',
+    footer_info:  'Informazioni',
+    footer_tagline:  'Un\'esperienza di hotel boutique by Lupo, dove il fascino italiano incontra la modernità.',
+  }
 };
 
 // ─────────────────────────────────────────────────────────────
@@ -547,88 +743,16 @@ const TRANSLATIONS = {
     document.documentElement.lang = lang;
   }
 
-  // ── Load IT from localStorage cache ─────────────────────────
+  // ── IT is hardcoded, always ready ──────────────────────────
   function loadCachedIT() {
-    try {
-      const cached    = localStorage.getItem(CACHE_KEY);
-      const cachedHash = localStorage.getItem(HASH_KEY);
-      const currentHash = hashEN();
-
-      // Force refresh via URL param
-      const forceRefresh = new URLSearchParams(window.location.search).get('refresh') === '1';
-
-      if (!forceRefresh && cached && cachedHash === currentHash) {
-        TRANSLATIONS.it = JSON.parse(cached);
-        itReady = true;
-        return true;   // cache hit
-      }
-    } catch (e) { /* ignore parse errors */ }
-    return false;      // cache miss
+    itReady = true;
+    return true;
   }
 
-  // ── Fetch IT from Claude API ─────────────────────────────────
-  async function fetchItalianTranslations() {
-    if (itPending) return;
-    itPending = true;
-
-    // Show subtle loading indicator only if user is on IT
-    const indicator = document.createElement('div');
-    if (currentLang === 'it') {
-      indicator.style.cssText = 'position:fixed;bottom:20px;right:20px;background:rgba(244,147,33,0.9);color:#1a1a1a;padding:10px 18px;font-family:Nunito,sans-serif;font-size:0.75rem;letter-spacing:0.1em;z-index:9999;';
-      indicator.textContent = 'Translating to Italian…';
-      document.body.appendChild(indicator);
-    }
-
-    try {
-      const enStrings = TRANSLATIONS.en;
-      const prompt = `You are a professional Italian translator specializing in luxury hospitality.
-
-Translate the following JSON object from English to Italian. Return ONLY valid JSON — no markdown, no explanation, no backticks. Preserve all keys exactly as-is. Keep brand names (Luna Piena, Lupo Group, Serena Suite, Luna Room, Piena Grand, Lucy) untranslated. Keep currency symbols, measurements (sqm, m²), and punctuation patterns similar to the original.
-
-${JSON.stringify(enStrings, null, 2)}`;
-
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true'
-        },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-6',
-          max_tokens: 4000,
-          messages: [{ role: 'user', content: prompt }]
-        })
-      });
-
-      if (!response.ok) throw new Error('API error ' + response.status);
-
-      const data = await response.json();
-      const raw  = data.content.find(b => b.type === 'text')?.text || '{}';
-
-      // Strip any accidental markdown fences
-      const clean = raw.replace(/```json|```/g, '').trim();
-      const parsed = JSON.parse(clean);
-
-      // Save to cache
-      TRANSLATIONS.it = parsed;
-      localStorage.setItem(CACHE_KEY, JSON.stringify(parsed));
-      localStorage.setItem(HASH_KEY, hashEN());
-      itReady = true;
-
-      // Apply immediately if user is waiting on IT
-      if (currentLang === 'it') applyLang('it');
-
-    } catch (err) {
-      console.warn('[Luna Piena i18n] Italian translation failed:', err);
-      // Fallback: use EN strings for IT
-      TRANSLATIONS.it = { ...TRANSLATIONS.en };
-      itReady = true;
-      if (currentLang === 'it') applyLang('it');
-    } finally {
-      itPending = false;
-      if (indicator.parentNode) indicator.parentNode.removeChild(indicator);
-    }
+  // ── Italian is hardcoded — no API call needed ───────────────
+  function fetchItalianTranslations() {
+    itReady = true;
+    if (currentLang === 'it') applyLang('it');
   }
 
   // ── Wire up language toggle buttons ─────────────────────────
@@ -637,51 +761,24 @@ ${JSON.stringify(enStrings, null, 2)}`;
       a.addEventListener('click', function (e) {
         e.preventDefault();
         const lang = a.textContent.trim().toLowerCase();
-        if (!LANGS.includes(lang)) return;
-
-        if (lang === 'it') {
-          if (itReady) {
-            applyLang('it');
-          } else {
-            // Apply EN as placeholder while fetching
-            applyLang('en');
-            fetchItalianTranslations();
-          }
-        } else {
-          applyLang(lang);
-        }
+        if (!['en', 'es', 'it'].includes(lang)) return;
+        applyLang(lang);
       });
     });
   }
 
   // ── Boot ─────────────────────────────────────────────────────
   function init() {
-    // Try to load IT from cache immediately (synchronous)
-    loadCachedIT();
-
-    // If user's last language was IT and we have the cache, apply it
-    // Otherwise fall back to EN while we fetch
-    if (currentLang === 'it' && !itReady) {
-      applyLang('en');
-      fetchItalianTranslations();
-    } else {
-      applyLang(currentLang);
-    }
-
-    // Pre-fetch IT in the background if not cached
-    // (so it's instant when user clicks IT)
-    if (!itReady) {
-      // Delay background fetch to not compete with page render
-      setTimeout(fetchItalianTranslations, 2000);
-    }
-
+    loadCachedIT();           // IT always ready — no-op sets itReady=true
+    applyLang(currentLang);  // Apply saved or default language immediately
     initToggles();
   }
 
-  // Run after DOM is ready
+  // ── Run on DOM ready ─────────────────────────────────────────
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
+
 }());
