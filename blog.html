@@ -4,108 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journal | Luna Piena</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        :root {
-            --forest: #336633;
-            --golden: #F49321;
-            --cream: #FAF9F6;
-            --dark: #1a1a1a;
-            --gray: #888;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: var(--cream);
-            color: var(--dark);
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 20px 5vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(250, 249, 246, 0.95);
-            backdrop-filter: blur(20px);
-        }
-
-        .logo { height: 45px; }
-
-        .nav-center {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-center a {
-            color: var(--dark);
-            text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .nav-center a:hover, .nav-center a.active { color: var(--forest); }
-
-        .lang-toggle {
-            display: flex;
-            gap: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .lang-toggle a {
-            text-decoration: none;
-            padding: 4px 8px;
-            color: var(--gray);
-        }
-
-        .lang-toggle a.active {
-            background: var(--golden);
-            color: var(--dark);
-        }
-
-        .page-hero {
-            height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+        /* ── PAGE-SPECIFIC: blog.html ── */
+        .page-hero { height: 50vh; }
 
         .hero-bg {
-            position: absolute;
-            inset: -10%;
-            background: linear-gradient(rgba(51,102,51,0.85), rgba(26,26,26,0.9)),
-                        url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1800&q=80');
-            background-size: cover;
-            background-position: center;
+            background:
+                linear-gradient(rgba(51,102,51,0.85), rgba(26,26,26,0.9)),
+                url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1800&q=80')
+                center / cover no-repeat;
         }
 
-        .page-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 400;
-            color: var(--cream);
-            position: relative;
-            z-index: 2;
-        }
+        /* BUG FIX: h1 was rendering behind overlay on some browsers */
+        .page-hero h1 { position: relative; z-index: 2; }
 
-        .page-hero h1 em { color: var(--golden); }
-
-        .blog-section {
-            padding: 100px 8vw;
-        }
+        .blog-section { padding: 100px 8vw; }
 
         .featured-post {
             display: grid;
@@ -116,26 +30,16 @@
             border-bottom: 1px solid rgba(0,0,0,0.1);
         }
 
-        .featured-post a {
-            text-decoration: none;
-            color: inherit;
-        }
+        .featured-post a { text-decoration: none; color: inherit; }
 
-        .featured-image {
-            height: 450px;
-            overflow: hidden;
-        }
+        .featured-image { height: 450px; overflow: hidden; }
 
         .featured-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100%; height: 100%; object-fit: cover;
             transition: transform 0.6s ease;
         }
 
-        .featured-post:hover .featured-image img {
-            transform: scale(1.05);
-        }
+        .featured-post:hover .featured-image img { transform: scale(1.05); }
 
         .featured-content {
             display: flex;
@@ -149,33 +53,21 @@
             text-transform: uppercase;
             color: var(--golden);
             margin-bottom: 16px;
+            display: block;
         }
 
         .featured-content h2 {
-            font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 3vw, 2.8rem);
-            font-weight: 400;
             line-height: 1.3;
             margin-bottom: 20px;
+            transition: color 0.3s ease;
         }
 
-        .featured-post:hover .featured-content h2 {
-            color: var(--forest);
-        }
+        .featured-post:hover .featured-content h2 { color: var(--forest); }
 
-        .featured-content p {
-            font-size: 1rem;
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 24px;
-        }
+        .featured-content p { font-size: 1rem; color: var(--gray); line-height: 1.8; margin-bottom: 24px; }
 
-        .post-meta {
-            font-size: 0.8rem;
-            color: var(--gray);
-            display: flex;
-            gap: 20px;
-        }
+        .post-meta { font-size: 0.8rem; color: var(--gray); display: flex; gap: 20px; }
 
         .read-more {
             display: inline-flex;
@@ -187,6 +79,7 @@
             text-transform: uppercase;
             font-weight: 700;
             margin-top: auto;
+            text-decoration: none;
         }
 
         .blog-grid {
@@ -196,7 +89,7 @@
         }
 
         .blog-card {
-            background: white;
+            background: var(--white);
             transition: all 0.4s ease;
         }
 
@@ -205,50 +98,30 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.1);
         }
 
-        .blog-card a {
-            text-decoration: none;
-            color: inherit;
-        }
+        .blog-card a { text-decoration: none; color: inherit; }
 
-        .blog-card-image {
-            height: 220px;
-            overflow: hidden;
-        }
+        .blog-card-image { height: 220px; overflow: hidden; }
 
         .blog-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100%; height: 100%; object-fit: cover;
             transition: transform 0.6s ease;
         }
 
-        .blog-card:hover .blog-card-image img {
-            transform: scale(1.1);
-        }
+        .blog-card:hover .blog-card-image img { transform: scale(1.1); }
 
-        .blog-card-content {
-            padding: 30px;
-        }
+        .blog-card-content { padding: 30px; }
 
         .blog-card h3 {
-            font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
-            font-weight: 400;
             margin-bottom: 12px;
             line-height: 1.3;
+            transition: color 0.3s ease;
         }
 
-        .blog-card:hover h3 {
-            color: var(--forest);
-        }
+        .blog-card:hover h3 { color: var(--forest); }
+        .blog-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.7; margin-bottom: 20px; }
 
-        .blog-card p {
-            font-size: 0.9rem;
-            color: var(--gray);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
+        /* Newsletter */
         .newsletter {
             padding: 100px 8vw;
             background: var(--dark);
@@ -256,17 +129,12 @@
         }
 
         .newsletter h2 {
-            font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 400;
             color: var(--cream);
             margin-bottom: 16px;
         }
 
-        .newsletter p {
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 40px;
-        }
+        .newsletter p { color: rgba(255,255,255,0.6); margin-bottom: 40px; }
 
         .newsletter-form {
             display: flex;
@@ -282,11 +150,12 @@
             background: transparent;
             color: var(--cream);
             font-family: 'Nunito', sans-serif;
+            outline: none;
         }
 
-        .newsletter-form input::placeholder {
-            color: rgba(255,255,255,0.4);
-        }
+        .newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+
+        .newsletter-form input:focus { border-color: var(--golden); }
 
         .newsletter-form button {
             padding: 18px 32px;
@@ -299,56 +168,10 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
 
-        .newsletter-form button:hover {
-            background: var(--cream);
-        }
-
-        footer {
-            padding: 60px 8vw;
-            background: var(--forest);
-            color: var(--cream);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        footer a {
-            color: var(--cream);
-            text-decoration: none;
-            opacity: 0.6;
-        }
-
-        footer a:hover { opacity: 1; }
-
-        .footer-links { display: flex; gap: 40px; }
-
-        .social-links {
-            display: flex;
-            gap: 16px;
-        }
-
-        .social-links a {
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-        }
-
-        .social-links a:hover {
-            background: var(--golden);
-            border-color: var(--golden);
-        }
-
-        .social-links svg {
-            width: 16px;
-            height: 16px;
-        }
+        .newsletter-form button:hover { background: var(--cream); }
 
         @media (max-width: 1024px) {
             .featured-post { grid-template-columns: 1fr; }
@@ -357,47 +180,49 @@
         }
 
         @media (max-width: 768px) {
-            nav { padding: 16px 5vw; }
-            .nav-center { display: none; }
             .blog-section { padding: 60px 5vw; }
             .blog-grid { grid-template-columns: 1fr; }
             .newsletter { padding: 60px 5vw; }
             .newsletter-form { flex-direction: column; }
-            footer { flex-direction: column; gap: 30px; text-align: center; }
         }
     </style>
-    <script src="translations.js"></script>
+    <script src="translations.js" defer></script>
 </head>
 <body>
     <nav>
         <a href="index.html"><img src="logo.png" alt="Luna Piena" class="logo"></a>
         <ul class="nav-center">
-            <li><a href="rooms.html" data-i18n="nav_rooms">Rooms</a></li>
+            <li><a href="rooms.html"  data-i18n="nav_rooms">Rooms</a></li>
             <li><a href="dining.html" data-i18n="nav_dining">Dining</a></li>
             <li><a href="events.html" data-i18n="nav_events">Events</a></li>
-            <li><a href="about.html" data-i18n="nav_about">Who We Are</a></li>
-            <li><a href="blog.html" class="active" data-i18n="nav_journal">Journal</a></li>
+            <li><a href="about.html"  data-i18n="nav_about">Who We Are</a></li>
+            <li><a href="blog.html"   class="active" data-i18n="nav_journal">Journal</a></li>
         </ul>
-        <div class="lang-toggle">
-            <a href="#" class="active">EN</a>
-            <a href="#">ES</a>
+        <!-- BUG FIX: Added missing nav-right wrapper (was absent in original blog.html) -->
+        <div class="nav-right">
+            <div class="lang-toggle">
+                <a href="#" class="active" aria-label="English">EN</a>
+                <a href="#" aria-label="Español">ES</a>
+            </div>
         </div>
     </nav>
 
     <section class="page-hero">
-        <div class="hero-bg"></div>
-        <h1 data-i18n="journal_title">The <em>Journal</em></h1>
+        <div class="hero-bg" role="presentation"></div>
+        <div class="page-hero-content">
+            <h1 data-i18n="journal_title">The <em>Journal</em></h1>
+        </div>
     </section>
 
     <section class="blog-section">
         <article class="featured-post">
             <a href="article.html">
                 <div class="featured-image">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80" alt="Featured">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80" alt="Featured article: The Art of Slow Travel">
                 </div>
             </a>
             <div class="featured-content">
-                <span class="post-category" data-i18n="featured_category">Travel & Wellness</span>
+                <span class="post-category" data-i18n="featured_category">Travel &amp; Wellness</span>
                 <a href="article.html"><h2 data-i18n="featured_title">The Art of Slow Travel: Finding Peace in Boutique Hospitality</h2></a>
                 <p data-i18n="featured_excerpt">In a world that moves faster each day, slow travel has become not just a preference but a necessity. At Luna Piena, we've built our philosophy around this idea.</p>
                 <div class="post-meta">
@@ -412,7 +237,7 @@
             <article class="blog-card">
                 <a href="article.html">
                     <div class="blog-card-image">
-                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Blog">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Venezuelan-Inspired Menu">
                     </div>
                     <div class="blog-card-content">
                         <span class="post-category">Culinary</span>
@@ -425,7 +250,7 @@
             <article class="blog-card">
                 <a href="article.html">
                     <div class="blog-card-image">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Blog">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Spaces That Feel Like Home">
                     </div>
                     <div class="blog-card-content">
                         <span class="post-category">Design</span>
@@ -438,7 +263,7 @@
             <article class="blog-card">
                 <a href="article.html">
                     <div class="blog-card-image">
-                        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80" alt="Blog">
+                        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80" alt="Lucy our dog">
                     </div>
                     <div class="blog-card-content">
                         <span class="post-category">Life at Luna Piena</span>
@@ -454,25 +279,31 @@
     <section class="newsletter">
         <h2 data-i18n="stay_connected">Stay Connected</h2>
         <p data-i18n="newsletter_subtitle">Subscribe for stories, recipes, and exclusive offers.</p>
-        <form class="newsletter-form">
-            <input type="email" placeholder="Your email address" required>
+        <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
             <button type="submit" data-i18n="subscribe">Subscribe</button>
         </form>
     </section>
 
     <footer>
-        <img src="logo.png" alt="Luna Piena" style="height: 40px; filter: brightness(0) invert(1);">
-        <div class="footer-links">
+        <img src="logo.png" alt="Luna Piena" style="height:40px; filter:brightness(0) invert(1);">
+        <nav class="footer-links" aria-label="Footer navigation">
             <a href="index.html">Home</a>
             <a href="rooms.html">Rooms</a>
             <a href="dining.html">Dining</a>
             <a href="events.html">Events</a>
             <a href="about.html">Who We Are</a>
-        </div>
+        </nav>
         <div class="social-links">
-            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
-            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5c0-1 1-2 2-2s2 1 2 2v5"/></svg></a>
-            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></a>
+            <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M15 8h-2a1 1 0 0 0-1 1v2h3l-.5 3H12v7"/></svg>
+            </a>
+            <a href="#" aria-label="Google Reviews">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </a>
         </div>
     </footer>
 </body>
