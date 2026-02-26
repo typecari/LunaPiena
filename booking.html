@@ -164,6 +164,31 @@
             line-height: 1.6;
         }
 
+        /* Special needs checkboxes */
+        .checkbox-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+        .checkbox-item { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.88rem; color: var(--dark); user-select: none; }
+        .checkbox-item input[type="checkbox"] { display: none; }
+        .checkbox-box {
+            width: 18px; height: 18px; flex-shrink: 0;
+            border: 1.5px solid #ccc;
+            background: white;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .checkbox-item input:checked + .checkbox-box {
+            background: var(--forest);
+            border-color: var(--forest);
+        }
+        .checkbox-item input:checked + .checkbox-box::after {
+            content: '';
+            width: 5px; height: 9px;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(45deg) translate(-1px, -1px);
+            display: block;
+        }
+        @media (max-width: 600px) { .checkbox-list { grid-template-columns: 1fr; } }
+
         /* Success message */
         .success-message {
             display: none;
@@ -256,17 +281,17 @@
                 <div class="form-group">
                     <label>Select Room *</label>
                     <div class="room-selector" id="room-selector">
-                        <div class="room-option" data-room="Garden Suite" onclick="selectRoom(this)">
-                            <div class="room-name">Garden Suite</div>
-                            <div class="room-price">Contact for pricing</div>
+                        <div class="room-option" data-room="Serena Suite" onclick="selectRoom(this)">
+                            <div class="room-name">Serena Suite</div>
+                            <div class="room-price">€280 / night · King Bed · Garden View</div>
                         </div>
-                        <div class="room-option" data-room="Moonlight Room" onclick="selectRoom(this)">
-                            <div class="room-name">Moonlight Room</div>
-                            <div class="room-price">Contact for pricing</div>
+                        <div class="room-option" data-room="Luna Room" onclick="selectRoom(this)">
+                            <div class="room-name">Luna Room</div>
+                            <div class="room-price">€220 / night · Queen Bed · Courtyard View</div>
                         </div>
-                        <div class="room-option" data-room="Luna Suite" onclick="selectRoom(this)">
-                            <div class="room-name">Luna Suite</div>
-                            <div class="room-price">Contact for pricing</div>
+                        <div class="room-option" data-room="Piena Grand" onclick="selectRoom(this)">
+                            <div class="room-name">Piena Grand</div>
+                            <div class="room-price">€380 / night · King Bed · Terrace</div>
                         </div>
                         <div class="room-option" data-room="Not sure yet" onclick="selectRoom(this)">
                             <div class="room-name">Not sure yet</div>
@@ -322,6 +347,19 @@
                 <div class="form-group">
                     <label for="notes">Special Requests or Notes</label>
                     <textarea id="notes" name="notes" rows="3" placeholder="Dietary preferences, celebrations, accessibility needs..."></textarea>
+                </div>
+
+                <!-- Special needs checkboxes -->
+                <div class="form-group" style="margin-top: 8px;">
+                    <label>Special Needs</label>
+                    <div class="checkbox-list">
+                        <label class="checkbox-item"><input type="checkbox" name="kids_bed" value="Yes"><span class="checkbox-box"></span><span>Bed or crib for kids</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="pet" value="Yes"><span class="checkbox-box"></span><span>Bringing a pet</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="accessibility" value="Yes"><span class="checkbox-box"></span><span>Accessibility needs</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="early_checkin" value="Yes"><span class="checkbox-box"></span><span>Early check-in</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="late_checkout" value="Yes"><span class="checkbox-box"></span><span>Late check-out</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="celebration" value="Yes"><span class="checkbox-box"></span><span>Special occasion</span></label>
+                    </div>
                 </div>
 
                 <button type="submit" class="submit-btn" id="submit-btn">Send Booking Request</button>

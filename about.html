@@ -38,9 +38,12 @@
         .story-image::before {
             content: '';
             position: absolute;
-            top: -20px; left: -20px;
-            width: 80px; height: 80px;
-            border: 2px solid var(--golden);
+            top: 0; left: 0;
+            width: 60px; height: 60px;
+            border-top: 2px solid var(--golden);
+            border-left: 2px solid var(--golden);
+            pointer-events: none;
+            z-index: 2;
         }
 
         .story-content h2 { font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 24px; }

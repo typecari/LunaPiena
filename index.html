@@ -23,13 +23,14 @@
             transform: translateX(-50%);
             z-index: 200;
             padding: 14px 32px;
-            display: flex; align-items: center; gap: 32px;
+            display: flex; align-items: center; gap: 28px;
             background: rgba(10,10,10,0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255,255,255,0.07);
-            transition: all 0.4s ease;
+            transition: background 0.4s ease, border-color 0.4s ease;
             white-space: nowrap;
+            max-width: calc(100vw - 40px);
         }
 
         nav.scrolled { background: rgba(10,10,10,0.96); border-color: rgba(255,255,255,0.12); }
@@ -41,8 +42,8 @@
         .nav-links a {
             color: rgba(255,255,255,0.6);
             text-decoration: none;
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             transition: color 0.3s ease;
             white-space: nowrap;
