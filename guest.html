@@ -69,6 +69,7 @@ body { background:var(--dark); color:var(--cream); font-family:'DM Sans',sans-se
 .item-list li { display:flex; align-items:flex-start; gap:12px; padding:11px 15px; background:var(--card); border:1px solid var(--border); font-size:.91rem; line-height:1.68; color:var(--muted); transition:border-color .2s; }
 .item-list li:hover { border-color:rgba(200,146,42,.22); }
 .item-list li em { opacity:.75; font-style:italic; }
+.item-list li > span:not(.li-dot) { flex:1; min-width:0; }
 .li-dot { color:var(--golden); font-size:.6rem; margin-top:5px; flex-shrink:0; }
 .callout { margin-top:14px; padding:14px 18px; background:rgba(200,146,42,.08); border-left:3px solid var(--golden); font-size:.9rem; line-height:1.78; color:var(--muted); }
 .callout strong { color:var(--golden); }
@@ -329,9 +330,9 @@ const GUEST_DATA = {
         <li><span class="li-dot">✦</span>Towels are yours to use freely during your stay</li>
         <li><span class="li-dot">✦</span>Place used towels once a week in the laundry room</li>
         <li><span class="li-dot">✦</span>Hair dryer is in the bottom drawer on the left</li>
-        <li><span class="li-dot">✦</span>Toiletries provided: face wash, body wash and a 2-in-1 shampoo/conditioner. <em>If you have any sensitivity please let us know.</em></li>
+        <li><span class="li-dot">✦</span><span>Toiletries provided: face wash, body wash and a 2-in-1 shampoo/conditioner. <em>If you have any sensitivity please let us know.</em></span></li>
         <li><span class="li-dot">✦</span>Forgot your toothbrush or need a moisturizer? Just let us know — we got you!</li>
-        <li><span class="li-dot">✦</span>No toilet paper? Say <em>"Hey Google, broadcast: I need toilet paper."</em> If we're in a meeting, send a WhatsApp instead. (Please and thank you!)</li>
+        <li><span class="li-dot">✦</span><span>No toilet paper? Say <em>"Hey Google, broadcast: I need toilet paper."</em> If we're in a meeting, send a WhatsApp instead. (Please and thank you!)</span></li>
       </ul>
     </div>
   </section>
