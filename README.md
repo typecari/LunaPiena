@@ -208,3 +208,4 @@ All pages link to `styles.css`. Changes there apply everywhere instantly.
 
 This site is managed by **@typecari** on GitHub.  
 For questions about the codebase, open an issue in the repository.
+
