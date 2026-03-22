@@ -4,6 +4,7 @@ Boutique hotel website for **Luna Piena by Lupo**. Built with plain HTML, CSS, a
 
 ---
 
+
 ## 📁 File Structure
 
 ```
