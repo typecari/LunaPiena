@@ -155,26 +155,26 @@ const GUEST_DATA = {
         checkin:"March 26, 2026", checkout:"March 30, 2026", room:"Luna, Lunita, Lunera",
         note:"It's an honor to have you with us. We've prepared everything to make your stay as peaceful and memorable as a full-moon night."
     },
-    "[GUEST_NAME_URL]": {
-        greeting:"Hello, Lenu, Sari and Mike", subgreeting:"AKA Framily 🌙",
-        checkin:"March 26, 2026", checkout:"March 30, 2026", room:"Luna, Lunita, Lunera",
-        note:"It's an honor to have you with us. We've prepared everything to make your stay as peaceful and memorable as a full-moon night."
-    },
     "default": {
         greeting:"Welcome to Luna Piena", subgreeting:"",
         checkin:"", checkout:"", room:"",
         note:"We've prepared everything to make your stay as peaceful and memorable as a full-moon night."
     }
-    "[GUEST_NAME_URL]": {
-        greeting: "Hello, Lenu, Sari and Mike",
-        subgreeting: "AKA Framily 🌙",
-        checkin: "March 26, 2026",
-        checkout: "March 30, 2026",
-        room: "Luna, Lunita, Lunera",
-        note: "It's an honor to have you with us. We've prepared everything to make your stay as peaceful and memorable as a full-moon night."
-    }
 };
-};
+
+// Redirect broken URL to working one
+(function(){
+  const urlParams = new URLSearchParams(window.location.search);
+  const guestName = urlParams.get('name');
+  
+  if (guestName === '[GUEST_NAME_URL]') {
+    window.location.href = 'https://typecari.github.io/LunaPiena/guest.html?name=Framily';
+    return;
+  }
+
+  const p = new URLSearchParams(window.location.search);
+  const d = GUEST_DATA[(p.get('name')||'default').toLowerCase().trim()] || GUEST_DATA['default'];
+  //
 </script>
 
 <!-- SIDEBAR -->
