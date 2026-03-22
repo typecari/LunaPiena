@@ -139,7 +139,8 @@ body { background:var(--dark); color:var(--cream); font-family:'DM Sans',sans-se
 
 <div class="progress-bar" id="progressBar"></div>
 
-<script>
+Almost! You need to complete the function. Here's the full corrected script section:
+javascript<script>
 /* ═══════════════════════════════════════════════════════════
    GUEST DATA  —  edit one entry per booking
    Share URL:  yoursite.com/guest.html?name=smith
@@ -174,7 +175,17 @@ const GUEST_DATA = {
 
   const p = new URLSearchParams(window.location.search);
   const d = GUEST_DATA[(p.get('name')||'default').toLowerCase().trim()] || GUEST_DATA['default'];
-  //
+  if(d.greeting){ document.getElementById('js-guest-greeting').textContent=d.greeting; document.title=d.greeting+' | Luna Piena'; }
+  const sub=document.getElementById('js-guest-subgreeting');
+  if(d.subgreeting){ sub.textContent=d.subgreeting; } else { sub.style.display='none'; }
+  if(d.note) document.getElementById('js-welcome-note').innerHTML=d.note.replace(/\n/g,'<br>');
+  if(d.checkin||d.checkout||d.room){
+    const b=document.getElementById('js-stay-info'); b.style.display='inline-flex';
+    if(d.checkin)  document.getElementById('js-checkin').textContent=d.checkin;
+    if(d.checkout) document.getElementById('js-checkout').textContent=d.checkout;
+    if(d.room)     document.getElementById('js-room').textContent=d.room;
+  }
+}());
 </script>
 
 <!-- SIDEBAR -->
