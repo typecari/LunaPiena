@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Availability | Luna Piena</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── AVAIL PAGE HERO ── */
+        .hero-bg {
+            background:
+                linear-gradient(rgba(51,102,51,0.75), rgba(26,26,26,0.85)),
+                url('https://raw.githubusercontent.com/typecari/LunaPiena/main/Images/Luna_Piena_Outside1.png')
+                center / cover no-repeat;
+        }
+
+        /* ── AVAILABILITY CALENDAR (full year + date picker) ── */
+        .availability-section { padding: 100px 8vw 120px; background: var(--darker); color: var(--cream); position: relative; }
+        .availability-header { text-align: center; margin-bottom: 60px; }
+        .availability-header .section-label { font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--golden); margin-bottom: 16px; display: block; }
+        .availability-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; margin-bottom: 16px; color: var(--cream); }
+        .availability-header p { font-size: 1rem; opacity: 0.6; max-width: 500px; margin: 0 auto; }
+        .cal-year-nav { display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 40px; }
+        .cal-year-nav h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; min-width: 80px; text-align: center; color: var(--cream); }
+        .cal-nav-btn { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: var(--cream); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .cal-nav-btn:hover { border-color: var(--golden); color: var(--golden); }
+        .calendar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .month-card { background: rgba(0,0,0,0.3); padding: 20px; border: 1px solid rgba(255,255,255,0.05); transition: border-color 0.3s ease; }
+        .month-card:hover { border-color: rgba(255,255,255,0.12); }
+        .month-card.has-blocked { border-color: rgba(255,100,100,0.15); }
+        .month-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+        .month-card-header h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; color: var(--cream); }
+        .month-card-header .status { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
+        .month-card-header .status.available { background: rgba(51,102,51,0.3); color: #7cb97c; }
+        .month-card-header .status.partial   { background: rgba(244,147,33,0.2); color: var(--golden); }
+        .month-card-header .status.booked    { background: rgba(255,100,100,0.2); color: #ff9999; }
+        .mini-calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+        .mini-day-header { text-align: center; font-size: 0.5rem; opacity: 0.3; padding: 3px 0; color: var(--cream); }
+        .mini-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.58rem; border-radius: 2px; cursor: pointer; transition: background 0.15s ease; color: var(--cream); }
+        .mini-day:not(.empty):not(.blocked):not(.past):hover { background: rgba(244,147,33,0.2); }
+        .mini-day.blocked { background: rgba(255,100,100,0.28); color: rgba(255,255,255,0.35); cursor: not-allowed; }
+        .mini-day.past    { opacity: 0.2; cursor: default; }
+        .mini-day.empty   { opacity: 0; cursor: default; }
+        .mini-day.today   { border: 1px solid rgba(244,147,33,0.5); color: var(--golden); }
+        .mini-day.selected-start, .mini-day.selected-end { background: var(--golden); color: var(--dark); font-weight: 700; }
+        .mini-day.in-range { background: rgba(244,147,33,0.12); }
+        .month-blocked-info { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.68rem; opacity: 0.55; }
+        .month-blocked-info span { color: rgba(255,150,150,0.8); }
+        .date-picker-panel { max-width: 600px; margin: 50px auto 0; padding: 36px 40px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.08); }
+        .dp-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; margin-bottom: 24px; text-align: center; color: var(--cream); }
+        .dp-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+        .dp-field label { display: block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--golden); margin-bottom: 8px; opacity: 0.8; }
+        .dp-field input[type="date"] { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--cream); font-family: 'Nunito', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.3s ease; color-scheme: dark; }
+        .dp-field input[type="date"]:focus { border-color: var(--golden); }
+        .dp-status { text-align: center; font-size: 0.8rem; min-height: 22px; margin-bottom: 16px; transition: color 0.3s; }
+        .dp-status.ok  { color: #7cb97c; }
+        .dp-status.err { color: #ff9999; }
+        .dp-book-btn { display: block; width: 100%; padding: 16px; background: var(--golden); color: var(--dark); font-family: 'Nunito', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; text-align: center; border: none; cursor: pointer; transition: background 0.3s ease, opacity 0.3s ease; }
+        .dp-book-btn:hover:not(:disabled) { background: var(--cream); }
+        .dp-book-btn:disabled { opacity: 0.35; cursor: not-allowed; background: var(--golden); }
+        .calendar-legend { display: flex; justify-content: center; gap: 28px; margin-top: 30px; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; opacity: 0.55; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 2px; }
+        .legend-dot.available { background: rgba(255,255,255,0.15); }
+        .legend-dot.blocked   { background: rgba(255,100,100,0.4); }
+        .legend-dot.selected  { background: var(--golden); }
+        .legend-dot.today-dot { border: 1px solid rgba(244,147,33,0.6); }
+
+        /* ── Rich footer (from home page) ── */
+        footer { padding: 80px 8vw; background: var(--dark, #1a1a1a); border-top: 1px solid rgba(255,255,255,0.05); color: #FAF9F6; }
+        .footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 40px; flex-wrap: wrap; gap: 40px; }
+        .footer-brand img { height: 45px; filter: brightness(0) invert(1); }
+        .footer-brand p { margin-top: 20px; font-size: 0.9rem; opacity: 0.4; max-width: 280px; line-height: 1.7; color: #FAF9F6; }
+        .footer-nav { display: flex; gap: 60px; flex-wrap: wrap; }
+        .footer-col { list-style: none; }
+        .footer-col h4 { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; color: #F49321; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
+        .footer-col a:hover { color: #FAF9F6; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+        .footer-bottom p { font-size: 0.8rem; opacity: 0.3; color: #FAF9F6; }
+        .social-links { display: flex; gap: 12px; }
+        .social-links a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FAF9F6; opacity: 0.7; transition: all 0.3s; }
+        .social-links a:hover { background: #F49321; border-color: #F49321; color: #1a1a1a; opacity: 1; }
+        .social-links svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+        @media (max-width: 1024px) { .footer-nav { gap: 40px; } }
+        @media (max-width: 768px) { .footer-top { flex-direction: column; } .footer-bottom { flex-direction: column; text-align: center; } .footer-nav { gap: 30px; } }
+
+        /* Responsive calendar */
+        @media (max-width: 1200px) { .calendar-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) {
+            .availability-section { padding: 70px 5vw 90px; }
+            .calendar-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .calendar-grid { grid-template-columns: 1fr; }
+            .dp-fields { grid-template-columns: 1fr; }
+        }
+    </style>
+    <script src="blocked-dates.js"></script><!-- no defer: must load before inline calendar script -->
+    <script src="translations.js" defer></script>
+</head>
+<body>
+    <nav>
+        <a href="index.html"><img src="logo.png" alt="Luna Piena" class="logo"></a>
+        <ul class="nav-center">
+            <li><a href="rooms.html"  data-i18n="nav_rooms">Rooms</a></li>
+            <li><a href="dining.html" data-i18n="nav_dining">Dining</a></li>
+            <li><a href="events.html" data-i18n="nav_events">Events</a></li>
+            <li><a href="about.html"  data-i18n="nav_about">Who We Are</a></li>
+            <li><a href="blog.html"   data-i18n="nav_journal">Journal</a></li>
+            <li><a href="about.html#contact" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="lang-toggle">
+                <a href="#" class="active" aria-label="English">EN</a>
+                <a href="#" aria-label="Español">ES</a>
+                <a href="#" aria-label="Italiano">IT</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero hero-short">
+        <div class="hero-bg" role="presentation"></div>
+        <div class="page-hero-content">
+            <h1>Check <em>Availability</em></h1>
+        </div>
+    </section>
+
+    <section class="availability-section">
+        <div class="availability-header">
+            <span class="section-label" data-i18n="availability_label">Plan Your Visit</span>
+            <h2 data-i18n="availability_title">Availability</h2>
+            <p data-i18n="availability_desc">Check our calendar to find the perfect dates for your stay.</p>
+        </div>
+
+        <!-- Year navigation -->
+        <div class="cal-year-nav">
+            <button class="cal-nav-btn" id="calPrevYear" aria-label="Previous year">&#8592;</button>
+            <h3 id="calYearLabel">2026</h3>
+            <button class="cal-nav-btn" id="calNextYear" aria-label="Next year">&#8594;</button>
+        </div>
+
+        <!-- Full year grid -->
+        <div class="calendar-grid" id="calendarGrid"></div>
+
+        <!-- Date picker panel -->
+        <div class="date-picker-panel">
+            <p class="dp-title">Select Your Dates</p>
+            <div class="dp-fields">
+                <div class="dp-field">
+                    <label for="dpCheckin">Check-in</label>
+                    <input type="date" id="dpCheckin">
+                </div>
+                <div class="dp-field">
+                    <label for="dpCheckout">Check-out</label>
+                    <input type="date" id="dpCheckout">
+                </div>
+            </div>
+            <p class="dp-status" id="dpStatus"></p>
+            <button class="dp-book-btn" id="dpBookBtn" disabled>Check Availability &amp; Book</button>
+        </div>
+
+        <div class="calendar-legend">
+            <div class="legend-item"><div class="legend-dot available"></div><span data-i18n="legend_available">Available</span></div>
+            <div class="legend-item"><div class="legend-dot blocked"></div><span data-i18n="legend_booked">Booked</span></div>
+            <div class="legend-item"><div class="legend-dot selected"></div><span>Your dates</span></div>
+            <div class="legend-item"><div class="legend-dot today-dot"></div><span>Today</span></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="logo.png" alt="Luna Piena">
+                <p data-i18n="footer_tagline">A boutique hotel experience by Lupo, where Italian charm meets modern thoughtfulness.</p>
+            </div>
+            <div class="footer-nav">
+                <div class="footer-col">
+                    <h4 data-i18n="footer_explore">Explore</h4>
+                    <ul>
+                        <li><a href="rooms.html"   data-i18n="nav_rooms">Rooms</a></li>
+                        <li><a href="dining.html"  data-i18n="nav_dining">Dining</a></li>
+                        <li><a href="events.html"  data-i18n="nav_events">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer_info">Information</h4>
+                    <ul>
+                        <li><a href="about.html"   data-i18n="nav_about">Who We Are</a></li>
+                        <li><a href="blog.html"    data-i18n="nav_journal">Journal</a></li>
+                        <li><a href="about.html#contact" data-i18n="nav_contact">Contact</a></li>
+                        <li><a href="avail.html"   data-i18n="nav_availability">Availability</a></li>
+                        <li><a href="guest.html"   data-i18n="guest_portal">Guest Portal</a></li>
+                        <li><a href="booking.html" data-i18n="hero_cta">Book Now</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Luna Piena by Lupo. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4c0-1.5 1-2 2-2s2 .5 2 2v4M12 10v7"/></svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        if (typeof BlockedDates === 'undefined') return;
+
+        const grid        = document.getElementById('calendarGrid');
+        const yearLabel   = document.getElementById('calYearLabel');
+        const prevBtn     = document.getElementById('calPrevYear');
+        const nextBtn     = document.getElementById('calNextYear');
+        const checkinEl   = document.getElementById('dpCheckin');
+        const checkoutEl  = document.getElementById('dpCheckout');
+        const statusEl    = document.getElementById('dpStatus');
+        const bookBtn     = document.getElementById('dpBookBtn');
+
+        const MONTHS = ['January','February','March','April','May','June',
+                        'July','August','September','October','November','December'];
+        const DAYS   = ['S','M','T','W','T','F','S'];
+        const today  = new Date();
+        const todayStr = today.toISOString().slice(0,10);
+
+        let displayYear = today.getFullYear();
+        let selStart = null, selEnd = null;
+
+        // Set min date on inputs
+        checkinEl.min  = todayStr;
+        checkoutEl.min = todayStr;
+
+        function dateStr(y, m, d) {
+            return y + '-' + String(m+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+        }
+
+        function renderCalendar() {
+            yearLabel.textContent = displayYear;
+            grid.innerHTML = '';
+
+            for (let m = 0; m < 12; m++) {
+                const status      = BlockedDates.getMonthStatus(displayYear, m);
+                const blockedDays = BlockedDates.getBlockedDaysInMonth(displayYear, m);
+                const blockedText = BlockedDates.getBlockedRangesText(displayYear, m);
+                const firstDay    = new Date(displayYear, m, 1).getDay();
+                const daysInMonth = new Date(displayYear, m+1, 0).getDate();
+                const statusLabel = status === 'available' ? 'Available' : status === 'partial' ? 'Partial' : 'Booked';
+
+                const card = document.createElement('div');
+                card.className = 'month-card' + (status !== 'available' ? ' has-blocked' : '');
+
+                let html = '<div class="month-card-header">'
+                    + '<h4>' + MONTHS[m] + ' ' + displayYear + '</h4>'
+                    + '<span class="status ' + status + '">' + statusLabel + '</span>'
+                    + '</div><div class="mini-calendar">';
+
+                DAYS.forEach(d => { html += '<div class="mini-day-header">' + d + '</div>'; });
+                for (let j = 0; j < firstDay; j++) { html += '<div class="mini-day empty"></div>'; }
+
+                for (let d = 1; d <= daysInMonth; d++) {
+                    const ds      = dateStr(displayYear, m, d);
+                    const isBlocked = blockedDays.includes(d);
+                    const isPast    = ds < todayStr;
+                    const isToday   = ds === todayStr;
+                    const isSelStart = ds === selStart;
+                    const isSelEnd   = ds === selEnd;
+                    const isInRange  = selStart && selEnd && ds > selStart && ds < selEnd;
+
+                    let cls = 'mini-day';
+                    if (isBlocked)   cls += ' blocked';
+                    else if (isPast) cls += ' past';
+                    if (isToday)     cls += ' today';
+                    if (isSelStart)  cls += ' selected-start';
+                    if (isSelEnd)    cls += ' selected-end';
+                    if (isInRange)   cls += ' in-range';
+
+                    const attr = (!isBlocked && !isPast)
+                        ? ' data-date="' + ds + '" title="' + MONTHS[m] + ' ' + d + '"'
+                        : '';
+
+                    html += '<div class="' + cls + '"' + attr + '>' + d + '</div>';
+                }
+
+                html += '</div>';
+                if (blockedText) {
+                    html += '<div class="month-blocked-info"><span>Booked:</span> ' + blockedText + '</div>';
+                }
+
+                card.innerHTML = html;
+                grid.appendChild(card);
+            }
+
+            // Re-attach click listeners
+            grid.querySelectorAll('.mini-day[data-date]').forEach(el => {
+                el.addEventListener('click', function() {
+                    const ds = this.getAttribute('data-date');
+                    if (!selStart || (selStart && selEnd)) {
+                        // Start new selection
+                        selStart = ds; selEnd = null;
+                        checkinEl.value  = ds;
+                        checkoutEl.value = '';
+                    } else {
+                        // Complete selection
+                        if (ds <= selStart) { selStart = ds; checkinEl.value = ds; return; }
+                        selEnd = ds;
+                        checkoutEl.value = ds;
+                        validateDates();
+                    }
+                    renderCalendar();
+                });
+            });
+        }
+
+        function validateDates() {
+            const ci = checkinEl.value;
+            const co = checkoutEl.value;
+            if (!ci || !co) { statusEl.textContent = ''; statusEl.className = 'dp-status'; bookBtn.disabled = true; return; }
+            if (co <= ci)   { statusEl.textContent = 'Check-out must be after check-in.'; statusEl.className = 'dp-status err'; bookBtn.disabled = true; return; }
+
+            try {
+                const result = BlockedDates.validateBooking(ci, co);
+                if (result.valid) {
+                    statusEl.textContent = '✓ Dates available';
+                    statusEl.className   = 'dp-status ok';
+                    bookBtn.disabled     = false;
+                } else {
+                    statusEl.textContent = result.message || 'Those dates are unavailable.';
+                    statusEl.className   = 'dp-status err';
+                    bookBtn.disabled     = true;
+                }
+            } catch(e) {
+                statusEl.textContent = '';
+                bookBtn.disabled = false;
+            }
+            selStart = ci; selEnd = co;
+            renderCalendar();
+        }
+
+        // Input changes
+        checkinEl.addEventListener('change',  validateDates);
+        checkoutEl.addEventListener('change', validateDates);
+
+        // Book button
+        bookBtn.addEventListener('click', function() {
+            const ci = checkinEl.value;
+            const co = checkoutEl.value;
+            if (ci && co) {
+                window.location.href = 'booking.html?checkin=' + ci + '&checkout=' + co;
+            }
+        });
+
+        // Year nav
+        prevBtn.addEventListener('click', function() { displayYear--; renderCalendar(); });
+        nextBtn.addEventListener('click', function() { displayYear++; renderCalendar(); });
+
+        // Initial render
+        renderCalendar();
+    }());
+    </script>
+</body>
+</html>
