@@ -5,21 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luna Piena | Boutique Hotel by Lupo Group</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            background: var(--darker);
-            color: var(--cream);
-            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><defs><radialGradient id="g5" cx="35%25" cy="35%25" r="60%25"><stop offset="0%25" stop-color="%23FCD179"/><stop offset="50%25" stop-color="%23F49321"/><stop offset="100%25" stop-color="%23D4780E"/></radialGradient></defs><circle cx="16" cy="16" r="10" fill="url(%23g5)"/><circle cx="12" cy="14" r="2" fill="%23D4780E" opacity="0.3"/><circle cx="18" cy="18" r="1.5" fill="%23D4780E" opacity="0.25"/><circle cx="14" cy="20" r="1" fill="%23D4780E" opacity="0.2"/></svg>') 16 16, auto;
-        }
-
-        a, button {
-            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><defs><radialGradient id="g5h" cx="35%25" cy="35%25" r="60%25"><stop offset="0%25" stop-color="%23FCD179"/><stop offset="50%25" stop-color="%23F49321"/><stop offset="100%25" stop-color="%23D4780E"/></radialGradient></defs><circle cx="16" cy="16" r="12" fill="url(%23g5h)"/><circle cx="11" cy="13" r="2.5" fill="%23D4780E" opacity="0.3"/><circle cx="19" cy="19" r="2" fill="%23D4780E" opacity="0.25"/><circle cx="14" cy="21" r="1.2" fill="%23D4780E" opacity="0.2"/></svg>') 16 16, pointer;
-        }
-
-        /* FIX #3: Nav — tighter gap + font, white-space:nowrap stops wrapping */
-        nav {
-            position: fixed;
-            top: 20px; left: 50%;
+    <style>          top: 20px; left: 50%;
             transform: translateX(-50%);
             z-index: 200;
             padding: 14px 32px;
@@ -411,7 +397,7 @@
             <li><a href="dining.html"  data-i18n="nav_dining">Dining</a></li>
             <li><a href="events.html"  data-i18n="nav_events">Events</a></li>
             <li><a href="about.html"   data-i18n="nav_about">Who We Are</a></li>
-            <li><a href="blog.html"    data-i18n="nav_journal">Journal</a></li>
+            <li style="display:none"><a href="blog.html" data-i18n="nav_journal">Journal</a></li>
             <li><a href="about.html#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
         <div class="lang-toggle">
@@ -616,7 +602,7 @@
                     <h4 data-i18n="footer_info">Information</h4>
                     <ul>
                         <li><a href="about.html"   data-i18n="nav_about">Who We Are</a></li>
-                        <li><a href="blog.html"    data-i18n="nav_journal">Journal</a></li>
+                        <li style="display:none"><a href="blog.html" data-i18n="nav_journal">Journal</a></li>
                         <li><a href="about.html#contact" data-i18n="nav_contact">Contact</a></li>
                         <li><a href="guest.html"   data-i18n="guest_portal">Guest Portal</a></li>
                         <li><a href="booking.html" data-i18n="hero_cta">Book Now</a></li>
