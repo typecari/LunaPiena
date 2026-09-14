@@ -25,9 +25,6 @@ const BlockedDates = {
         { start: "2026-10-16", end: "2026-10-18" },
         { start: "2026-11-14", end: "2026-12-07" },
         { start: "2026-12-18", end: "2026-12-31" },
-
-
-
         
         // 2027
         // Add your 2027 blocked dates here
